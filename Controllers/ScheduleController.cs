@@ -8,5 +8,13 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Schedule/Index.cshtml
         }
+        public IActionResult Edit()
+        {
+            return View(); // повертає Views/Schedule/Edit.cshtml
+        }
+        public IActionResult Details()
+        {
+            return View(); // повертає Views/Destination/Details.cshtml
+        }
     }
 }
