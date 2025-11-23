@@ -47,3 +47,36 @@ button.accept-policy[b-xlfqnswz7s] {
   white-space: nowrap;
   line-height: 60px;
 }
+.divfooter[b-xlfqnswz7s] {
+    display: flex;
+}
+
+.divfootsect[b-xlfqnswz7s] {
+    width: 33.3%;
+    justify-items: left;
+    padding-left: 32px;
+}
+.ulfooter[b-xlfqnswz7s] {
+    text-decoration: none;
+    list-style-type: none;
+    font-weight: 200;
+    padding: 0;
+    text-align: left;
+
+}
+.ulfooter li[b-xlfqnswz7s] {
+    margin: 10px;
+    padding: 0;
+    margin-left: 0;
+}
+footer[b-xlfqnswz7s] {
+    background-color: #aac8df;
+}
+body[b-xlfqnswz7s] {
+    padding: 0;
+    margin: 0;
+}
+.h4footer[b-xlfqnswz7s] {
+    text-align: center;
+    font-size: 1.1rem;
+}

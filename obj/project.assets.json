@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/home/cobtahacademy3/.nuget/packages/": {}
+    "/home/cobtahacademy2/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/cobtahacademy3/MyMvcApp/MyMvcApp.csproj",
+      "projectUniqueName": "/home/cobtahacademy2/MyMvcApp/MyMvcApp.csproj",
       "projectName": "MyMvcApp",
-      "projectPath": "/home/cobtahacademy3/MyMvcApp/MyMvcApp.csproj",
-      "packagesPath": "/home/cobtahacademy3/.nuget/packages/",
-      "outputPath": "/home/cobtahacademy3/MyMvcApp/obj/",
+      "projectPath": "/home/cobtahacademy2/MyMvcApp/MyMvcApp.csproj",
+      "packagesPath": "/home/cobtahacademy2/.nuget/packages/",
+      "outputPath": "/home/cobtahacademy2/MyMvcApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/cobtahacademy3/.nuget/NuGet/NuGet.Config"
+        "/home/cobtahacademy2/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
