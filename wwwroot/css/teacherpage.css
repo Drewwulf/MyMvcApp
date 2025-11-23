@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+.navbar {
+    background-color: #aac8df;
+    font-size: 1.7rem;
+    font-weight: 500;
+    height: 12vh;
+    text-shadow: 3px 3px 15px;
+    box-shadow: 0 0 11px;
+}
+
+.navbar-brand {
+    font-size: 2.4rem;
+}
+
+.nav-link {
+    color: #050a30;
+    margin-left: 4vh;
+    text-shadow: 3px 3px 10px;
+}
+
+.nav-link:hover {
+    color: beige;
+}
+
+body {
+    background-color: #daeeff;
+}
+
+.section {
+    background-color: white;
+    height: 50vh;
+    width: 50vw;
+    margin: 0 auto;
+    border-radius: 3vh;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+main {
+    height: 88vh;
+    align-content: center;
+}
+
+.mainDiv {
+    width: 60%;
+    align-content: center;
+    display: flex;
+    height: 60%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nameDiv {
+    background-color: #aac8df;
+    align-content: center;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 2.8rem;
+    font-weight: 600;
+    height: 40%;
+}
+
+.lessonDiv {
+    background-color: #aac8df;
+    align-content: center;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 2.8rem;
+    font-weight: 600;
+    height: 50%;
+}
+
+.photoDiv {
+    width: 33%;
+    background-color: #aac8df;
+    height: max-content;
+    border-radius: 50%;
+    align-items: center;
+}
+
+.photoDiv img {
+    width: 100%;
+}

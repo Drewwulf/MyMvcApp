@@ -1,0 +1,357 @@
+{
+  "Files": [
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/obj/Debug/net8.0/scopedcss/projectbundle/MyMvcApp.bundle.scp.css",
+      "PackagePath": "staticwebassets/MyMvcApp.bundle.scp.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/Create.css",
+      "PackagePath": "staticwebassets/css/Create.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/Destination.css",
+      "PackagePath": "staticwebassets/css/Destination.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/Edit.css",
+      "PackagePath": "staticwebassets/css/Edit.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/chageTest.css",
+      "PackagePath": "staticwebassets/css/chageTest.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/createTest.css",
+      "PackagePath": "staticwebassets/css/createTest.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/destination2.css",
+      "PackagePath": "staticwebassets/css/destination2.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/details.css",
+      "PackagePath": "staticwebassets/css/details.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/directionpage.css",
+      "PackagePath": "staticwebassets/css/directionpage.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/footer.css",
+      "PackagePath": "staticwebassets/css/footer.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/group.css",
+      "PackagePath": "staticwebassets/css/group.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/groupDetails.css",
+      "PackagePath": "staticwebassets/css/groupDetails.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/homeWork.css",
+      "PackagePath": "staticwebassets/css/homeWork.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/homework2.css",
+      "PackagePath": "staticwebassets/css/homework2.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/login.css",
+      "PackagePath": "staticwebassets/css/login.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/register.css",
+      "PackagePath": "staticwebassets/css/register.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/schedule.css",
+      "PackagePath": "staticwebassets/css/schedule.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/schudle.css",
+      "PackagePath": "staticwebassets/css/schudle.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/studentPage.css",
+      "PackagePath": "staticwebassets/css/studentPage.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/studentwiththemtest.css",
+      "PackagePath": "staticwebassets/css/studentwiththemtest.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/task.css",
+      "PackagePath": "staticwebassets/css/task.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/taskforteacher.css",
+      "PackagePath": "staticwebassets/css/taskforteacher.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/tasks.css",
+      "PackagePath": "staticwebassets/css/tasks.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/css/teacherpage.css",
+      "PackagePath": "staticwebassets/css/teacherpage.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/LICENSE",
+      "PackagePath": "staticwebassets/lib/bootstrap"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery-validation/LICENSE.md",
+      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery/dist/jquery.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery/dist/jquery.min.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
+    },
+    {
+      "Id": "/home/cobtahacademy3/MyMvcApp/wwwroot/lib/jquery/dist/jquery.min.map",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.MyMvcApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.MyMvcApp.props",
+      "PackagePath": "build\\MyMvcApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.MyMvcApp.props",
+      "PackagePath": "buildMultiTargeting\\MyMvcApp.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.MyMvcApp.props",
+      "PackagePath": "buildTransitive\\MyMvcApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

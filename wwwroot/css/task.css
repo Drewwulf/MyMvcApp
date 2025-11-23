@@ -1,0 +1,44 @@
+.tasksection {
+    width: 80%;
+    margin: 0 auto;
+    height: 50vh;
+    margin-top: 10vh;
+    border-radius: 4vh;
+   background-color:  #aac8df;
+
+
+}
+.H1TASK {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #4242da;
+    border-radius: 0.5vh;
+
+}
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.divanswer {
+    width: 34%;
+    padding: 4vh;
+    border: double;
+    margin: 3vh;
+    background-color: white;
+}
+body {
+    height: 100vh;
+}
+.divtry{
+    margin: 0 auto;
+    height: 6vh;
+    width: 45%;
+    background-color:#6c6ca0;
+    margin-top: 5vh;
+    border-radius: 3vh;
+
+}
+

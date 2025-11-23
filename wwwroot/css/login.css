@@ -1,0 +1,132 @@
+
+.h2centr{
+    text-align: center;
+
+     color: #050a30 ;
+
+}
+#username{
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+    padding: 6px;
+    border-radius: 15px;
+    transition: 0.2s;
+}
+#username:hover{
+    background-color: #d0d0d0;
+
+}
+#password{
+    width: 75%;
+    display: block;
+    margin: 0 auto;
+    padding: 6px;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+#password:hover{
+    background-color: #d0d0d0;
+}
+.buttlogin{
+    border: none;
+    display: inline;
+    background: #aac8df;
+    color: #050a30;
+}
+.form-container{
+    border-radius: 3vh;
+    box-shadow: 0 0 12px #050a30;
+    width: 50%;
+    margin: 0 auto;
+    background: #aac8df;
+    padding: 5%;
+
+}
+.divform1{
+    align-content: center;
+    height: 80vh;
+
+
+}
+.buttdivlog{
+  display: flex;
+    justify-content: space-around;
+}
+.aLog{
+    text-decoration: none;
+    border: none;
+    display: inline;
+    background: #aac8df;
+    color: #050a30;
+
+}
+
+#mistake{
+    display: none;
+}
+
+@media(max-width:1000px){
+   .divform1{
+    align-content: center;
+    height: 80vh;;
+
+
+}
+.form-container{
+    border-radius: 3vh;
+    box-shadow: 0 0 12px #050a30;
+    width: 60%;
+    margin: 0 auto;
+    background: #aac8df;
+    padding: 5%;
+    height: 30vh;
+    align-content: center;
+
+}
+.h2centr{
+    text-align: center;
+    color: #050a30 ;
+    font-size: 4rem;
+
+}
+    #username{
+    display: block;
+    width: 75%;
+    margin: 0 auto;
+    padding:    20px;
+    border-radius: 15px;
+    transition: 0.2s;
+}
+    #password{
+    width: 75%;
+    display: block;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 15px;
+    transition: 0.5s;
+}
+    .buttlogin{
+    border: none;
+    display: inline;
+    background: #aac8df;
+    color: #050a30;
+    font-size: 1.5rem;
+}
+    .aLog{
+    text-decoration: none;
+    border: none;
+    display: inline;
+    background: #aac8df;
+    color: #050a30;
+    font-size: 1.4rem;
+    padding-left: 1vh;
+}
+.buttdivlog{
+   width: 60%;
+    margin: 0 auto;
+
+}
+
+
+}

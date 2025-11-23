@@ -1,0 +1,88 @@
+.navbar {
+    background-color: #aac8df;
+    height: 12vh;
+    text-shadow: 3px 3px 15px;
+    box-shadow: 0 0 11px;
+    font-weight: 500;
+    font-size: 1.7rem;
+}
+
+.navbar-brand {
+    font-size: 2.4rem;
+}
+
+.nav-link {
+    color: #050a30;
+    margin-left: 4vh;
+    text-shadow: 3px 3px 10px;
+}
+
+.nav-link:hover {
+    color: beige !important;
+}
+
+.main {
+    height: 88vh;
+    background-color: #daeeff;
+    align-content: center;
+}
+
+.cartka {
+    background-color: white;
+    height: 50vh;
+    width: 50vw;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.photoCartka {
+    width: 33%;
+    background-color: #aac8df;
+    height: max-content;
+    border-radius: 50%;
+    align-items: center;
+
+
+}
+
+.inform {
+    width: 60%;
+    align-content: center;
+    display: flex;
+    height: 60%;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+}
+
+.name {
+    background-color: #aac8df;
+    align-content: center;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 2.8rem;
+    font-weight: 600;
+    height: 40%;
+}
+
+.informatia{
+    background-color: #aac8df;
+    align-content: center;
+    text-align: center;
+    border-radius: 15px;
+    font-size: 2.8rem;
+    font-weight: 600;
+    height: 50%;
+
+}
+
+.photoCartka img
+{
+    width: 100%;
+}

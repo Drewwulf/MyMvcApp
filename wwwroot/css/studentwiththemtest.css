@@ -1,0 +1,15 @@
+.sectiontests{
+
+    width: 100%;
+    display: flex;
+}
+.divflex{
+    display: block;
+        margin: 0 auto;
+
+}
+.divchoose{
+    padding: 16px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}

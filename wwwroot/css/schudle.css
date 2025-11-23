@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&display=swap');
+.navbar{
+    background-color: #aac8df;
+    font-size: 1.7rem;
+    font-weight: 500;
+    height: 12vh;
+    text-shadow: 3px 3px 15px;
+    box-shadow: 0 0 11px;
+}
+
+.navbar-brand{
+    font-size: 2.4rem;
+}
+
+.nav-link{
+    color: #050a30;
+    margin-left: 4vh;
+    text-shadow: 3px 3px 10px;
+}
+
+.nav-link:hover{
+    color: beige;
+}
+
+body{
+    background-color: #daeeff;
+}
+
+.table2{
+    text-align: center;
+    height: 92%;
+    align-content: center;
+    color: #ffffff;
+    display: flex;
+    background-color: white;
+    width: 60%;
+    margin: 0 auto;
+    padding: 42px;
+    border-radius: 3vh;
+    justify-content: center;
+    box-shadow: 2px 2px 23px black;
+}
+
+.table2 td{
+    border: outset;
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #050a30;
+    align-content: center;
+    padding: 27px;
+}
+
+.table2 th{
+    padding: 32px;
+    border: outset;
+    font-size: 1.7rem;
+    align-content: center;
+}
+
+section{
+    margin-top: 6vh;
+}
+
+@media (max-width: 1000px){
+    .navbar-brand{
+        font-size: 3.8rem;
+    }
+
+    section{
+        margin-top: 3vh;
+    }
+
+    .table2{
+
+        text-align: center;
+        height: 73%;
+        align-content: center;
+        color: #ffffff;
+        display: flex;
+        background-color: white;
+        width: 96%;
+        margin: 0 auto;
+        padding: 38px;
+        border-radius: 3vh;
+        justify-content: center;
+        box-shadow: 2px 2px 23px black;
+    }
+
+    .table2 td{
+        border: outset;
+        width: 100%;
+        font-size: 2.1rem!important;
+        font-weight: 500;
+        color: #050a30;
+        align-content: center;
+        padding-top: 35px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .table2 th{
+        padding: 31px;
+        border: outset;
+        font-size: 1.7rem;
+        align-content: center;
+    }
+
+    .table2 table{
+        width: 17vw;
+    }
+}
