@@ -9,43 +9,43 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyMvcApp
 build_property.RootNamespace = MyMvcApp
-build_property.ProjectDir = /home/cobtahacademy3/MyMvcApp/
+build_property.ProjectDir = /home/cobtahacademy/MyMvcApp/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/cobtahacademy3/MyMvcApp
+build_property.MSBuildProjectDirectory = /home/cobtahacademy/MyMvcApp
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/cobtahacademy3/MyMvcApp/Views/Direction/Index.cshtml]
+[/home/cobtahacademy/MyMvcApp/Views/Direction/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlyZWN0aW9uL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy3/MyMvcApp/Views/Home/Index.cshtml]
+[/home/cobtahacademy/MyMvcApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy3/MyMvcApp/Views/Home/Privacy.cshtml]
+[/home/cobtahacademy/MyMvcApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy3/MyMvcApp/Views/Shared/Error.cshtml]
+[/home/cobtahacademy/MyMvcApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy3/MyMvcApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/home/cobtahacademy/MyMvcApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy3/MyMvcApp/Views/_ViewImports.cshtml]
+[/home/cobtahacademy/MyMvcApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy3/MyMvcApp/Views/_ViewStart.cshtml]
+[/home/cobtahacademy/MyMvcApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy3/MyMvcApp/Views/Shared/_Layout.cshtml]
+[/home/cobtahacademy/MyMvcApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-xlfqnswz7s
