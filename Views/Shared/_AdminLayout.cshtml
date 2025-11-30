@@ -1,19 +1,21 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MyMvcApp</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/footer.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyMvcApp.styles.css" asp-append-version="true" />
     
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg">
+       <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/teacherpage/teacherpage.html">Кабінет вчителя</a>
+                    <a class="navbar-brand" href="/teacherpage/teacherpage.html">Адмін панель</a>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -26,16 +28,16 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link" asp-controller="Direction" asp-action="Index">Direction</a>
-                            <a class="nav-link"asp-controller="Destination" asp-action="Index">Destination</a>
-                            <a class="nav-link" asp-controller="Group" asp-action="Index">Group</a>
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                            <a class="nav-link" asp-controller="HomeWork"asp-action="Index">HomeWork</a>
-                            <a class="nav-link "asp-controller="Shedule" asp-action="Index">Shedule</a>
-                            <a class="nav-link" asp-controller="Student" asp-action="Index">Student</a>
-                            <a class="nav-link " asp-controller="Task" asp-action="Index">Task</a>
-                            <a class="nav-link" asp-controller="Teacherpage"asp-action="Index">Teacherpage</a>
-                            <a class="nav-link" asp-controller="Test" asp-action="Index">Test</a>
+                            <a class="nav-link" asp-controller="Direction" asp-action="Create">Напрямок</a>
+                            <a class="nav-link" asp-controller="Destination" asp-action="Index">Місце проведення</a>
+                            <a class="nav-link" asp-controller="Group" asp-action="Create">Групи</a>
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">На головну</a>
+                            <a class="nav-link" asp-controller="HomeWork" asp-action="Create">Д\З</a>
+                            <a class="nav-link "asp-controller="Schedule" asp-action="Create">Розклад</a>
+                            <a class="nav-link" asp-controller="Student" asp-action="Create">Сторінка студента</a>
+                            <a class="nav-link" asp-controller="Task" asp-action="Create">Задачі</a>
+                            <a class="nav-link" asp-controller="Teacherpage" asp-action="Create">Сторінка вчителя</a>
+                            <a class="nav-link" asp-controller="Test" asp-action="Create">Тести</a>
                             
                         </div>
                     </div>
@@ -47,9 +49,10 @@
             @RenderBody()
         </main>
     </div>
+    
+   
+      <footer style="display: flex;" class="border-top" id="footer1">
 
-    <footer class="border-top footer text-muted">
-        <footer >
             <div class="divfooter">
                 <div class="divfootsect">
                      <h4 class="h4footer">Загальне</h4>
@@ -61,17 +64,7 @@
 
                     </ul>
                 </div>
-                <div class="divfootsect">
-                    <h4 class="h4footer">Завдання</h4>
-                <ul class="ulfooter">
-
-                        <li><a>Домашня</a></li>
-                        <li><a>Тести</a></li>
-                        <li><a>Завдання</a></li>
-
-                    </ul>
-
-
+                
 
                 </div>
                 <div class="divfootsect">
@@ -88,7 +81,7 @@
                 </div>  
             </div>
         </footer>
-    </footer>
+   
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

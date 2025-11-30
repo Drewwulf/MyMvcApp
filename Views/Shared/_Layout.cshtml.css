@@ -39,20 +39,21 @@ button.accept-policy {
   line-height: inherit;
 }
 
-.footer {
+#footer1 {
   position: absolute;
   bottom: 0;
   width: 100%;
   white-space: nowrap;
   line-height: 60px;
   background-color: #aac8df;
-}
-.divfooter {
-    display: flex;
+    display: flex!important;
+  width: 100%;
+  justify-content: space-around
 }
 
+
 .divfootsect {
-    width: 33.3%;
+    width: 49.3%;
     justify-items: left;
     padding-left: 32px;
 }
