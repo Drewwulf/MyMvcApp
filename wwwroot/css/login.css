@@ -6,35 +6,61 @@
 
 }
 #username{
-    display: block;
-    width: 75%;
-    margin: 0 auto;
-    padding: 6px;
-    border-radius: 15px;
-    transition: 0.2s;
+    width: 50%;
+    border: none;
+    border-bottom: 5px solid #00baa6;
+    padding: 15px;
+    margin: 7px;
+    align-items: center;
 }
-#username:hover{
-    background-color: #d0d0d0;
 
+#username:hover {
+    cursor: pointer;
+    background-color: rgba(168, 217, 255, 0.9);
 }
+
 #password{
-    width: 75%;
-    display: block;
-    margin: 0 auto;
-    padding: 6px;
-    border-radius: 15px;
-    transition: 0.5s;
+    width: 50%;
+    border: none;
+    border-bottom: 5px solid #00baa6;
+    padding: 15px;
+    margin: 7px;
+    align-items: center;
 }
 #password:hover{
-    background-color: #d0d0d0;
+    cursor: pointer;
+    background-color: rgba(168, 217, 255, 0.9);
 }
-.buttlogin{
-    border: none;
-    display: inline;
-    background: #aac8df;
-    color: #050a30;
+   .buttlogin{
+    width: 80%;
+    height: 70%;
+    border-radius: 1vh;
+    border: 0;
+    border-right: 5px solid #487e8b;
+    color: white;
+    background-color: #71b4c4 !important;
+    font-weight: 1000;
+    font-size: 1.4rem;
+    border-bottom: 7px solid #487e8b !important;
+    text-decoration: none;
+    text-align: center;
+}
+
+.buttlogin:active {
+    border-bottom: 3px solid #487e8b;
+    background-color: #3d8b9d;
+    color: white;
+
+    border-right: 1px solid #487e8b;
+}
+
+.buttlogin:hover {
+    color: white;
 }
 .form-container{
+    display:flex;
+    align-items: center;
+    flex-direction: column;
     border-radius: 3vh;
     box-shadow: 0 0 12px #050a30;
     width: 50%;
@@ -45,7 +71,6 @@
 }
 .divform1{
     align-content: center;
-    height: 80vh;
 
 
 }
@@ -56,10 +81,9 @@
 .aLog{
     text-decoration: none;
     border: none;
-    display: inline;
-    background: #aac8df;
-    color: #050a30;
-
+    color: #000000;
+    text-align: center;
+    margin: 0 auto;
 }
 
 #mistake{
@@ -106,12 +130,7 @@
     border-radius: 15px;
     transition: 0.5s;
 }
-    .buttlogin{
-    border: none;
-    display: inline;
-    background: #aac8df;
-    color: #050a30;
-    font-size: 1.5rem;
+   
 }
     .aLog{
     text-decoration: none;
@@ -125,8 +144,5 @@
 .buttdivlog{
    width: 60%;
     margin: 0 auto;
-
-}
-
 
 }
