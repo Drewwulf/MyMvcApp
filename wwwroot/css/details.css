@@ -4,20 +4,54 @@ body{
 }
 
 .mainDiv{
-
     width: 40%;
-    height: 70vh;
+    min-height: 30vh;
     margin: 0 auto;
     text-align: center;
     border-radius: 3vh;
     align-content: center;
     background-color: #aac8df;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+}
 
-} 
+.geoDiv{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mainDiv3{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 3px;
+}
+
+.mainDiv3 i{
+    font-size: 2.8rem;
+}
+
+.mainDiv3 p{
+    font-size: 1.5rem!important;
+}
+
+.mainDiv p{
+    font-size: 1.9rem;
+    margin: 0 auto;
+}
+
+.mainDiv h2{
+    font-size: 2.2rem;
+    margin: 0 auto;
+}
+
 .maindiv2{
 
     width: 40%;
-    height: 70vh;
+    min-height:30vh;
     margin: 0 auto;
     text-align: center;
     border-radius: 3vh;
@@ -66,7 +100,7 @@ section{
 .divflex{
     display: flex;
     background-color: #aac8df;
-    height: 70vh;
+    min-height:30vh;
 
      border-radius: 3vh;
     width: 80%;
@@ -173,7 +207,7 @@ section{
 
 .osnova {
     background-color: white;
-    min-height: 70vh;
+    min-height:30vh;
     width: 50%;
     margin: 0 auto;
     border-radius: 3vh;
