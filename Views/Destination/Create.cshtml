@@ -1,9 +1,14 @@
+@model MyMvcApp.Models.PlaceViewModel
 <section class="section">
             <div class="mainDiv">
-                <form>
-                    <input type="text" placeholder="Назва" />
-                    <input type="text" placeholder="Адреса" />
+                <form asp-action="Create" method="post">
+                    <input asp-for="Name" placeholder="Назва" />
+                    <input asp-for="Address" placeholder="Адреса" />
                     <input type="submit" value="Створити" class="button" />
                 </form>
             </div>
         </section>
+        @section Scripts
+        {
+            <partial name="_ValidationScriptsPartial" />
+        }
