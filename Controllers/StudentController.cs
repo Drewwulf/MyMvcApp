@@ -16,5 +16,13 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Details.cshtml
         }
+         public IActionResult MyGroup()
+        {
+            return View(); // повертає Views/Destination/Details.cshtml
+        }
+        public IActionResult MySchedule()
+        {
+            return View(); // повертає Views/Destination/Details.cshtml
+        }
     }
 }
