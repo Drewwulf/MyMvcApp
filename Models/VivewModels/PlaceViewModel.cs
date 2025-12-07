@@ -1,8 +1,7 @@
 namespace MyMvcApp.Models
 {
-    public class Place
+    public class PlaceViewModel
     {
-        public int Id { get; set; } 
         public string Name { get; set; }     
         public string Address { get; set; }   
     }
