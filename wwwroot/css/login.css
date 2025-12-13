@@ -2,13 +2,13 @@
 .h2centr{
     text-align: center;
 
-     color: #050a30 ;
+     color: white ;
 
 }
 #username{
     width: 50%;
     border: none;
-    border-bottom: 5px solid #00baa6;
+    border-bottom: 5px solid #2f3540;
     padding: 15px;
     margin: 7px;
     align-items: center;
@@ -22,7 +22,7 @@
 #password{
     width: 50%;
     border: none;
-    border-bottom: 5px solid #00baa6;
+    border-bottom: 5px solid #2f3540;
     padding: 15px;
     margin: 7px;
     align-items: center;
@@ -110,7 +110,7 @@
 }
 .h2centr{
     text-align: center;
-    color: #050a30 ;
+    color: white ;
     font-size: 4rem;
 
 }
@@ -137,7 +137,7 @@
     border: none;
     display: inline;
     background: #aac8df;
-    color: #050a30;
+     color: white;
     font-size: 1.4rem;
     padding-left: 1vh;
 }

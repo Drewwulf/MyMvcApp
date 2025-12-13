@@ -20,9 +20,7 @@
     padding: 0;
     margin-left: 0;
 }
-footer {
-    background-color: #aac8df;
-}
+
 body {
     padding: 0;
     margin: 0;
@@ -30,4 +28,18 @@ body {
 .h4footer {
     text-align: center;
     font-size: 1.1rem;
+}
+.footer {
+    background-color: #ffffff;
+    width: 100%;
+    border: 0 !important;
+}
+
+.footer a {
+     color: white;
+    margin-left: 2vh;
+}
+
+input file {
+    background-color: #aac8df;
 }
