@@ -20,5 +20,17 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Create.cshtml
         }
+        public IActionResult TeacherGroup()
+        {
+            return View(); // повертає Views/Destination/Create.cshtml
+        }
+        public IActionResult TeacherShedule()
+        {
+            return View(); // повертає Views/Destination/Create.cshtml
+        }
+        public IActionResult TeacherTests()
+        {
+            return View(); // повертає Views/Destination/Create.cshtml
+        }
     }
 }

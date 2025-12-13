@@ -9,179 +9,195 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MyMvcApp
 build_property.RootNamespace = MyMvcApp
-build_property.ProjectDir = /home/cobtahacademy/MyMvcApp/
+build_property.ProjectDir = /home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /home/cobtahacademy/MyMvcApp
+build_property.MSBuildProjectDirectory = /home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp
 build_property._RazorSourceGeneratorDebug = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Autorization/Login.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Autorization/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQXV0b3JpemF0aW9uL0xvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Destination/Create.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Destination/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVzdGluYXRpb24vQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Destination/Details.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Destination/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVzdGluYXRpb24vRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Destination/Edit.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Destination/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGVzdGluYXRpb24vRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Direction/Create.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Direction/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlyZWN0aW9uL0NyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Direction/Details.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Direction/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlyZWN0aW9uL0RldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Direction/Edit.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Direction/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlyZWN0aW9uL0VkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Direction/Index.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Direction/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGlyZWN0aW9uL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Group/Create.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Group/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3JvdXAvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Group/Details.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Group/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3JvdXAvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Group/Edit.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Group/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3JvdXAvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Group/Error.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Group/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3JvdXAvRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Home/Index.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Home/Privacy.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/HomeWork/Create.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/HomeWork/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZVdvcmsvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/HomeWork/Details.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/HomeWork/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZVdvcmsvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/HomeWork/Edit.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/HomeWork/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZVdvcmsvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/HomeWork/Index.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/HomeWork/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZVdvcmsvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Schedule/Create.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Schedule/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NoZWR1bGUvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Schedule/Details.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Schedule/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NoZWR1bGUvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Schedule/Edit.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Schedule/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NoZWR1bGUvRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Schedule/Index.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Schedule/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2NoZWR1bGUvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Shared/Error.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Shared/_StudentLayout.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Shared/_StudentLayout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19TdHVkZW50TGF5b3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Student/Create.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Student/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Student/Details.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Student/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Student/Edit.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Student/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Student/Index.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Student/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Student/MyGroup.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Student/MyGroup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9NeUdyb3VwLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Student/MySchedule.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Student/MySchedule.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU3R1ZGVudC9NeVNjaGVkdWxlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Task/Details.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Task/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGFzay9EZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Task/Edit.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Task/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGFzay9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Task/Tasks.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Task/Tasks.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGFzay9UYXNrcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Teacherpage/Create.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Teacherpage/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Teacherpage/Details.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Teacherpage/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Teacherpage/Index.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Teacherpage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Test/Create.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Teacherpage/TeacherGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvVGVhY2hlckdyb3VwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Teacherpage/TeacherShedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvVGVhY2hlclNoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Teacherpage/TeacherTests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvVGVhY2hlclRlc3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Test/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVzdC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Test/Edit.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Test/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVzdC9FZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/_ViewImports.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/_ViewStart.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/home/cobtahacademy/MyMvcApp/Views/Shared/_Layout.cshtml]
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-xlfqnswz7s
+
+[/home/cobtahacademy1/Documents/Phoenix Code/MyMvcApp/Views/Shared/_TeacherLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19UZWFjaGVyTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-i2z201o0zu
