@@ -1,9 +1,9 @@
-
+@model MyMvcApp.Models.DirectionViewModel
         <section class="section">
             <div class="mainDiv">
-                <form>
-                    <input type="text" placeholder="Назва">
-                    <input type="text" placeholder="Опис">
+                <form asp-action="Create" method="post">
+                    <input type="text" asp-for="DirectionName" placeholder="Назва">
+                    <input type="text" asp-for="DirectionDescription" placeholder="Опис">
                     <input type="submit" value="Створити" class="button">
                 </form>
             </div>

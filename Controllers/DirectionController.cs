@@ -1,10 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
+using MyMvcApp.Data;
+using MyMvcApp.Models;
 
 namespace MyMvcApp.Controllers
 {
     public class DirectionController : Controller
-    {
-        public IActionResult Index()
+    { private readonly ApplicationDbContext _context;
+
+        public DirectionController(ApplicationDbContext context)
+        {
+            _context = context;
+        }        public IActionResult Index()
         {
             return View(); // повертає Views/Direction/Index.cshtml
         }
@@ -19,6 +25,21 @@ namespace MyMvcApp.Controllers
           public IActionResult Create()
         {
             return View(); // повертає Views/Destination/Details.cshtml
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(DirectionViewModel directionViewModel)
+        {
+           var direction = new Direction
+           {
+               DirectionName = directionViewModel.DirectionName,
+               DirectionDescription = directionViewModel.DirectionDescription
+
+           };
+_context.Directions.Add(direction);
+_context.SaveChanges();
+
+            return View();
         }
     }
 }

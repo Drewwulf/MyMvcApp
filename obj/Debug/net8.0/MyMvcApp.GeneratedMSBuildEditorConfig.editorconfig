@@ -166,6 +166,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/cobtahacademy3/MyMvcApp/Views/Teacherpage/TeacherGroup.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvVGVhY2hlckdyb3VwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cobtahacademy3/MyMvcApp/Views/Teacherpage/TeacherShedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvVGVhY2hlclNoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/cobtahacademy3/MyMvcApp/Views/Teacherpage/TeacherTests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVhY2hlcnBhZ2UvVGVhY2hlclRlc3RzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/cobtahacademy3/MyMvcApp/Views/Test/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvVGVzdC9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -185,3 +197,7 @@ build_metadata.AdditionalFiles.CssScope =
 [/home/cobtahacademy3/MyMvcApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-xlfqnswz7s
+
+[/home/cobtahacademy3/MyMvcApp/Views/Shared/_TeacherLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19UZWFjaGVyTGF5b3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = b-i2z201o0zu
