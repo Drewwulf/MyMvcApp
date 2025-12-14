@@ -2,8 +2,8 @@ namespace MyMvcApp.Models
 {
     public class Place
     {
-        public int Id { get; set; } 
-        public string Name { get; set; }     
-        public string Address { get; set; }   
+        public int PlaceId { get; set; } 
+        public string DestinationName { get; set; }     
+        public string DestinationAddress { get; set; }   
     }
 }
