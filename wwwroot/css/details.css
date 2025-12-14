@@ -134,6 +134,24 @@ section{
     font-size: 1.4rem;
 }
 
+#G03 h3{
+    background-color: black;
+    text-align: left!important;
+    height: 7vh;
+}
+
+#G05 h3{
+    background-color: black;
+    text-align: left!important;
+    height: 7vh;
+}
+
+#G09 h3{
+    background-color: black;
+    text-align: left!important;
+    height: 7vh;
+}
+
 .button:active {
     border-bottom: 3px solid #487e8b;
     background-color: #3d8b9d;
@@ -207,7 +225,7 @@ section{
 
 .osnova {
     background-color: white;
-    min-height:30vh;
+    min-height:60vh;
     width: 50%;
     margin: 0 auto;
     border-radius: 3vh;
@@ -248,52 +266,52 @@ section{
     text-decoration: none;
 }
 .buttonJS {
-    background-color: #e2c000;
-    border-bottom: 8px solid #a28a03;
-    border-right: 6px solid #a28a03;
+    background-color: black;
+    border-bottom: 8px solid black;
+    border-right: 6px solid black;
     border-radius: 10px;
 }
 .buttonJS:active {
-    background-color: #a28a03;
+    background-color:black;
 }
 .buttonJS:hover {
     cursor: pointer;
 }
 .buttonJS IMG{
-    background-color: #c1a401;
+    background-color: black;
     padding: 10px;
 }
 
 .buttonCSS {
- background-color: dodgerblue;
- border-bottom: 8px solid #1c5f9f;
- border-right: 6px solid #1c5f9f;
+ background-color: black;
+ border-bottom: 8px solid black;
+ border-right: 6px solid black;
  border-radius: 10px;
  }
 .buttonCSS:active {
-    background-color: #1c5f9f;
+    background-color: black;
 }
 .buttonCSS:hover {
     cursor: pointer;
 }
 .buttonCSS img {
-    background-color: #2376c6;
+    background-color: black;
     padding: 10px;
 }
 
 .buttonHTML {
-    background-color: orange;
-    border-bottom: 8px solid #966100;
-    border-right: 6px solid #966100;
+    background-color: black;
+    border-bottom: 8px solid black;
+    border-right: 6px solid black;
     border-radius: 10px;
 }
 .buttonHTML:active {
-    background-color: #966100;
+    background-color: black;
 }
 .buttonHTML:hover {
     cursor: pointer;
 }
 .buttonHTML img{
-    background-color: #bb7b04;
+    background-color: black;
     padding: 10px;
 }
