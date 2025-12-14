@@ -24,7 +24,9 @@ namespace MyMvcApp.Controllers
         }
           public IActionResult Create()
         {
-            return View(); // повертає Views/Destination/Details.cshtml
+            var allDirections = _context.Directions.ToList();
+            var model = new DirectionViewModel{directions = allDirections};
+            return View(model); // повертає Views/Destination/Details.cshtml
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -38,8 +40,9 @@ namespace MyMvcApp.Controllers
            };
 _context.Directions.Add(direction);
 _context.SaveChanges();
-
-            return View();
+var allDirections = _context.Directions.ToList();
+            var model = new DirectionViewModel{directions = allDirections};
+            return View(model);
         }
     }
 }

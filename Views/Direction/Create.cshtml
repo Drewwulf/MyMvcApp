@@ -18,7 +18,17 @@
                            <tr><td>№1</td><td>HTML</td><td>Структура</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
                            <tr><td>№2</td><td>CSS</td><td>Стилізація</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
                            <tr><td>№3</td><td>JAVASCRIPT</td><td>Інтерактивність</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
-                        </tbody>
+                           
+
+
+
+                        @foreach(var direction in Model.directions)
+                        {
+                           <tr><td>@direction.DirectionId</td><td>@direction.DirectionName</td><td>@direction.DirectionDescription</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
+
+
+
+                        }
                     </table>
                 </div>
             </section>      

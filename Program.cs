@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.WebHost.UseUrls("http://localhost:5007");
+builder.WebHost.UseUrls("http://localhost:5009");
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
