@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/GroupDetails.css" />
     <link rel="stylesheet" href="/css/Create.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/details.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyMvcApp.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body id="body">
     <header>
         <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/teacherpage/teacherpage.html">Кабінет вчителя</a>
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">Кабінет вчителя</a>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -28,16 +30,13 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link" asp-controller="Direction" asp-action="Index">Direction</a>
+                            <a class="nav-link" asp-controller="Direction" asp-action="Create">Direction</a>
                             <a class="nav-link"asp-controller="Destination" asp-action="Create">Destination</a>
-                            <a class="nav-link" asp-controller="Group" asp-action="Index">Group</a>
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
-                            <a class="nav-link" asp-controller="HomeWork"asp-action="Index">HomeWork</a>
-                            <a class="nav-link "asp-controller="Shedule" asp-action="Index">Shedule</a>
+                            <a class="nav-link" asp-controller="Group" asp-action="Create">Group</a>
+                            <a class="nav-link" asp-controller="HomeWork"asp-action="Create">HomeWork</a>
                             <a class="nav-link" asp-controller="Student" asp-action="Index">Student</a>
-                            <a class="nav-link " asp-controller="Task" asp-action="Index">Task</a>
                             <a class="nav-link" asp-controller="Teacherpage"asp-action="Index">Teacherpage</a>
-                            <a class="nav-link" asp-controller="Test" asp-action="Index">Test</a>
+                            <a class="nav-link" asp-controller="Test" asp-action="Create">Test</a>
                             
                         </div>
                     </div>
@@ -51,24 +50,23 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <footer >
+        
             <div class="divfooter">
                 <div class="divfootsect">
-                     <h4 class="h4footer">Загальне</h4>
                     <ul class="ulfooter">
 
+                        <li><a>Контакти</a></li>
                         <li><a>Корисні посилання</a></li>
                         <li><a>Навігація по веб сайту</a></li>
-                        <li><a>Контакти</a></li>
+                        
 
                     </ul>
                 </div>
                 <div class="divfootsect">
-                    <h4 class="h4footer">Завдання</h4>
                 <ul class="ulfooter">
 
-                        <li><a>Домашня</a></li>
                         <li><a>Тести</a></li>
+                        <li><a>Домашня</a></li>
                         <li><a>Завдання</a></li>
 
                     </ul>
@@ -77,11 +75,12 @@
 
                 </div>
                 <div class="divfootsect">
-                    <h4>Контакти</h4>
                 <ul class="ulfooter">
-                        <li><a>Номер телефона:82393029</a></li>
-                        <li><a>Gmail:cobtahacademy@gmail.com</a></li>
-                        <li><a>Адрес:Вул.Івана Франка</a></li>
+
+                        <li><a>Адреса: Вул.Івана Франка</a></li>
+                        <li><a>Номер телефону: 82393029</a></li>
+                        <li><a>Gmail: cobtahacademy@gmail.com</a></li>
+
 
                     </ul>
 
@@ -89,7 +88,7 @@
 
                 </div>  
             </div>
-        </footer>
+      
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

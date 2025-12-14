@@ -1,7 +1,7 @@
 .h2centr {
     text-align: center;
 
-    color: #050a30;
+     color: white;
 }
 #username {
     display: block;
@@ -29,7 +29,7 @@
     border: none;
     display: inline;
     background: #aac8df;
-    color: #050a30;
+     color: white;
     background: orange;
 }
 .form-container {
@@ -55,7 +55,7 @@
     border: none;
     display: inline;
     background: #aac8df;
-    color: #050a30;
+     color: white;
     background: orange;
 }
 
@@ -112,7 +112,7 @@ justify-content: center;
     }
     .h2centr {
         text-align: center;
-        color: #050a30;
+         color: white;
         font-size: 4rem;
     }
     #username {
@@ -135,7 +135,7 @@ justify-content: center;
         border: none;
         display: inline;
         background: #aac8df;
-        color: #050a30;
+         color: white;
         font-size: 1.5rem;
         background: orange;
     }
@@ -144,7 +144,7 @@ justify-content: center;
         border: none;
         display: inline;
         background: #aac8df;
-        color: #050a30;
+         color: white;
         font-size: 1.4rem;
         padding-left: 1vh;
         background: orange;
