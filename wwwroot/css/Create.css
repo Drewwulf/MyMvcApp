@@ -4,7 +4,7 @@
     min-height: 30vh;
     margin: 50px auto;
     text-align: center;
-    border-radius: 2vh;
+    border-radius: 1vh;
     align-content: center;
     box-shadow: 2px 2px 35px #46494d;
     padding: 20px 0px;
@@ -43,40 +43,21 @@
 
 
 .divselect {
-    color: #646e79;
+    color: #ffffff;
     font-size: 1.6rem;
     margin: 7px auto;
     width: 50%;
-    background-color: rgba(170, 200, 223, 0.73);
+    background-color: #2f3540;
     padding: 25px;
-    border-bottom: 7px solid #00baa6;
+    border-bottom: 7px solid #1b212b;
 }
 
 .divselect:hover {
-    background-color: rgba(170, 200, 223, 0.9);
+    background-color: #565c66;
 }
 
 .divselect select:hover {
     cursor: pointer;
-}
-
-.button {
-    width: 80%;
-    height: 70%;
-    border-radius: 1vh;
-    border: 0;
-    border-right: 5px solid #3d4450 !important;
-    color: white;
-    background-color: #323843 !important;
-    font-weight: 1000;
-    font-size: 1.4rem;
-    border-bottom: 7px solid #3d4450 !important;
-}
-
-.button:active {
-    border-bottom: 7px solid #323843 !important;
-    background-color: #3d4450 !important;
-    border-right: 5px solid #323843 !important;
 }
 
 .table2 {
@@ -85,21 +66,24 @@
     align-content: center;
     color: #ffffff;
     display: flex;
-    background-color: white;
-    width: 60%;
+    background-color: #2f3540;
     margin: 0 auto;
     padding: 38px;
-    border-radius: 3vh;
+    border-radius: 1vh;
     justify-content: center;
-    box-shadow: 2px 2px 23px black;
+    box-shadow: 2px 2px 35px #46494d;
 }
 
 .table2 td {
-    border: outset;
-    width: 100%;
+    border: outset #ffffff;
+    width: 0 auto;
     font-size: 1.6rem;
     font-weight: 500;
-     color: white;
+    color: white;
     align-content: center;
+}
+
+.finish {
+    color: #ffffff !important;
 }
 
