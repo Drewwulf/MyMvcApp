@@ -146,6 +146,11 @@ section{
     height: 7vh;
 }
 
+.colorDiv{
+    background-color: black;
+    color: white;
+}
+
 #G09 h3{
     background-color: black;
     text-align: left!important;
