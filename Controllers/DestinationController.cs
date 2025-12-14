@@ -16,17 +16,28 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Index.cshtml
         }
-        public IActionResult Edit()
+        public IActionResult Edit() 
         {
             return View(); // повертає Views/Destination/Edit.cshtml
         }
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View(); // повертає Views/Destination/Details.cshtml
+          var place = _context.Places.Find(id); 
+          var modal = new PlaceViewModel
+          {
+              Name = place.DestinationName,
+              Address = place.DestinationAddress
+          };
+
+
+            return View(modal); // повертає Views/Destination/Details.cshtml
         }
         public IActionResult Create()
         {
-            return View(); // повертає Views/Destination/Details.cshtml
+            var allDestinations = _context.Places.ToList();
+            var model = new PlaceViewModel{ places = allDestinations};
+
+            return View(model); 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -34,13 +45,15 @@ namespace MyMvcApp.Controllers
         {
             var place = new Place
             {
-                Name = placeViewModel.Name,
-                Address = placeViewModel.Address
+                DestinationName = placeViewModel.Name,
+                DestinationAddress = placeViewModel.Address
             };
             _context.Places.Add(place);
             _context.SaveChanges();
+ var allDestinations = _context.Places.ToList();
+            var model = new PlaceViewModel{ places = allDestinations};
 
-            return View();
+            return RedirectToAction("Create"); 
         }
     }
 }
