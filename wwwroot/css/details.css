@@ -1,21 +1,5 @@
 
-body{
-    background-color: #daeeff;
-}
 
-.mainDiv{
-    width: 40%;
-    min-height: 30vh;
-    margin: 0 auto;
-    text-align: center;
-    border-radius: 3vh;
-    align-content: center;
-    background-color: #aac8df;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    justify-content: space-between;
-}
 
 .geoDiv{
     display: flex;
@@ -38,16 +22,6 @@ body{
     font-size: 1.5rem!important;
 }
 
-.mainDiv p{
-    font-size: 1.9rem;
-    margin: 0 auto;
-}
-
-.mainDiv h2{
-    font-size: 2.2rem;
-    margin: 0 auto;
-}
-
 .maindiv2{
 
     width: 40%;
@@ -56,24 +30,10 @@ body{
     text-align: center;
     border-radius: 3vh;
     align-content: center;
-    background-color: #aac8df;
+    background-color: #858a92;
 }
 
-.mainDiv input{
-    width: 50%;
-    height: 8vh;
-    margin: 1vh;
-    background-color: #aac8df;
-}
 
-input{
-    color: #050a30;
-    font-size: 1.6rem;
-    border-radius: 2vh;
-    font-weight: 600;
-    padding: 10px;
-    box-shadow: 2px 2px 16px black;
-}
 
 .submit{
     font-size: 2.1rem;
@@ -82,16 +42,13 @@ input{
 
 .section{
     align-content: center;
-    height: 88vh;
     width: 100%;
     display: flex;
-    background-color: white;
     align-items: center;
     justify-content: center;
 }
 
 section{
-    height: 81vh;
     width: 100%;
     align-content: center;
     margin: 0 auto;
@@ -110,36 +67,7 @@ section{
     font-size: 1.4rem;
 }
 
-.footer{
-    background-color: #ffffff;
-    width: 100%;
-    height: 16vh;
-}
 
-.footer a{
-    color: #050a30;
-    font-size: 1.5rem;
-    margin-left: 2vh;
-}
-.button {
-    width: 80%;
-    height: 70%;
-    border-radius: 1vh;
-    border: 0;
-    border-bottom: 7px solid #487e8b;
-    border-right: 5px solid #487e8b;
-    color: white;
-    background-color: #71b4c4;
-    font-weight: 1000;
-    font-size: 1.4rem;
-}
-
-.button:active {
-    border-bottom: 3px solid #487e8b;
-    background-color: #3d8b9d;
-
-    border-right: 1px solid #487e8b;
-}
 
 @media (max-width: 1000px){
     .mainDiv{
@@ -165,7 +93,6 @@ section{
         align-content: center;
         color: #ffffff;
         display: flex;
-        background-color: white;
         width: 96%;
         margin: 0 auto;
         padding: 38px;
@@ -179,7 +106,7 @@ section{
         width: 100%;
         font-size: 2.1rem!important;
         font-weight: 500;
-        color: #050a30;
+         color: white;
         align-content: center;
     }
 
@@ -202,11 +129,10 @@ section{
     min-height: 88vh;
     display: flex;
     align-items: center;
-    background-color: #daeeff;
+    background-color: #cf9100;
 }
 
 .osnova {
-    background-color: white;
     min-height:30vh;
     width: 50%;
     margin: 0 auto;
