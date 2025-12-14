@@ -12,9 +12,9 @@
 
 .mainDiv input {
     width: 50%;
-    background-color: #ffffff;
+    background-color: #3d4450;
     border: none;
-    border-bottom: 5px solid #46494d;
+    border-bottom: 5px solid #1b212b;
     padding: 5px;
     margin: 7px;
     color: white;
@@ -23,11 +23,17 @@
 
 
 }
-
-.mainDiv input:hover {
+.mainDiv input[type="submit"]:active {
     cursor: pointer;
-    background-color:  #2f3540;
+    background-color:  #1b212b;
 }
+
+.mainDiv input[type="text"]:hover {
+    cursor: pointer;
+    background-color:  #1b212b;
+}
+
+
 
 .section {
     align-content: center;
