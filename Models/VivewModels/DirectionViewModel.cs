@@ -4,5 +4,6 @@ namespace MyMvcApp.Models
     {
         public string DirectionName { get; set; }     
         public string DirectionDescription { get; set; }   
+        public List<Direction> directions = new List<Direction>();
     }
 }
