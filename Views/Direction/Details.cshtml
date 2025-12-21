@@ -1,9 +1,10 @@
-
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model MyMvcApp.Models.DirectionViewModel
     <section class="section">
       <div class="mainDiv">
                 <div class="divselect">
-                    <h2>Назва: Клас 1 </h2>
-                    <p>Опис:</p>
+                    <h2>@Model.DirectionName </h2>
+                    <p>@Model.DirectionDescription</p>
                 </div>
                 <a href="/Views/Direction/Edit.html" class="btn-shedule">Редагувати</a>
             </div>

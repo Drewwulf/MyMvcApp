@@ -18,9 +18,17 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Direction/Edit.cshtml
         }
-        public IActionResult Details()
-        {
-            return View(); // повертає Views/Destination/Details.cshtml
+        public IActionResult Details(int id){
+
+        var directionPlace = _context.Directions.Find(id); 
+          var modal = new DirectionViewModel
+          {
+            DirectionName =directionPlace.DirectionName,
+            DirectionDescription=directionPlace.DirectionDescription
+          };
+
+            return View(modal); // повертає Views/Destination/Details.cshtml
+        
         }
           public IActionResult Create()
         {

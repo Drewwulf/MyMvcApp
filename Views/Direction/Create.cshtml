@@ -24,7 +24,7 @@
 
                         @foreach(var direction in Model.directions)
                         {
-                           <tr><td>@direction.DirectionId</td><td>@direction.DirectionName</td><td>@direction.DirectionDescription</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
+                           <tr><td>@direction.DirectionId</td><td>@direction.DirectionName</td><td>@direction.DirectionDescription</td><td><a asp-controller="Direction" asp-action="Details" asp-route-id="@direction.DirectionId" type="button" class="btn btn-dark">Деталі</a></td></tr>
 
 
 
@@ -33,3 +33,7 @@
                 </div>
             </section>      
              
+    @section Scripts
+        {
+            <partial name="_ValidationScriptsPartial" />
+        }
