@@ -15,16 +15,17 @@
                            <tr><th class="th">Номер</th><th>Назва</th><th>Опис</th><th>Дії</th></tr>
                        </thead>
                        <tbody>
-                           <tr><td>№1</td><td>HTML</td><td>Структура</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
-                           <tr><td>№2</td><td>CSS</td><td>Стилізація</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
-                           <tr><td>№3</td><td>JAVASCRIPT</td><td>Інтерактивність</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
+                           
                            
 
 
 
                         @foreach(var direction in Model.directions)
                         {
-                           <tr><td>@direction.DirectionId</td><td>@direction.DirectionName</td><td>@direction.DirectionDescription</td><td><a asp-controller="Direction" asp-action="Details" asp-route-id="@direction.DirectionId" type="button" class="btn btn-dark">Деталі</a></td></tr>
+                           <tr><td>@direction.DirectionId</td>
+                           <td>@direction.DirectionName</td>
+                           <td>@direction.DirectionDescription</td>
+                           <td><a type="button" asp-controler="Direction" asp-action="Edit" asp-route-id="@direction.DirectionId" class="btn btn-secondary">Редагувати</a><a asp-controller="Direction" asp-action="Details" asp-route-id="@direction.DirectionId" type="button" class="btn btn-dark">Деталі</a></td></tr>
 
 
 
@@ -36,4 +37,4 @@
     @section Scripts
         {
             <partial name="_ValidationScriptsPartial" />
-        }
+                    }

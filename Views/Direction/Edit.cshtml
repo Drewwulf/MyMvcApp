@@ -1,10 +1,18 @@
+@model MyMvcApp.Models.DirectionViewModel
 
-        <section class="section">
-            <div class="mainDiv">
-                <form>
-                    <input type="text" placeholder="Змінити назву">
-                    <input type="text" placeholder="Змінити опис">
-                    <input type="submit" value="Редагувати" class="button">
-                </form>
-            </div>
-        </section>
+<section class="section">
+    <div class="mainDiv">
+        <form asp-action="Edit" asp-controller="Direction" method="post">
+
+            <input asp-for="DirectionName" placeholder="Змінити назву" class="form-control" />
+            <input asp-for="DirectionDescription" placeholder="Змінити опис" class="form-control" />
+            <input asp-for="DirectionId" type="hidden" />
+
+            <input type="submit" value="Редагувати" class="button" />
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
