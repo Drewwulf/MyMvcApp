@@ -55,5 +55,23 @@ namespace MyMvcApp.Controllers
 
             return RedirectToAction("Create"); 
         }
+
+
+         [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(PlaceViewModel placeViewModel)
+        {
+            var place = new Place
+            {
+                DestinationName = placeViewModel.Name,
+                DestinationAddress = placeViewModel.Address
+            };
+            _context.Places.Update(place);
+            _context.SaveChanges();
+ var allDestinations = _context.Places.ToList();
+            var model = new PlaceViewModel{ places = allDestinations};
+
+            return RedirectToAction("Edit"); 
+        }
     }
 }
