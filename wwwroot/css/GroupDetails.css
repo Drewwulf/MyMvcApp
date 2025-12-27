@@ -21,6 +21,7 @@ input {
 section {
     width: 100%;
     align-content: center;
+    padding-bottom: 30px;
 }
 .divselect {
      color: white;
