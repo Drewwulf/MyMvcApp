@@ -1,9 +1,9 @@
-
+@model MyMvcApp.Models.HomeworkViewModel
         <section class="section">
             <div class="mainDiv">
-                <form>
-                    <input type="text" placeholder="Назва">
-                    <input type="text" placeholder="Опис">
+                <form asp-action="Create" method="post">
+                    <input type="text" asp-for="HomeworkName" placeholder="Назва">
+                    <input type="text" asp-for="HomeworkDescription" placeholder="Опис">
                     <input type="file">
                     <br>
                     <label for="start" class="finish">початок завдання</label>
@@ -19,15 +19,9 @@
         </section>
             <section>
                 <div class="table2">
-                    <table class="table">
-                       <thead class="table-dark">
-                           <tr><th>Номер</th><th>Назва</th><th>Опис</th><th>Початок</th><th>Здача</th></tr>
-                       </thead>
-                       <tbody>
-                           <tr><td>№1</td><td>Заголовок</td><td>h1-h6</td><td>2025.06.02</td><td>2025.07.02</td></tr>
-                           <tr><td>№2</td><td>Параграф</td><td>В ньому текст</td><td>2025.05.07</td><td>2025.06.07</td></tr>
-                           <tr><td>№3</td><td>Таблиці</td><td>Тут приклад</td><td>2025.11.31</td><td>2025.12.31</td></tr>
-                        </tbody>
-                    </table>
+                    @foreach(var homework in Model.homeworks)
+                        {
+                           <tr><td>@homework.HomeworkId</td><td>@homework.HomeworkName</td><td>@homework.HomeworkDescription</td><td><a type="button" asp-controller="HomeWork" asp-action="Create" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Деталі</a></td></tr>
+                        }
                 </div>
             </section>
