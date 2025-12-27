@@ -19,10 +19,10 @@
 
 
 
-                        @foreach(var direction in Model.places)
+                        @foreach(var destination in Model.places)
                         {
-                           <tr><td>@direction.PlaceId</td><td>@direction.DestinationName</td><td>@direction.DestinationAddress</td><td><a type="button" asp-controller="Destination" asp-action="Details" asp-route-id="@direction.PlaceId" class="btn btn-dark">Деталі</a></td></tr>
-
+                           <tr><td>@destination.PlaceId</td><td>@destination.DestinationName</td><td>@destination.DestinationAddress</td><td><a type="button" class="btn btn-secondary" asp-controller="Destination" asp-action="Edit" asp-route-id="@destination.PlaceId" class="btn btn-dark">Редагувати</a><a type="button" asp-controller="Destination" asp-action="Details" asp-route-id="@destination.PlaceId" class="btn btn-dark">Деталі</a></td></tr>
+                            
 
 
                         }
