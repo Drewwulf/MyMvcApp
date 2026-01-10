@@ -1,10 +1,20 @@
-
+@model MyMvcApp.Models.TestViewModel
         <section class="section">
             <div class="mainDiv">
-                <form>
-                    <input type="text" placeholder="Назва">
-                    <input type="text" placeholder="Опис">
-                    <input type="text" placeholder="Складність">
+                <form asp-action="Create" method="post">
+                    <input asp-for="Name" type="text" placeholder="Назва">
+                    <input asp-for="Description"type="text" placeholder="Опис">
+                    <input asp-for="Difficualty"type="text" placeholder="Складність">
+                    <br />
+                    <select asp-for="DirectionId" class="form-select" aria-label="Default select example">
+  @foreach(var direction in Model.directions)
+                        {
+                            
+<option value=@direction.DirectionId>@direction.DirectionName</option>
+
+                        }
+                    </select>
+                    <br />
                     <input type="submit" value="Створити" class="submit">
                 </form>
             </div>
@@ -16,10 +26,19 @@
                            <tr><th>Номер</th><th>Назва</th><th>Опис</th><th>Складність</th><th>Дії</th></tr>
                        </thead>
                        <tbody>
-                           <tr><td>№1</td><td>Заголовок</td><td>h1-h6</td><td>Легко</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
-                           <tr><td>№2</td><td>Параграф</td><td>Весь текст в нього записується</td><td>Легко</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
-                           <tr><td>№3</td><td>Таблиці</td><td>Тут приклад</td><td>Важко</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
+                            @foreach(var test in Model.test)
+                        {
+                           <tr><td>@test.TestId</td><td>@test.TestName</td><td>@test.TestDescription</td><td>@test.TestDifficualty</td><td><a type="button" class="btn btn-secondary" asp-controller="Destination" asp-action="Edit" asp-route-id="@test.TestId" class="btn btn-dark">Редагувати</a><a type="button" asp-controller="Destination" asp-action="Details" asp-route-id="@test.TestId" class="btn btn-dark">Деталі</a></td></tr>
+                            
+
+
+                        }
                         </tbody>
                     </table>
                 </div>
             </section>
+
+            @section Scripts
+        {
+            <partial name="_ValidationScriptsPartial" />
+        }
