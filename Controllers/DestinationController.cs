@@ -16,10 +16,37 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Index.cshtml
         }
-        public IActionResult Edit() 
+             
+        public IActionResult Edit(int id)
         {
-            return View(); // повертає Views/Destination/Edit.cshtml
+            var destinationPlace =_context.Places.Find(id);
+            var modal = new PlaceViewModel
+            {
+                Id = id,
+                Name=destinationPlace.DestinationName,
+                Address=destinationPlace.DestinationAddress
+
+            };
+            return View(modal); // повертає Views/Direction/Edit.cshtml
         }
+ [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(PlaceViewModel place)
+        {
+        
+             var destination = _context.Places.Find(place.Id);
+
+
+    destination.DestinationName = place.Name;
+    destination.DestinationAddress = place.Address;
+
+    _context.SaveChanges();
+
+             return RedirectToAction("Edit");  // повертає Views/Direction/Edit.cshtml
+        }
+
+        
+
         public IActionResult Details(int id)
         {
           var place = _context.Places.Find(id); 
@@ -56,22 +83,5 @@ namespace MyMvcApp.Controllers
             return RedirectToAction("Create"); 
         }
 
-
-         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Edit(PlaceViewModel placeViewModel)
-        {
-            var place = new Place
-            {
-                DestinationName = placeViewModel.Name,
-                DestinationAddress = placeViewModel.Address
-            };
-            _context.Places.Update(place);
-            _context.SaveChanges();
- var allDestinations = _context.Places.ToList();
-            var model = new PlaceViewModel{ places = allDestinations};
-
-            return RedirectToAction("Edit"); 
-        }
     }
 }
