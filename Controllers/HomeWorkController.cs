@@ -39,7 +39,9 @@ namespace MyMvcApp.Controllers
             var homework = new Homework
             {
                 HomeworkName = homeworkViewModel.HomeworkName,
-                HomeworkDescription = homeworkViewModel.HomeworkDescription
+                HomeworkDescription = homeworkViewModel.HomeworkDescription,
+                StartTime = homeworkViewModel.StartTime,
+                SubmitTime = homeworkViewModel.SubmitTime
             };
             _context.Homeworks.Add(homework);
             _context.SaveChanges();

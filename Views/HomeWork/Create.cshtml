@@ -8,11 +8,11 @@
                     <br>
                     <label for="start" class="finish">початок завдання</label>
                     <br>
-                    <input type="date" value="" id="start">
+                    <input type="datetime-local" asp-for="StartTime" value="" id="start">
                     <br>
                     <label for="finish" class="finish">здача завдання</label>
                     <br>
-                    <input type="date" value="" id="finish">
+                    <input type="datetime-local" asp-for="SubmitTime" value="" id="finish">
                     <input type="submit" value="Створити" class="submit">
                 </form>
             </div>
