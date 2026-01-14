@@ -12,12 +12,12 @@
 
 .mainDiv input {
     width: 50%;
-    background-color: #3d4450;
+    background-color: #3d4450 !important;
     border: none;
     border-bottom: 5px solid #1b212b;
     padding: 5px;
     margin: 7px auto;
-    color: white;
+    color: white !important;
     font-size: 1rem;
     border-radius: 0.5vh;
 
@@ -30,6 +30,7 @@
 
 .mainDiv input[type="text"]:hover {
     cursor: pointer;
+    color: white !important;
     background-color:  #1b212b;
 }
 
