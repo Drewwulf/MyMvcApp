@@ -68,5 +68,17 @@ namespace MyMvcApp.Controllers
 
             return RedirectToAction("Edit"); 
         }
+         public IActionResult Edit(int id)
+        {
+            var homeworkPlace =_context.Directions.Find(id);
+            var modal = new HomeworkViewModel
+            {
+                HomeworkId = id,
+                HomeworkName= _context.Homeworks.Find(id).HomeworkName,
+                HomeworkDescription=_context.Homeworks.Find(id).HomeworkDescription
+
+            };
+            return View(modal); // повертає Views/Direction/Edit.cshtml
+        }
     }
 }
