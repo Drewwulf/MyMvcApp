@@ -18,13 +18,18 @@ namespace MyMvcApp.Controllers
         }
   public IActionResult Edit(int id)
         {
+            var allDirections = _context.Directions.ToList();
+           
             var test =_context.Tests.Find(id);
             var modal = new TestViewModel
+            
+
             {
                 TestId = id,
                 Name=test.TestName,
                 Description=test.TestDescription,
-                Difficualty=test.TestDifficualty
+                Difficualty=test.TestDifficualty,
+                directions=allDirections
 
             };
             return View(modal); // повертає Views/Direction/Edit.cshtml
@@ -35,11 +40,12 @@ namespace MyMvcApp.Controllers
         {
         
              var test1 = _context.Tests.Find(test.TestId);
-
+ 
 
     test1.TestName = test.Name;
     test1.TestDescription = test.Description;
     test1.TestDifficualty = test.Difficualty;
+    test1.DirectionId=test.DirectionId;
 
     _context.SaveChanges();
 
