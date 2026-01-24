@@ -1,3 +1,5 @@
+
+@model MyMvcApp.Models.TestViewModel
 <!doctype html>
 <html lang="en">
     <head>
@@ -20,10 +22,19 @@
         <main>
         <section class="section">
             <div class="mainDiv">
-                <form>
-                    <input type="text" placeholder="Змінити назву">
-                    <input type="text" placeholder="Змінити опис">
-                    <input type="text" placeholder="Змінити складність">
+                <form asp-action="Edit" asp-controller="Test" method="post">
+                    <input asp-for="Name" type="text" placeholder="Змінити назву">
+                    <input asp-for="Description" type="text" placeholder="Змінити опис">
+                    <input asp-for="Difficualty" type="text" placeholder="Змінити складність">
+                      <select asp-for="DirectionId" class="form-select" aria-label="Default select example">
+  @foreach(var direction in Model.directions)
+                        {
+                            
+<option value=@direction.DirectionId>@direction.DirectionName</option>
+
+                        }
+                    </select>
+                    <input asp-for="TestId" type="hidden" />
                     <input type="submit" value="Редагувати" class="submit">
                 </form>
             </div>
@@ -31,3 +42,7 @@
         </main>
     </body>
 </html>
+
+@section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }

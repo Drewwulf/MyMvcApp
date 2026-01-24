@@ -16,9 +16,40 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Test/Index.cshtml
         }
-        public IActionResult Edit()
+  public IActionResult Edit(int id)
         {
-            return View(); // повертає Views/Test/Edit.cshtml
+            var allDirections = _context.Directions.ToList();
+           
+            var test =_context.Tests.Find(id);
+            var modal = new TestViewModel
+            
+
+            {
+                TestId = id,
+                Name=test.TestName,
+                Description=test.TestDescription,
+                Difficualty=test.TestDifficualty,
+                directions=allDirections
+
+            };
+            return View(modal); // повертає Views/Direction/Edit.cshtml
+        }
+ [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(TestViewModel test)
+        {
+        
+             var test1 = _context.Tests.Find(test.TestId);
+ 
+
+    test1.TestName = test.Name;
+    test1.TestDescription = test.Description;
+    test1.TestDifficualty = test.Difficualty;
+    test1.DirectionId=test.DirectionId;
+
+    _context.SaveChanges();
+
+             return RedirectToAction("Edit");  // повертає Views/Direction/Edit.cshtml
         }
         public IActionResult Details()
         {

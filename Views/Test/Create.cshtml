@@ -28,7 +28,7 @@
                        <tbody>
                             @foreach(var test in Model.test)
                         {
-                           <tr><td>@test.TestId</td><td>@test.TestName</td><td>@test.TestDescription</td><td>@test.TestDifficualty</td><td><a type="button" class="btn btn-secondary" asp-controller="Destination" asp-action="Edit" asp-route-id="@test.TestId" class="btn btn-dark">Редагувати</a><a type="button" asp-controller="Destination" asp-action="Details" asp-route-id="@test.TestId" class="btn btn-dark">Деталі</a></td></tr>
+                           <tr><td>@test.TestId</td><td>@test.TestName</td><td>@test.TestDescription</td><td>@test.TestDifficualty</td><td><a type="button" class="btn btn-secondary" asp-controller="Test" asp-action="Edit" asp-route-id="@test.TestId" class="btn btn-dark">Редагувати</a><a type="button" asp-controller="Test" asp-action="Details" asp-route-id="@test.TestId" class="btn btn-dark">Деталі</a></td></tr>
                             
 
 
