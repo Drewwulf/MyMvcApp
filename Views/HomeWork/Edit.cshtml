@@ -1,9 +1,9 @@
-
+@model MyMvcApp.Models.HomeworkViewModel
         <section class="section">
             <div class="mainDiv">
-                <form>
-                    <input type="text" placeholder="Змінити назву">
-                    <input type="text" placeholder="Змінити опис">
+                <form asp-action="Edit" asp-controller="HomeWork" method="post">
+                    <input type="text" asp-for="HomeworkName" placeholder="Змінити назву">
+                    <input type="text" asp-for="HomeworkDescription" placeholder="Змінити опис">
                     <input type="file">
                     <br>
                     <label for="start" class="finish">Змінити початок завдання</label>
@@ -17,3 +17,6 @@
                 </form>
             </div>
         </section>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

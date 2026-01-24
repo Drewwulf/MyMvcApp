@@ -19,9 +19,26 @@
         </section>
             <section>
                 <div class="table2">
+                    <table class="table">
+                       <thead class="table-dark th1">
+                           <tr><th class="th">Номер</th><th>Назва</th><th>Опис</th><th>Дії</th></tr>
+                       </thead>
+                       <tbody>
+
                     @foreach(var homework in Model.homeworks)
                         {
-                           <tr><td>@homework.HomeworkId</td><td>@homework.HomeworkName</td><td>@homework.HomeworkDescription</td><td><a type="button" asp-controller="HomeWork" asp-action="Create" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Деталі</a></td></tr>
+                           <tr><td>@homework.HomeworkId</td>
+                           <td>@homework.HomeworkName</td>
+                           <td>@homework.HomeworkDescription</td>
+                           <td><a type="button" asp-controller="HomeWork" asp-action="Edit" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Редагувати</a>
+                           <a type="button" asp-controller="HomeWork" asp-action="Details" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Деталі</a>
+                            <a type="button" asp-controller="HomeWork" asp-action="Delete" asp-route-id="@homework.HomeworkId" class="btn btn-danger">Видалити</a></td></tr>
+
+                           
+
+
                         }
+                    </table>    
+                    </tbody>
                 </div>
             </section>
