@@ -17,10 +17,7 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Homework/Index.cshtml
         }
-        public IActionResult Edit()
-        {
-            return View(); // повертає Views/Homework/Edit.cshtml
-        }
+
         public IActionResult Details()
         {
             return View(); // повертає Views/Destination/Details.cshtml
@@ -69,16 +66,24 @@ namespace MyMvcApp.Controllers
             return RedirectToAction("Edit"); 
         }
          public IActionResult Edit(int id)
-        {
-            var homeworkPlace =_context.Directions.Find(id);
+        
+        {               
+            var homeworkPlace =_context.Homeworks.Find(id);
             var modal = new HomeworkViewModel
             {
                 HomeworkId = id,
-                HomeworkName= _context.Homeworks.Find(id).HomeworkName,
-                HomeworkDescription=_context.Homeworks.Find(id).HomeworkDescription
+                HomeworkName= homeworkPlace.HomeworkName,
+                HomeworkDescription=homeworkPlace.HomeworkDescription
 
             };
             return View(modal); // повертає Views/Direction/Edit.cshtml
+        }
+        public IActionResult Delete(int id)
+        {
+            var homeworkPlace =_context.Homeworks.Find(id);
+            _context.Homeworks.Remove(homeworkPlace);
+            _context.SaveChanges();
+            return RedirectToAction("Create");
         }
     }
 }
