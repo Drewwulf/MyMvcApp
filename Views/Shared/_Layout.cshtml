@@ -27,7 +27,7 @@
                         aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                    </button>
+                    </button>  
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
                             <a class="nav-link" asp-controller="Direction" asp-action="Create">Direction</a>
@@ -37,7 +37,7 @@
                             <a class="nav-link" asp-controller="Student" asp-action="Index">Student</a>
                             <a class="nav-link" asp-controller="Teacherpage"asp-action="Index">Teacherpage</a>
                             <a class="nav-link" asp-controller="Test" asp-action="Create">Test</a>
-                            
+                            <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
                         </div>
                     </div>
                 </div>
@@ -96,3 +96,7 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+@if (User.IsInRole("Admin"))
+{
+    <a asp-controller="Admin" asp-action="CreateUser">Створити користувача</a>
+}
