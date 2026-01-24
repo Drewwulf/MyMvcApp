@@ -51,9 +51,17 @@ namespace MyMvcApp.Controllers
 
              return RedirectToAction("Edit");  // повертає Views/Direction/Edit.cshtml
         }
-        public IActionResult Details()
-        {
-            return View(); // повертає Views/Destination/Details.cshtml
+        public IActionResult Details(int id){
+
+        var Test = _context.Tests.Find(id); 
+          var modal = new TestViewModel
+          {
+            Name =Test.TestName,
+            Description=Test.TestDescription
+          };
+
+            return View(modal); // повертає Views/Destination/Details.cshtml
+        
         }
       
         public IActionResult Create()
