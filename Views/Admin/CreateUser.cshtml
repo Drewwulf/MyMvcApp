@@ -1,0 +1,44 @@
+@{
+    ViewData["Title"] = "Створити користувача";
+}
+
+<h2>Створити користувача</h2>
+
+@if (ViewBag.Success != null)
+{
+    <p style="color:green">@ViewBag.Success</p>
+}
+
+<form method="post">
+    <div>
+        <label>Email</label><br />
+        <input style="color:black" name="email" required />
+    </div>
+
+    <div>
+        <label>Пароль</label><br />
+        <input name="password" type="password" required />
+    </div>
+
+    <div>
+        <label>Роль</label><br />
+        <select name="role">
+            <option value="Admin">Admin</option>
+            <option value="Teacher">Teacher</option>
+            <option value="Student">Student</option>
+        </select>
+    </div>
+
+    <br />
+    <button type="submit">Створити</button>
+</form>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <ul style="color:red">
+        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        {
+            <li>@error.ErrorMessage</li>
+        }
+    </ul>
+}
