@@ -4,39 +4,35 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MyMvcApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/GroupDetails.css" />
     <link rel="stylesheet" href="/css/Create.css" />
+    <link rel="stylesheet" href="/css/color.css" />
+        <link rel="stylesheet" href="/css/footer.css" />
     <link rel="stylesheet" href="/css/details.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/MyMvcApp.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 </head>
-<body>
+<body id="body">
     <header>
         <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="/teacherpage/teacherpage.html">Кабінет учня</a>
-                    <a class="navbar-brand" asp-controller="Account" asp-action="Logout">Вийти</a>
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">Кабінет Гостя</a>
+                    <a class="navbar-brand" asp-controller="Account" asp-action="Login">Кабінет Гостя</a>
+                    
                     <button
                         class="navbar-toggler"
                         type="button"
                         data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup"  
+                        data-bs-target="#navbarNavAltMarkup"
                         aria-controls="navbarNavAltMarkup"
                         aria-expanded="false"
                         aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
-                    </button>
+                    </button>  
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link" asp-controller="Direction" asp-action="Index">Напрямок</a>
-                            <a class="nav-link" asp-controller="Student" asp-action="MyGroup">Моя група</a>
-                            <a class="nav-link" asp-controller="HomeWork"asp-action="Index">Д/З</a>
-                            <a class="nav-link "asp-controller="Student" asp-action="MySchedule">Мій розклад</a>
-                            <a class="nav-link " asp-controller="Task" asp-action="Tasks">Завдання</a>
-                            <a class="nav-link" asp-controller="Test" asp-action="Create">Вправа</a>
-                            
-                        </div>
+                             </div>
                     </div>
                 </div>
             </nav>
@@ -48,24 +44,23 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <footer >
+        
             <div class="divfooter">
                 <div class="divfootsect">
-                     <h4 class="h4footer">Загальне</h4>
                     <ul class="ulfooter">
 
+                        <li><a>Контакти</a></li>
                         <li><a>Корисні посилання</a></li>
                         <li><a>Навігація по веб сайту</a></li>
-                        <li><a>Контакти</a></li>
+                        
 
                     </ul>
                 </div>
                 <div class="divfootsect">
-                    <h4 class="h4footer">Завдання</h4>
                 <ul class="ulfooter">
 
-                        <li><a>Домашня</a></li>
                         <li><a>Тести</a></li>
+                        <li><a>Домашня</a></li>
                         <li><a>Завдання</a></li>
 
                     </ul>
@@ -74,11 +69,12 @@
 
                 </div>
                 <div class="divfootsect">
-                    <h4>Контакти</h4>
                 <ul class="ulfooter">
-                        <li><a>Номер телефона:82393029</a></li>
-                        <li><a>Gmail:cobtahacademy@gmail.com</a></li>
-                        <li><a>Адрес:Вул.Івана Франка</a></li>
+
+                        <li><a>Адреса: Вул.Івана Франка</a></li>
+                        <li><a>Номер телефону: 82393029</a></li>
+                        <li><a>Gmail: cobtahacademy@gmail.com</a></li>
+
 
                     </ul>
 
@@ -86,7 +82,7 @@
 
                 </div>  
             </div>
-        </footer>
+      
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
@@ -94,3 +90,7 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+@if (User.IsInRole("Admin"))
+{
+    <a asp-controller="Admin" asp-action="CreateUser">Створити користувача</a>
+}
