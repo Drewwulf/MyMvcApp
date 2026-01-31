@@ -10,6 +10,7 @@ namespace MyMvcApp.Data
         {
         }
 
+     public DbSet<StudyGroup> studyGroups { get; set; }
         public DbSet<Place> Places { get; set; }
         public DbSet<Direction> Directions { get; set; }
         public DbSet<Homework> Homeworks { get; set; }

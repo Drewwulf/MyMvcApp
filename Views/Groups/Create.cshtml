@@ -1,0 +1,74 @@
+@using System.Text.RegularExpressions
+@model MyMvcApp.Models.StudyGroupViewModel
+        <section class="section">
+            <div class="mainDiv">
+                <form asp-action="Create" method="post">
+                    <input type="text" asp-for="GroupName" placeholder="Назва" />
+                    <input type="text" asp-for="GroupDescription" placeholder="Опис" />
+                    <div class="divselect">
+                        <label for="direct">Напрямок групи:</label>
+                        
+                        <select asp-for="DirId" class="form-select" aria-label="Default select example">
+            @foreach(var direction in Model.directions)
+                        {
+                            
+<option value=@direction.DirectionId>@direction.DirectionName</option>
+                        }</select>
+                                                
+                    </div>
+                    <div class="divselect">
+                        <label for="vanue">Місце проведення:</label>
+
+                        <select asp-for="PlId" class="form-select" aria-label="Default select example">
+  @foreach(Place place in Model.place)
+                        {
+                            
+<option value=@place.PlaceId>@place.DestinationName</option>
+
+                        }
+                    </select>
+                    </div>
+                    <div class="divselect">
+                        <label for="choose">Вибрати вчителя:</label>
+                        <select class="form-select" aria-label="Default select example">
+                            <option value="">Дмитро Цоцинець</option>
+                            <option value="">Василь Совтан</option>
+                        </select>
+                    </div>
+                    <input type="submit" value="Створити" class="submit" />
+                </form>
+            </div>
+            <section>
+                <div class="table2">
+                    <table class="table">
+                       <thead class="table-dark th1">
+                           <tr><th class="th">Номер</th><th>Назва</th><th>Опис</th><th>Напрямок</th><th>Дії</th></tr>
+                       </thead>
+                       <tbody>
+                           
+                           
+
+
+
+                        @foreach(var group in Model.studyGroup)
+                        {
+                           <tr><td>@group.StudyGroupId</td>
+                           <td>@group.GroupName</td>
+                           <td>@group.GroupDescription</td>
+                           <td>@group.Direction.DirectionName</td>
+
+                           <td><a type="button" asp-controller="Group" asp-action="Edit" asp-route-id="@group.StudyGroupId" class="btn btn-secondary">Редагувати</a>
+                           <a asp-controller="Group" asp-action="Details" asp-route-id="@group.StudyGroupId" type="button" class="btn btn-dark">Деталі</a>
+                           <a type="button" asp-controller="Group" asp-action="Edit" asp-route-id="@group.StudyGroupId" class="btn btn-danger">Видалити</a></td></tr>
+
+
+
+                        }
+                    </table>
+                </div>
+            </section>      
+        </section>
+         @section Scripts
+        {
+            <partial name="_ValidationScriptsPartial" />
+                    }
