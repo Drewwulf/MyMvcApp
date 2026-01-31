@@ -38,6 +38,9 @@
                             <a class="nav-link" asp-controller="Teacherpage"asp-action="Index">Teacherpage</a>
                             <a class="nav-link" asp-controller="Test" asp-action="Create">Test</a>
                             <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
+
+    <a asp-controller="Admin" asp-action="CreateUser">Створити користувача</a>
+
                         </div>
                     </div>
                 </div>
@@ -96,7 +99,4 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-@if (User.IsInRole("Admin"))
-{
-    <a asp-controller="Admin" asp-action="CreateUser">Створити користувача</a>
-}
+

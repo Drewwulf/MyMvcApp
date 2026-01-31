@@ -2,28 +2,32 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Login</h2>
+<section class="section">
+    <div class="mainDiv">
+        <h2 class="finish">Login</h2>
 
-<form method="post">
-    <div>
-        <label>Email</label>
-        <input name="email" required />
-    </div>
+        <form method="post">
+            <div>
+                <input type="text" name="email" placeholder="Email" required />
+            </div>
 
-    <div>
-        <label>Password</label>
-        <input name="password" type="password" required />
-    </div>
+            <div>
+                <input type="password" name="password" placeholder="Password" required />
+            </div>
 
-    <button type="submit">Login</button>
-</form>
+            <div>
+                <input type="submit" value="Login" />
+            </div>
+        </form>
 
-@if (!ViewData.ModelState.IsValid)
-{
-    <ul style="color:red">
-        @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+        @if (!ViewData.ModelState.IsValid)
         {
-            <li>@error.ErrorMessage</li>
+            <ul style="color:red">
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
         }
-    </ul>
-}
+    </div>
+</section>

@@ -15,6 +15,13 @@ namespace MyMvcApp.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+        
+            if(User.IsInRole("Teacher"))
+                return RedirectToAction("Index", "Home");
+            if (User.IsInRole("Student"))
+                return RedirectToAction("Index", "Home");
+            if (User.IsInRole("Admin"))
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -23,11 +30,8 @@ namespace MyMvcApp.Controllers
         {
             var result = await _signInManager.PasswordSignInAsync(email, password, false, false);
 
-            if (result.Succeeded)
-                return RedirectToAction("Index", "Home");
-
-            ModelState.AddModelError("", "Невірний логін або пароль");
-            return View();
+           
+             return RedirectToAction("Login");
         }
 
         public async Task<IActionResult> Logout()
