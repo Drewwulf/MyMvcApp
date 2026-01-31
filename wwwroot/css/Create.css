@@ -1,90 +1,89 @@
 .mainDiv {
-    background-color: #2f3540;
-    width: 40%;
-    min-height: 30vh;
+    background-color: #2f3540; /* колір залишився */
+    width: 45%; /* трохи ширше */
+    min-height: 35vh; /* трохи вище */
     margin: 50px auto;
     text-align: center;
-    border-radius: 1vh;
-    align-content: center;
-    box-shadow: 2px 2px 35px #46494d;
-    padding: 20px 0px;
+    border-radius: 1.2vh; /* плавніший край */
+    box-shadow: 3px 3px 40px #46494d;
+    padding: 25px 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mainDiv:hover {
+    transform: translateY(-7px); /* підйом при hover */
+    box-shadow: 5px 5px 55px #46494d;
 }
 
 .mainDiv input {
-    width: 50%;
-    background-color: #3d4450 !important;
+    width: 60%; /* трохи ширше інпути */
+    background-color: #3d4450 !important; /* колір залишився */
     border: none;
-    border-bottom: 5px solid #1b212b;
-    padding: 5px;
-    margin: 7px auto;
+    border-bottom: 4px solid #1b212b; /* тонший бордер */
+    padding: 8px 5px;
+    margin: 10px auto;
     color: white !important;
-    font-size: 1rem;
-    border-radius: 0.5vh;
-
-
+    font-size: 1.1rem;
+    border-radius: 0.6vh;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.mainDiv input[type="submit"]:active {
+
+.mainDiv input:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+.mainDiv input[type="submit"] {
     cursor: pointer;
-    background-color:  #1b212b;
+    background-color: #3d4450;
+    transition: transform 0.2s ease, background-color 0.2s ease;
 }
 
-.mainDiv input[type="text"]:hover {
-    cursor: pointer;
-    color: white !important;
-    background-color:  #1b212b;
+.mainDiv input[type="submit"]:hover {
+    transform: scale(1.08);
+    background-color: #1b212b;
 }
-
-
 
 .section {
-    align-content: center;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
 }
 
-
-
 .divselect {
-    color: #ffffff;
-    font-size: 1.6rem;
-    margin: 7px auto;
-    width: 50%;
+    color: #ffffff; /* залишив колір */
+    font-size: 1.5rem;
+    margin: 15px auto;
+    width: 55%;
     background-color: #2f3540;
-    padding: 25px;
-    border-bottom: 7px solid #1b212b;
+    padding: 20px;
+    border-bottom: 6px solid #1b212b;
+    border-radius: 1vh;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .divselect:hover {
     background-color: #565c66;
+    transform: translateY(-5px);
+    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
 }
 
 .divselect select:hover {
     cursor: pointer;
+    transform: scale(1.02);
 }
 
 .table2 {
     text-align: center;
-    height: 89%;
-    align-content: center;
-    color: #ffffff;
-    display: flex;
-    background-color: #2f3540;
-    margin: 0 auto;
-    padding: 38px;
-    border-radius: 1vh;
+        display: flex;
     justify-content: center;
-    box-shadow: 2px 2px 35px #46494d;
-}
-
-.table2 td {
-    border: outset #ffffff;
-    width: 0 auto;
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: white;
-    align-content: center;
-}
-
-.finish {
-    color: #ffffff !important;
-}
-
+    align-items: center;
+    background-color: #2f3540; /* колір залишився */
+    margin: 20px auto;
+    padding: 40px;
+    border-radius: 1.2vh;
+    box-shadow: 3px 3px 45px #46494d;
+    transition: transform
+     0.3s ease, box-shadow 0.3s ease;}
