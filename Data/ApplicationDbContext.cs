@@ -13,5 +13,6 @@ namespace MyMvcApp.Data
     public DbSet<Homework> Homeworks { get; set; }
 
      public DbSet<Test> Tests { get; set; }
+     public DbSet<StudyGroup> studyGroups { get; set; }
     }
 }

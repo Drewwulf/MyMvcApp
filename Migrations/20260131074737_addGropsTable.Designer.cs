@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMvcApp.Data;
 
@@ -11,9 +12,11 @@ using MyMvcApp.Data;
 namespace MyMvcApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260131074737_addGropsTable")]
+    partial class addGropsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,9 +113,6 @@ namespace MyMvcApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PlaceId")
-                        .HasColumnType("int");
-
                     b.HasKey("StudyGroupId");
 
                     b.HasIndex("DirectionId");
@@ -150,21 +150,6 @@ namespace MyMvcApp.Migrations
                     b.ToTable("Tests");
                 });
 
-            modelBuilder.Entity("PlaceStudyGroup", b =>
-                {
-                    b.Property<int>("PlacesPlaceId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudyGroupId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PlacesPlaceId", "StudyGroupId");
-
-                    b.HasIndex("StudyGroupId");
-
-                    b.ToTable("PlaceStudyGroup");
-                });
-
             modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
                 {
                     b.HasOne("MyMvcApp.Models.Direction", "Direction")
@@ -185,21 +170,6 @@ namespace MyMvcApp.Migrations
                         .IsRequired();
 
                     b.Navigation("Direction");
-                });
-
-            modelBuilder.Entity("PlaceStudyGroup", b =>
-                {
-                    b.HasOne("MyMvcApp.Models.Place", null)
-                        .WithMany()
-                        .HasForeignKey("PlacesPlaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyMvcApp.Models.StudyGroup", null)
-                        .WithMany()
-                        .HasForeignKey("StudyGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("MyMvcApp.Models.Direction", b =>
