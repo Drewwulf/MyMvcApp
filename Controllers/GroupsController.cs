@@ -24,9 +24,19 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Group/Edit.cshtml
         }
-        public IActionResult Details()
-        {
-            return View(); // повертає Views/Destination/Details.cshtml
+        public IActionResult Details(int id){
+
+        var Group = _context.studyGroups.Find(id); 
+          var modal = new StudyGroupViewModel
+          {
+            GroupName =Group.GroupName,
+            GroupDescription=Group.GroupDescription,
+            studyGroup = _context.studyGroups.Include(g => g.Direction).Include(g => g.Places).ToList(),
+            GrId = id,
+            PlId = Group.PlaceId
+          };
+
+            return View(modal); // повертає Views/Destination/Details.cshtml
         }
         public IActionResult Create()
         {
@@ -55,5 +65,6 @@ namespace MyMvcApp.Controllers
 
             return RedirectToAction("Create"); 
         }
+    
     }
-}
+    }

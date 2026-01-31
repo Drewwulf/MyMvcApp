@@ -456,6 +456,7 @@ namespace MyMvcApp.Migrations
                     b.Navigation("Tests");
                 });
 #pragma warning restore 612, 618
-        }
+        });
     }
+}
 }
