@@ -1,3 +1,25 @@
 ﻿@{
-    Layout = "_Layout";
+    Layout = "_SimpleLayout";
+}
+@{
+    var layout = "_SimpleLayout"; // дефолтний
+
+    if (User.Identity.IsAuthenticated)
+    {
+        if (User.IsInRole("Admin"))
+        {
+            layout = "_Layout";
+        }
+        else if (User.IsInRole("Teacher"))
+        {
+            layout = "_TeacherLayout";
+        }
+        else if (User.IsInRole("Student"))
+        {
+            layout = "_StudentLayout";
+        }
+         
+    }
+
+    Layout = layout;
 }

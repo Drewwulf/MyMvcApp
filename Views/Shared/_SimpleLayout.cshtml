@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -17,7 +17,9 @@
     <header>
         <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">Кабінет Адміна</a>
+                    <a class="navbar-brand" asp-controller="Home" asp-action="Index">Кабінет Гостя</a>
+                    <a class="navbar-brand" asp-controller="Account" asp-action="Login">Кабінет Гостя</a>
+                    
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -30,18 +32,7 @@
                     </button>  
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link" asp-controller="Direction" asp-action="Create">Direction</a>
-                            <a class="nav-link"asp-controller="Destination" asp-action="Create">Destination</a>
-                            <a class="nav-link" asp-controller="Groups" asp-action="Create">Group</a>
-                            <a class="nav-link" asp-controller="HomeWork"asp-action="Create">HomeWork</a>
-                            <a class="nav-link" asp-controller="Student" asp-action="Index">Student</a>
-                            <a class="nav-link" asp-controller="Teacherpage"asp-action="Index">Teacherpage</a>
-                            <a class="nav-link" asp-controller="Test" asp-action="Create">Test</a>
-                            <a class="nav-link" asp-controller="Account" asp-action="Logout">Logout</a>
-
-    <a asp-controller="Admin" asp-action="CreateUser">Створити користувача</a>
-
-                        </div>
+                             </div>
                     </div>
                 </div>
             </nav>
@@ -99,4 +90,7 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-
+@if (User.IsInRole("Admin"))
+{
+    <a asp-controller="Admin" asp-action="CreateUser">Створити користувача</a>
+}

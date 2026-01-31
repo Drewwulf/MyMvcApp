@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMvcApp.Data;
 
@@ -11,9 +12,11 @@ using MyMvcApp.Data;
 namespace MyMvcApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260124084545_AddIdentity")]
+    partial class AddIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -289,35 +292,6 @@ namespace MyMvcApp.Migrations
                     b.ToTable("Places");
                 });
 
-            modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
-                {
-                    b.Property<int>("StudyGroupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudyGroupId"));
-
-                    b.Property<int>("DirectionId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("GroupDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("GroupName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PlaceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("StudyGroupId");
-
-                    b.HasIndex("DirectionId");
-
-                    b.ToTable("studyGroups");
-                });
-
             modelBuilder.Entity("MyMvcApp.Models.Test", b =>
                 {
                     b.Property<int>("TestId")
@@ -348,30 +322,6 @@ namespace MyMvcApp.Migrations
                     b.ToTable("Tests");
                 });
 
-            modelBuilder.Entity("PlaceStudyGroup", b =>
-                {
-                    b.Property<int>("PlacesPlaceId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudyGroupId")
-                        .HasColumnType("int");
-
-                    b.HasKey("PlacesPlaceId", "StudyGroupId");
-
-                    b.HasIndex("StudyGroupId");
-
-                    b.ToTable("PlaceStudyGroup");
-                });
-
-            modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
-                {
-                    b.HasOne("MyMvcApp.Models.Direction", "Direction")
-                        .WithMany("Groups")
-                        .HasForeignKey("DirectionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Direction");
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -434,25 +384,8 @@ namespace MyMvcApp.Migrations
                     b.Navigation("Direction");
                 });
 
-            modelBuilder.Entity("PlaceStudyGroup", b =>
-                {
-                    b.HasOne("MyMvcApp.Models.Place", null)
-                        .WithMany()
-                        .HasForeignKey("PlacesPlaceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyMvcApp.Models.StudyGroup", null)
-                        .WithMany()
-                        .HasForeignKey("StudyGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("MyMvcApp.Models.Direction", b =>
                 {
-                    b.Navigation("Groups");
-
                     b.Navigation("Tests");
                 });
 #pragma warning restore 612, 618
