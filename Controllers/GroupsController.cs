@@ -20,9 +20,38 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Group/Index.cshtml
         }
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View(); // повертає Views/Group/Edit.cshtml
+            var GroupPlace =_context.studyGroups.Find(id);
+            var modal = new StudyGroupViewModel
+            {
+                GrId = id,
+                GroupName= GroupPlace.GroupName,
+                GroupDescription=GroupPlace.GroupDescription,
+                directions = _context.Directions.ToList(),
+                place = _context.Places.ToList()
+            };
+            return View(modal); // повертає Views/Direction/Edit.cshtml
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+         public IActionResult Edit(StudyGroupViewModel modal)
+        {
+        
+             var group = _context.studyGroups.Find(modal.GrId);
+
+
+    group.GroupName = modal.GroupName;
+    group.GroupDescription = modal.GroupDescription;
+    group.PlaceId = modal.PlId;
+    group.DirectionId=modal.DirId;
+     var allGroups = _context.studyGroups.ToList();
+            var allDirections = _context.Directions.ToList();
+            var model = new StudyGroupViewModel{ studyGroup = allGroups,directions = allDirections,place = _context.Places.ToList()};
+
+    _context.SaveChanges();
+
+            return View(modal); // повертає Views/Direction/Edit.cshtml
         }
         public IActionResult Details(int id){
 
