@@ -16,7 +16,7 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Details.cshtml
         }
-        public IActionResult Tasks()
+        public IActionResult Tasks(int id)
         {
             return View(); // повертає Views/Destination/Details.cshtml
         }
