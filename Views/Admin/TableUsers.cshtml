@@ -19,8 +19,9 @@
         <td>@user.Id</td>
         <td>@user.Role</td>
         <td>@user.Email</td>
+        <td><a asp-controller="Admin" asp-action="DeleteUser" asp-route-id="@user.Id">Видалити</a></td><td><a asp-controller="Admin" asp-action="EditUsers" asp-route-id="@user.Id">Редагувати</a></td>
     </tr>
-}
+} 
 </tbody>
         </table>
     </div>
