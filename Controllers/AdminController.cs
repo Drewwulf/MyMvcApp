@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyMvcApp.Models;
 
 namespace MyMvcApp.Controllers
 {
@@ -21,8 +22,7 @@ namespace MyMvcApp.Controllers
             return View();
         }
 
-        [HttpPost]
-        [HttpPost]
+[HttpPost]
 public async Task<IActionResult> CreateUser(string FirstName, string LastName, string Email, string Role)
 {
     // Формуємо повне ім'я
@@ -67,13 +67,72 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
                 var roles = await _userManager.GetRolesAsync(user);
                 result.Add(new UsersViewModel
                 {
-                    Id = user.UserName,
+                    Id = user.Id,          
                     Email = user.Email,
                     Role = roles.FirstOrDefault() ?? "No Role"
                 });
+
             }
             return View(result);
         }
-    
-    }
-}
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user != null)
+            {
+                await _userManager.DeleteAsync(user);
+            }
+            return RedirectToAction("TableUsers");
+        }
+        public async Task<IActionResult> EditUsers(string id)
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var roles = await _userManager.GetRolesAsync(user);
+            var model = new UsersViewModel
+            {
+                Id = user.Id,
+                Email = user.Email,
+                Role = roles.FirstOrDefault() ?? "No Role"
+            };
+
+            return View(model);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+    public async Task<IActionResult> EditUsers(UsersViewModel model)
+        {
+            var user = await _userManager.FindByIdAsync(model.Id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.Email = model.Email;
+            user.UserName = model.Email; // Оновлюємо UserName, якщо він використовується як Email
+
+            var result = await _userManager.UpdateAsync(user);
+            if (!result.Succeeded)
+            {
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError("", error.Description);
+                }
+                return View(model);
+            }
+
+            var currentRoles = await _userManager.GetRolesAsync(user);
+            if (!currentRoles.Contains(model.Role))
+            {
+                await _userManager.RemoveFromRolesAsync(user, currentRoles);
+                await _userManager.AddToRoleAsync(user, model.Role);
+            }
+
+            return RedirectToAction("TableUsers");
+    }}
+} 
+
