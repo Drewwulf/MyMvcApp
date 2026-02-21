@@ -98,6 +98,7 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
             {
                 Id = user.Id,
                 Email = user.Email,
+                UserName = user.UserName.Replace("."," "),
                 Role = roles.FirstOrDefault() ?? "No Role"
             };
 
@@ -114,7 +115,7 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
             }
 
             user.Email = model.Email;
-            user.UserName = model.Email; // Оновлюємо UserName, якщо він використовується як Email
+            user.UserName = model.UserName.Replace(" ","."); // Оновлюємо UserName, якщо він використовується як Email
 
             var result = await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
