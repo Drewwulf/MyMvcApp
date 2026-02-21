@@ -26,12 +26,12 @@ namespace MyMvcApp.Controllers
 public async Task<IActionResult> CreateUser(string FirstName, string LastName, string Email, string Role)
 {
     // Формуємо повне ім'я
-    var fullName = FirstName + " " + LastName;
+    var fullName = FirstName + "." + LastName;
 
     // Створюємо нового користувача
     var user = new IdentityUser
     {
-        UserName = Email,
+        UserName = fullName,
         Email = Email
     };
 
@@ -67,7 +67,8 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
                 var roles = await _userManager.GetRolesAsync(user);
                 result.Add(new UsersViewModel
                 {
-                    Id = user.Id,          
+                    Id = user.Id,
+                    UserName = user.UserName,          
                     Email = user.Email,
                     Role = roles.FirstOrDefault() ?? "No Role"
                 });
