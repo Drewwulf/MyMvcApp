@@ -23,7 +23,7 @@ namespace MyMvcApp.Controllers
         }
 
 [HttpPost]
-public async Task<IActionResult> CreateUser(string FirstName, string LastName, string Email, string Role)
+public async Task<IActionResult> CreateUser(string FirstName, string LastName, string Email, string Role,string password)
 {
     // Формуємо повне ім'я
     var fullName = FirstName + "." + LastName;
@@ -35,7 +35,7 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
         Email = Email
     };
 
-    var result = await _userManager.CreateAsync(user, "DefaultPassword123!"); // пароль можна змінити
+    var result = await _userManager.CreateAsync(user, password ); // пароль можна змінити
 
     if (result.Succeeded)
     {

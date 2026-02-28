@@ -6,12 +6,14 @@ namespace MyMvcApp.Controllers
     public class AccountController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
-
-        public AccountController(SignInManager<IdentityUser> signInManager)
+        private readonly UserManager<IdentityUser> _userManager;
+        public AccountController(
+    SignInManager<IdentityUser> signInManager,
+    UserManager<IdentityUser> userManager)
         {
             _signInManager = signInManager;
+            _userManager = userManager;
         }
-
         [HttpGet]
         public IActionResult Login()
         {
@@ -28,12 +30,28 @@ namespace MyMvcApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string email, string password)
         {
-            var result = await _signInManager.PasswordSignInAsync(email, password, false, false);
+            var user = await _userManager.FindByEmailAsync(email);
 
-           
-             return RedirectToAction("Login");
+            if (user == null)
+            {
+                ViewBag.Error = "Користувач не знайдений";
+                return View();
+            }
+
+            var result = await _signInManager.PasswordSignInAsync(
+                user.UserName,
+                password,
+                false,
+                false);
+
+            if (!result.Succeeded)
+            {
+                ViewBag.Error = "Неправильний пароль";
+                return View();
+            }
+
+            return RedirectToAction("Index", "Home");
         }
-
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
