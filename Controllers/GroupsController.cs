@@ -76,12 +76,23 @@ namespace MyMvcApp.Controllers
 
             return View(modal); // повертає Views/Destination/Details.cshtml
         }
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var allGroups = _context.studyGroups.ToList();
             var allDirections = _context.Directions.ToList();
-            var model = new StudyGroupViewModel{ studyGroup = allGroups,directions = allDirections,place = _context.Places.ToList()};
-            var users =  _userManager.Users.OrderBy(u => u.UserName).ToListAsync();
+            var users = await _userManager.Users.OrderBy(u => u.UserName).ToListAsync();
+            var teacherUsers = new List<IdentityUser>();
+
+            foreach (var user in users)
+            {
+                var roles = await _userManager.GetRolesAsync(user);
+                if (roles.Contains("Teacher"))
+                {
+                    teacherUsers.Add(user);
+                }
+            }
+            var model = new StudyGroupViewModel { studyGroup = allGroups, directions = allDirections, place = _context.Places.ToList(),users = teacherUsers };
+
             return View(model); 
         }
         [HttpPost]

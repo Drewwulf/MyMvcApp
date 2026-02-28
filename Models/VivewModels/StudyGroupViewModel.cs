@@ -1,4 +1,7 @@
 
+using Microsoft.AspNetCore.Identity;
+using System.Security.Cryptography.Xml;
+
 namespace MyMvcApp.Models
 {
     public class StudyGroupViewModel
@@ -11,5 +14,6 @@ namespace MyMvcApp.Models
          public List<StudyGroup> studyGroup = new List<StudyGroup>();
          public List<Direction> directions = new List<Direction>();
         public List<Place> place = new List<Place>();
+        public List<IdentityUser> users = new List<IdentityUser>();
     }
 }
