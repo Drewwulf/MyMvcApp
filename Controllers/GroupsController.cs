@@ -12,10 +12,17 @@ namespace MyMvcApp.Controllers
     {
 
         private readonly ApplicationDbContext _context;
-        public GroupsController(ApplicationDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+
+       
+
+        public GroupsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
-        } 
+            _userManager = userManager;
+        }
+
+
         public IActionResult Index()
         {
             return View(); // повертає Views/Group/Index.cshtml
@@ -72,7 +79,7 @@ namespace MyMvcApp.Controllers
             var allGroups = _context.studyGroups.ToList();
             var allDirections = _context.Directions.ToList();
             var model = new StudyGroupViewModel{ studyGroup = allGroups,directions = allDirections,place = _context.Places.ToList()};
-
+            var users =  _userManager.Users.OrderBy(u => u.UserName).ToListAsync();
             return View(model); 
         }
         [HttpPost]
