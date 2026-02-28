@@ -363,15 +363,6 @@ namespace MyMvcApp.Migrations
                     b.ToTable("PlaceStudyGroup");
                 });
 
-            modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
-                {
-                    b.HasOne("MyMvcApp.Models.Direction", "Direction")
-                        .WithMany("Groups")
-                        .HasForeignKey("DirectionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Direction");
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -423,6 +414,17 @@ namespace MyMvcApp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
+                {
+                    b.HasOne("MyMvcApp.Models.Direction", "Direction")
+                        .WithMany("Groups")
+                        .HasForeignKey("DirectionId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Direction");
+                });
+
             modelBuilder.Entity("MyMvcApp.Models.Test", b =>
                 {
                     b.HasOne("MyMvcApp.Models.Direction", "Direction")
@@ -456,7 +458,6 @@ namespace MyMvcApp.Migrations
                     b.Navigation("Tests");
                 });
 #pragma warning restore 612, 618
-        });
+        }
     }
-}
 }

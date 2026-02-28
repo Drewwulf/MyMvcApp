@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
 
 namespace MyMvcApp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DestinationController : Controller
     {
         private readonly ApplicationDbContext _context;

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MyMvcApp.Migrations
 {
     /// <inheritdoc />
-    public partial class AddIdentity : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -48,6 +48,50 @@ namespace MyMvcApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Directions",
+                columns: table => new
+                {
+                    DirectionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DirectionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DirectionDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Directions", x => x.DirectionId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Homeworks",
+                columns: table => new
+                {
+                    HomeworkId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    HomeworkName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    HomeworkDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StartTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    SubmitTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Homeworks", x => x.HomeworkId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Places",
+                columns: table => new
+                {
+                    PlaceId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DestinationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DestinationAddress = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Places", x => x.PlaceId);
                 });
 
             migrationBuilder.CreateTable(
@@ -156,6 +200,74 @@ namespace MyMvcApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "studyGroups",
+                columns: table => new
+                {
+                    StudyGroupId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DirectionId = table.Column<int>(type: "int", nullable: false),
+                    PlaceId = table.Column<int>(type: "int", nullable: false),
+                    GroupName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GroupDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_studyGroups", x => x.StudyGroupId);
+                    table.ForeignKey(
+                        name: "FK_studyGroups_Directions_DirectionId",
+                        column: x => x.DirectionId,
+                        principalTable: "Directions",
+                        principalColumn: "DirectionId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tests",
+                columns: table => new
+                {
+                    TestId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DirectionId = table.Column<int>(type: "int", nullable: false),
+                    TestName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TestDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TestDifficualty = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tests", x => x.TestId);
+                    table.ForeignKey(
+                        name: "FK_Tests_Directions_DirectionId",
+                        column: x => x.DirectionId,
+                        principalTable: "Directions",
+                        principalColumn: "DirectionId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PlaceStudyGroup",
+                columns: table => new
+                {
+                    PlacesPlaceId = table.Column<int>(type: "int", nullable: false),
+                    StudyGroupId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlaceStudyGroup", x => new { x.PlacesPlaceId, x.StudyGroupId });
+                    table.ForeignKey(
+                        name: "FK_PlaceStudyGroup_Places_PlacesPlaceId",
+                        column: x => x.PlacesPlaceId,
+                        principalTable: "Places",
+                        principalColumn: "PlaceId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PlaceStudyGroup_studyGroups_StudyGroupId",
+                        column: x => x.StudyGroupId,
+                        principalTable: "studyGroups",
+                        principalColumn: "StudyGroupId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -194,6 +306,21 @@ namespace MyMvcApp.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PlaceStudyGroup_StudyGroupId",
+                table: "PlaceStudyGroup",
+                column: "StudyGroupId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_studyGroups_DirectionId",
+                table: "studyGroups",
+                column: "DirectionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tests_DirectionId",
+                table: "Tests",
+                column: "DirectionId");
         }
 
         /// <inheritdoc />
@@ -215,10 +342,28 @@ namespace MyMvcApp.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Homeworks");
+
+            migrationBuilder.DropTable(
+                name: "PlaceStudyGroup");
+
+            migrationBuilder.DropTable(
+                name: "Tests");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Places");
+
+            migrationBuilder.DropTable(
+                name: "studyGroups");
+
+            migrationBuilder.DropTable(
+                name: "Directions");
         }
     }
 }

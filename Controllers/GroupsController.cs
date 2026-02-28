@@ -1,14 +1,16 @@
-using System.Text.RegularExpressions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
+using System.Text.RegularExpressions;
 
 namespace MyMvcApp.Controllers
 {
-        public class GroupsController : Controller
+    [Authorize(Roles = "Admin")]
+    public class GroupsController : Controller
     {
 
         private readonly ApplicationDbContext _context;

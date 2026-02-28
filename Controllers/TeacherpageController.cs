@@ -1,7 +1,9 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MyMvcApp.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class TeacherpageController : Controller
     {
         public IActionResult Index()
