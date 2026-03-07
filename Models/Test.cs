@@ -8,6 +8,8 @@ namespace MyMvcApp.Models
         public string TestDescription { get; set; }   
         public Direction Direction { get; set; }
         public string TestDifficualty { get; set; }
+           public ICollection<Question> Tasks { get; set; } 
+
 
     }
 }
