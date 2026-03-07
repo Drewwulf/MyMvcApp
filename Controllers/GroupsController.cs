@@ -64,14 +64,15 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Details(int id){
 
-        var Group = _context.studyGroups.Find(id); 
-          var modal = new StudyGroupViewModel
+            var group =  _context.studyGroups
+         .Include(x => x.Direction).Include(y => y.Teachers)
+         .FirstOrDefault(x => x.StudyGroupId == id);
+            var modal = new StudyGroupViewModel
           {
-            GroupName =Group.GroupName,
-            GroupDescription=Group.GroupDescription,
+            Group = group,
             studyGroup = _context.studyGroups.Include(g => g.Direction).Include(g => g.Places).ToList(),
             GrId = id,
-            PlId = Group.PlaceId
+            PlId = group.PlaceId
           };
 
             return View(modal); // повертає Views/Destination/Details.cshtml

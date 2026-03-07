@@ -10,6 +10,7 @@ namespace MyMvcApp.Models
         public int DirId { get; set; } 
         public int PlId { get; set; }
         public int TId { get; set; }
+        public StudyGroup Group { get; set; } = new StudyGroup();
         public string GroupName { get; set; }     
         public string GroupDescription { get; set; }
          public List<StudyGroup> studyGroup = new List<StudyGroup>();
