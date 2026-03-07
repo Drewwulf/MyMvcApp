@@ -58,6 +58,7 @@ namespace MyMvcApp.Controllers
         var Test = _context.Tests.Find(id); 
           var modal = new TestViewModel
           {
+            TestId = id,
             Name =Test.TestName,
             Description=Test.TestDescription
           };

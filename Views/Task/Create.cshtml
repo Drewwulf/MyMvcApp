@@ -1,0 +1,42 @@
+@model MyMvcApp.Models.DirectionViewModel
+        <section class="section">
+            <div class="mainDiv">
+                <form asp-action="Create" method="post">
+                    <input type="text" asp-for="DirectionName" placeholder="Назва">
+                    <input type="text" asp-for="DirectionDescription" placeholder="Опис">
+                    <input type="submit" value="Створити" class="submit">
+                </form>
+            </div>
+        </section>
+            <section>
+                <div class="table2">
+                    <table class="table">
+                       <thead class="table-dark th1">
+                           <tr><th class="th">Номер</th><th>Назва</th><th>Опис</th><th>Дії</th></tr>
+                       </thead>
+                       <tbody>
+                           
+                           
+
+
+
+                        @foreach(var direction in Model.directions)
+                        {
+                           <tr><td>@direction.DirectionId</td>
+                           <td>@direction.DirectionName</td>
+                           <td>@direction.DirectionDescription</td>
+                           <td><a type="button" asp-controler="Direction" asp-action="Edit" asp-route-id="@direction.DirectionId" class="btn btn-secondary">Редагувати</a>
+                           <a asp-controller="Direction" asp-action="Details" asp-route-id="@direction.DirectionId" type="button" class="btn btn-dark">Деталі</a>
+                           <a type="button" asp-controler="Direction" asp-action="Edit" asp-route-id="@direction.DirectionId" class="btn btn-danger">Видалити</a></td></tr>
+
+
+
+                        }
+                    </table>
+                </div>
+            </section>      
+             
+    @section Scripts
+        {
+            <partial name="_ValidationScriptsPartial" />
+                    }
