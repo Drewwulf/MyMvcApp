@@ -31,7 +31,7 @@
             </div>
             <div class="divselect">
                 <label for="choose">Вибрати вчителя:</label>
-                <select class="form-select" aria-label="Default select example">
+                <select asp-for="TId" class="form-select" aria-label="Default select example">
                    @foreach (var user in Model.users)
                         {
                         <option value=@user.Id>@user.UserName</option>

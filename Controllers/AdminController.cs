@@ -2,17 +2,22 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MyMvcApp.Data;
 using MyMvcApp.Models;
 
 namespace MyMvcApp.Controllers
 {
     [Authorize(Roles = "Admin")]
     public class AdminController : Controller
+
     {
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly ApplicationDbContext _context;
 
-        public AdminController(UserManager<IdentityUser> userManager)
+
+        public AdminController(UserManager<IdentityUser> userManager, ApplicationDbContext context)
         {
+            _context=context;
             _userManager = userManager;
         }
 
@@ -22,44 +27,56 @@ namespace MyMvcApp.Controllers
             return View();
         }
 
-[HttpPost]
-public async Task<IActionResult> CreateUser(string FirstName, string LastName, string Email, string Role,string password)
-{
-    // Формуємо повне ім'я
-    var fullName = FirstName + "." + LastName;
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(string FirstName, string LastName, string Email, string Role, string password)
+        {
+            // Формуємо повне ім'я
+            var fullName = FirstName + "." + LastName;
 
-    // Створюємо нового користувача
-    var user = new IdentityUser
-    {
-        UserName = fullName,
-        Email = Email
-    };
+            // Створюємо нового користувача
+            var user = new IdentityUser
+            {
+                UserName = fullName,
+                Email = Email
+            };
+            if (Role == "Teacher")
+            {
+                var modal = new Teachers
+                {
+                    UserId = user.Id,
+                    UserName = user.UserName,
+                };
+                _context.Teachers.Add(modal);
+                _context.SaveChanges();
 
-    var result = await _userManager.CreateAsync(user, password ); // пароль можна змінити
+            }
 
-    if (result.Succeeded)
-    {
-        // Додаємо роль
-        await _userManager.AddToRoleAsync(user, Role);
 
-        ViewBag.Success = "Користувача створено!";
-        return View();
-    }
+            var result = await _userManager.CreateAsync(user, password); // пароль можна змінити
 
-    // Якщо є помилки
-    foreach (var error in result.Errors)
-    {
-        ModelState.AddModelError("", error.Description);
-    }
+            if (result.Succeeded)
+            {
+                // Додаємо роль
+                await _userManager.AddToRoleAsync(user, Role);
 
-    return View();
-}
+                ViewBag.Success = "Користувача створено!";
+                return View();
+            }
+
+            // Якщо є помилки
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+            return View();
+        }
 
 
         [HttpGet]
         public async Task<IActionResult> TableUsers()
-        { 
-           var users = await _userManager.Users.OrderBy(u => u.UserName).ToListAsync();
+        {
+            var users = await _userManager.Users.OrderBy(u => u.UserName).ToListAsync();
 
             var result = new List<UsersViewModel>();
             foreach (var user in users)
@@ -68,7 +85,7 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
                 result.Add(new UsersViewModel
                 {
                     Id = user.Id,
-                    UserName = user.UserName,          
+                    UserName = user.UserName,
                     Email = user.Email,
                     Role = roles.FirstOrDefault() ?? "No Role"
                 });
@@ -98,7 +115,7 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
             {
                 Id = user.Id,
                 Email = user.Email,
-                UserName = user.UserName.Replace("."," "),
+                UserName = user.UserName.Replace(".", " "),
                 Role = roles.FirstOrDefault() ?? "No Role"
             };
 
@@ -106,7 +123,7 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-    public async Task<IActionResult> EditUsers(UsersViewModel model)
+        public async Task<IActionResult> EditUsers(UsersViewModel model)
         {
             var user = await _userManager.FindByIdAsync(model.Id);
             if (user == null)
@@ -115,7 +132,7 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
             }
 
             user.Email = model.Email;
-            user.UserName = model.UserName.Replace(" ","."); // Оновлюємо UserName, якщо він використовується як Email
+            user.UserName = model.UserName.Replace(" ", "."); // Оновлюємо UserName, якщо він використовується як Email
 
             var result = await _userManager.UpdateAsync(user);
             if (!result.Succeeded)
@@ -135,6 +152,7 @@ public async Task<IActionResult> CreateUser(string FirstName, string LastName, s
             }
 
             return RedirectToAction("TableUsers");
-    }}
-} 
+        }
+    }
+}
 

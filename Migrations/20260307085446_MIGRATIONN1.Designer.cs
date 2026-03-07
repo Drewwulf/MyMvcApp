@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMvcApp.Data;
 
@@ -11,9 +12,11 @@ using MyMvcApp.Data;
 namespace MyMvcApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260307085446_MIGRATIONN1")]
+    partial class MIGRATIONN1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -311,14 +314,17 @@ namespace MyMvcApp.Migrations
                     b.Property<int>("PlaceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeachersId")
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("teachersId")
                         .HasColumnType("int");
 
                     b.HasKey("StudyGroupId");
 
                     b.HasIndex("DirectionId");
 
-                    b.HasIndex("TeachersId");
+                    b.HasIndex("teachersId");
 
                     b.ToTable("studyGroups");
                 });
@@ -448,15 +454,15 @@ namespace MyMvcApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyMvcApp.Models.Teachers", "Teachers")
+                    b.HasOne("MyMvcApp.Models.Teachers", "teachers")
                         .WithMany("Groups")
-                        .HasForeignKey("TeachersId")
+                        .HasForeignKey("teachersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Direction");
 
-                    b.Navigation("Teachers");
+                    b.Navigation("teachers");
                 });
 
             modelBuilder.Entity("MyMvcApp.Models.Test", b =>

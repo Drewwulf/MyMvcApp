@@ -81,16 +81,9 @@ namespace MyMvcApp.Controllers
             var allGroups = _context.studyGroups.ToList();
             var allDirections = _context.Directions.ToList();
             var users = await _userManager.Users.OrderBy(u => u.UserName).ToListAsync();
-            var teacherUsers = new List<IdentityUser>();
+            var teacherUsers = _context.Teachers.ToList();
 
-            foreach (var user in users)
-            {
-                var roles = await _userManager.GetRolesAsync(user);
-                if (roles.Contains("Teacher"))
-                {
-                    teacherUsers.Add(user);
-                }
-            }
+            
             var model = new StudyGroupViewModel { studyGroup = allGroups, directions = allDirections, place = _context.Places.ToList(),users = teacherUsers };
 
             return View(model); 
@@ -108,6 +101,7 @@ namespace MyMvcApp.Controllers
                 GroupDescription = StudyGroupViewModel.GroupDescription,
                 DirectionId = StudyGroupViewModel.DirId,
                 PlaceId = StudyGroupViewModel.PlId,
+                TeachersId = StudyGroupViewModel.TId
             };
             _context.studyGroups.Add(groups1);
             _context.SaveChanges();

@@ -9,5 +9,9 @@ namespace MyMvcApp.Models
         public string GroupDescription { get; set; }   
         public Direction Direction { get; set; }= null!;
         public ICollection<Place> Places { get; set; }
+
+        public int TeachersId { get; set; }   // foreign key
+        public Teachers Teachers { get; set; } // navigation property
+    
     }
 }
