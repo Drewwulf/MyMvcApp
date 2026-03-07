@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MyMvcApp.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class MIGRATIONN1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -92,6 +92,20 @@ namespace MyMvcApp.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Places", x => x.PlaceId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Teachers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Teachers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -201,28 +215,6 @@ namespace MyMvcApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "studyGroups",
-                columns: table => new
-                {
-                    StudyGroupId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DirectionId = table.Column<int>(type: "int", nullable: false),
-                    PlaceId = table.Column<int>(type: "int", nullable: false),
-                    GroupName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    GroupDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_studyGroups", x => x.StudyGroupId);
-                    table.ForeignKey(
-                        name: "FK_studyGroups_Directions_DirectionId",
-                        column: x => x.DirectionId,
-                        principalTable: "Directions",
-                        principalColumn: "DirectionId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Tests",
                 columns: table => new
                 {
@@ -241,6 +233,36 @@ namespace MyMvcApp.Migrations
                         column: x => x.DirectionId,
                         principalTable: "Directions",
                         principalColumn: "DirectionId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "studyGroups",
+                columns: table => new
+                {
+                    StudyGroupId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    DirectionId = table.Column<int>(type: "int", nullable: false),
+                    PlaceId = table.Column<int>(type: "int", nullable: false),
+                    GroupName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GroupDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TeacherId = table.Column<int>(type: "int", nullable: false),
+                    teachersId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_studyGroups", x => x.StudyGroupId);
+                    table.ForeignKey(
+                        name: "FK_studyGroups_Directions_DirectionId",
+                        column: x => x.DirectionId,
+                        principalTable: "Directions",
+                        principalColumn: "DirectionId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_studyGroups_Teachers_teachersId",
+                        column: x => x.teachersId,
+                        principalTable: "Teachers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -318,6 +340,11 @@ namespace MyMvcApp.Migrations
                 column: "DirectionId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_studyGroups_teachersId",
+                table: "studyGroups",
+                column: "teachersId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Tests_DirectionId",
                 table: "Tests",
                 column: "DirectionId");
@@ -364,6 +391,9 @@ namespace MyMvcApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Directions");
+
+            migrationBuilder.DropTable(
+                name: "Teachers");
         }
     }
 }

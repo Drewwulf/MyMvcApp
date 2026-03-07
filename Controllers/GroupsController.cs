@@ -14,10 +14,17 @@ namespace MyMvcApp.Controllers
     {
 
         private readonly ApplicationDbContext _context;
-        public GroupsController(ApplicationDbContext context)
+        private readonly UserManager<IdentityUser> _userManager;
+
+       
+
+        public GroupsController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
-        } 
+            _userManager = userManager;
+        }
+
+
         public IActionResult Index()
         {
             return View(); // повертає Views/Group/Index.cshtml
@@ -69,11 +76,15 @@ namespace MyMvcApp.Controllers
 
             return View(modal); // повертає Views/Destination/Details.cshtml
         }
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             var allGroups = _context.studyGroups.ToList();
             var allDirections = _context.Directions.ToList();
-            var model = new StudyGroupViewModel{ studyGroup = allGroups,directions = allDirections,place = _context.Places.ToList()};
+            var users = await _userManager.Users.OrderBy(u => u.UserName).ToListAsync();
+            var teacherUsers = _context.Teachers.ToList();
+
+            
+            var model = new StudyGroupViewModel { studyGroup = allGroups, directions = allDirections, place = _context.Places.ToList(),users = teacherUsers };
 
             return View(model); 
         }
@@ -90,6 +101,7 @@ namespace MyMvcApp.Controllers
                 GroupDescription = StudyGroupViewModel.GroupDescription,
                 DirectionId = StudyGroupViewModel.DirId,
                 PlaceId = StudyGroupViewModel.PlId,
+                TeachersId = StudyGroupViewModel.TId
             };
             _context.studyGroups.Add(groups1);
             _context.SaveChanges();

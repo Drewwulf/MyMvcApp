@@ -31,13 +31,13 @@
     text-align: center;
     height: 89%;
     align-content: center;
-    color: #ffffff;
     display: flex;
     background-color: white;
     width: 60%;
     margin: 0 auto;
     padding: 38px;
     border-radius: 3vh;
+    color: white !important;
     justify-content: center;
     box-shadow: 2px 2px 23px black;
 }

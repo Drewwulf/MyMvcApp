@@ -12,8 +12,8 @@ using MyMvcApp.Data;
 namespace MyMvcApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260221080204_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20260307091512_MIGRATIONN3")]
+    partial class MIGRATIONN3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -314,11 +314,37 @@ namespace MyMvcApp.Migrations
                     b.Property<int>("PlaceId")
                         .HasColumnType("int");
 
+                    b.Property<int>("TeachersId")
+                        .HasColumnType("int");
+
                     b.HasKey("StudyGroupId");
 
                     b.HasIndex("DirectionId");
 
+                    b.HasIndex("TeachersId");
+
                     b.ToTable("studyGroups");
+                });
+
+            modelBuilder.Entity("MyMvcApp.Models.Teachers", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("MyMvcApp.Models.Test", b =>
@@ -425,7 +451,15 @@ namespace MyMvcApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("MyMvcApp.Models.Teachers", "Teachers")
+                        .WithMany("Groups")
+                        .HasForeignKey("TeachersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Direction");
+
+                    b.Navigation("Teachers");
                 });
 
             modelBuilder.Entity("MyMvcApp.Models.Test", b =>
@@ -459,6 +493,11 @@ namespace MyMvcApp.Migrations
                     b.Navigation("Groups");
 
                     b.Navigation("Tests");
+                });
+
+            modelBuilder.Entity("MyMvcApp.Models.Teachers", b =>
+                {
+                    b.Navigation("Groups");
                 });
 #pragma warning restore 612, 618
         }
