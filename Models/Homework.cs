@@ -10,3 +10,4 @@ namespace MyMvcApp.Models
         public DateTime SubmitTime { get; set; }  
     }
 }
+ 

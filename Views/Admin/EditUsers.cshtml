@@ -1,0 +1,26 @@
+@model MyMvcApp.Models.UsersViewModel
+
+<section class="section">
+    <div class="mainDiv">
+        <form asp-action="EditUsers" asp-controller="Admin" method="post">
+            <input asp-for="Email" placeholder="Змінити email" class="form-control" />
+            <input asp-for="UserName" placeholder="Змінити email" class="form-control" />
+            <input asp-for="Id" type="hidden" />
+              <div class="divselect">
+        <label>Роль</label><br />
+        <select asp-for="Role" name="role">
+            <option  value="Admin">Admin</option>
+            <option  value="Teacher">Teacher</option>
+            <option  value="Student">Student</option>
+        </select>
+    </div>
+             <br />
+             <button type="submit">Редагувати</button>
+            <input type="submit" value="Редагувати" class="button" />
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

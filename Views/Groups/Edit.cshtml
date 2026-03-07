@@ -1,0 +1,35 @@
+@model MyMvcApp.Models.StudyGroupViewModel
+        <section class="section">
+            <div class="mainDiv">
+                <H2>Редагування групи:</H2>
+                <form asp-action="Edit" asp-controller="Groups" method="post">
+                    <input asp-for="GroupName" type="text" placeholder="Назва" />
+                    <input asp-for="GroupDescription"type="text" placeholder="Опис" />
+                    <input asp-for="GrId" type="hidden" />
+                    <div class="divselect">
+                        <label for="direct">Редагувати напрямок групи:</label>
+                        <select asp-for="DirId" class="form-select" aria-label="Default select example">
+            @foreach(var direction in Model.directions)
+                        {
+                            
+<option value=@direction.DirectionId>@direction.DirectionName</option>
+                        }</select>
+                    </div>
+                    <div class="divselect">
+                        <label for="vanue">Редагувати місце проведення:</label>
+                                 <select asp-for="PlId" class="form-select" aria-label="Default select example">
+  @foreach(Place place in Model.place)
+                        {
+                            
+<option value=@place.PlaceId>@place.DestinationName</option>
+
+                        }</select>
+                    </div>
+                    <input type="submit" value="Створити" class="button" />
+                </form>
+            </div>
+        </section>
+
+        @section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
