@@ -24,8 +24,6 @@ namespace MyMvcApp.Controllers
            
             var test =_context.Tests.Find(id);
             var modal = new TestViewModel
-            
-
             {
                 TestId = id,
                 Name=test.TestName,
@@ -94,6 +92,15 @@ namespace MyMvcApp.Controllers
             var model = new TestViewModel{ test = allTest};
 
             return RedirectToAction("Create"); 
+
+
+        }
+        public IActionResult Delete(int id)
+        {
+            var Test = _context.Tests.Find(id);
+            _context.Tests.Remove(Test);
+            _context.SaveChanges();
+            return RedirectToAction("Create");
         }
     }
 }

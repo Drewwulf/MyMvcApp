@@ -21,7 +21,12 @@
 
                         @foreach(var destination in Model.places)
                         {
-                           <tr><td>@destination.PlaceId</td><td>@destination.DestinationName</td><td>@destination.DestinationAddress</td><td><a type="button" class="btn btn-secondary" asp-controller="Destination" asp-action="Edit" asp-route-id="@destination.PlaceId" class="btn btn-dark">Редагувати</a><a type="button" asp-controller="Destination" asp-action="Details" asp-route-id="@destination.PlaceId" class="btn btn-dark">Деталі</a></td></tr>
+                           <tr><td>@destination.PlaceId</td><td>@destination.DestinationName</td><td>@destination.DestinationAddress</td>
+                               <td>
+                                   <a type="button" class="btn btn-secondary" asp-controller="Destination" asp-action="Edit" asp-route-id="@destination.PlaceId" class="btn btn-dark">Редагувати</a>
+                                   <a type="button" asp-controller="Destination" asp-action="Details" asp-route-id="@destination.PlaceId" class="btn btn-dark">Деталі</a>
+                            <a type="button" asp-controller="Destination" asp-action="Delete" asp-route-id="@destination.PlaceId" class="btn btn-danger">Видалити</a>
+                                   </td></tr>
                             
 
 
