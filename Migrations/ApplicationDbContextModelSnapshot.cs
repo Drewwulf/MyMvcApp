@@ -325,6 +325,8 @@ namespace MyMvcApp.Migrations
                     b.HasIndex("TestId");
 
                     b.ToTable("Tasks");
+                });
+
             modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
                 {
                     b.Property<int>("StudyGroupId")
@@ -476,6 +478,17 @@ namespace MyMvcApp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MyMvcApp.Models.Question", b =>
+                {
+                    b.HasOne("MyMvcApp.Models.Test", "Test")
+                        .WithMany("Tasks")
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Test");
+                });
+
             modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
                 {
                     b.HasOne("MyMvcApp.Models.Direction", "Direction")
@@ -531,6 +544,8 @@ namespace MyMvcApp.Migrations
             modelBuilder.Entity("MyMvcApp.Models.Teachers", b =>
                 {
                     b.Navigation("Groups");
+                });
+
             modelBuilder.Entity("MyMvcApp.Models.Test", b =>
                 {
                     b.Navigation("Tasks");

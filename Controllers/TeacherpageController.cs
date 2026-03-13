@@ -1,14 +1,32 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using MyMvcApp.Data;
 
 namespace MyMvcApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Teacher")]
     public class TeacherpageController : Controller
     {
-        public IActionResult Index()
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly ApplicationDbContext _context;
+
+        public TeacherpageController(SignInManager<IdentityUser> signInManager,
+    UserManager<IdentityUser> userManager, ApplicationDbContext context)
         {
-            return View(); // повертає Views/Teacherpage/Index.cshtml
+            _context = context;
+            _signInManager = signInManager;
+            _userManager = userManager;
+        }
+        public async Task<IActionResult> TeacherGroup()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var id = user.Id;
+            var teacher = _context.Teachers.Where(t=>t.UserId==id).Include(t=>t.Groups).FirstOrDefault();
+            var groups = teacher.Groups.ToList();
+            return View(groups); 
         }
         public IActionResult Edit()
         {
@@ -22,10 +40,7 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Create.cshtml
         }
-        public IActionResult TeacherGroup()
-        {
-            return View(); // повертає Views/Destination/Create.cshtml
-        }
+       
         public IActionResult TeacherShedule()
         {
             return View(); // повертає Views/Destination/Create.cshtml
