@@ -1,7 +1,7 @@
-
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model MyMvcApp.Models.StudyGroupViewModel
     <section class="section">
       <div class="mainDiv">
-          <a href="/Views/HomeWork/Edit.html">Редагувати</a>
                 <div class="divselect">
                     <h2>Назва:  </h2>
                     <p>Опис:</p>
@@ -10,6 +10,9 @@
                     <p>фото:</p>
                     <p>студенти:</p>
                 </div>
-                <a href="/schedule/schedule.html" class="btn-shedule">Редагувати</a>
             </div>
     </section>
+@section Scripts
+        {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace MyMvcApp.Migrations
 {
     /// <inheritdoc />
-    public partial class MIGRATIONN1 : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -246,8 +246,7 @@ namespace MyMvcApp.Migrations
                     PlaceId = table.Column<int>(type: "int", nullable: false),
                     GroupName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     GroupDescription = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TeacherId = table.Column<int>(type: "int", nullable: false),
-                    teachersId = table.Column<int>(type: "int", nullable: false)
+                    TeachersId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -259,10 +258,34 @@ namespace MyMvcApp.Migrations
                         principalColumn: "DirectionId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_studyGroups_Teachers_teachersId",
-                        column: x => x.teachersId,
+                        name: "FK_studyGroups_Teachers_TeachersId",
+                        column: x => x.TeachersId,
                         principalTable: "Teachers",
                         principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Tasks",
+                columns: table => new
+                {
+                    QuestionId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    QuestionName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ansver1Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ansver2Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ansver3Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ansver4Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TestId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tasks", x => x.QuestionId);
+                    table.ForeignKey(
+                        name: "FK_Tasks_Tests_TestId",
+                        column: x => x.TestId,
+                        principalTable: "Tests",
+                        principalColumn: "TestId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -340,9 +363,14 @@ namespace MyMvcApp.Migrations
                 column: "DirectionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_studyGroups_teachersId",
+                name: "IX_studyGroups_TeachersId",
                 table: "studyGroups",
-                column: "teachersId");
+                column: "TeachersId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tasks_TestId",
+                table: "Tasks",
+                column: "TestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tests_DirectionId",
@@ -375,7 +403,7 @@ namespace MyMvcApp.Migrations
                 name: "PlaceStudyGroup");
 
             migrationBuilder.DropTable(
-                name: "Tests");
+                name: "Tasks");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -390,10 +418,13 @@ namespace MyMvcApp.Migrations
                 name: "studyGroups");
 
             migrationBuilder.DropTable(
-                name: "Directions");
+                name: "Tests");
 
             migrationBuilder.DropTable(
                 name: "Teachers");
+
+            migrationBuilder.DropTable(
+                name: "Directions");
         }
     }
 }

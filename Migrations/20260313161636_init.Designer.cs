@@ -12,8 +12,8 @@ using MyMvcApp.Data;
 namespace MyMvcApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260307091512_MIGRATIONN3")]
-    partial class MIGRATIONN3
+    [Migration("20260313161636_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -292,6 +292,44 @@ namespace MyMvcApp.Migrations
                     b.ToTable("Places");
                 });
 
+            modelBuilder.Entity("MyMvcApp.Models.Question", b =>
+                {
+                    b.Property<int>("QuestionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
+
+                    b.Property<string>("Ansver1Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ansver2Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ansver3Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ansver4Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QuestionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TestId")
+                        .HasColumnType("int");
+
+                    b.HasKey("QuestionId");
+
+                    b.HasIndex("TestId");
+
+                    b.ToTable("Tasks");
+                });
+
             modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
                 {
                     b.Property<int>("StudyGroupId")
@@ -443,6 +481,17 @@ namespace MyMvcApp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MyMvcApp.Models.Question", b =>
+                {
+                    b.HasOne("MyMvcApp.Models.Test", "Test")
+                        .WithMany("Tasks")
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Test");
+                });
+
             modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
                 {
                     b.HasOne("MyMvcApp.Models.Direction", "Direction")
@@ -498,6 +547,11 @@ namespace MyMvcApp.Migrations
             modelBuilder.Entity("MyMvcApp.Models.Teachers", b =>
                 {
                     b.Navigation("Groups");
+                });
+
+            modelBuilder.Entity("MyMvcApp.Models.Test", b =>
+                {
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }
