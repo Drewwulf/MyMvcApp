@@ -56,5 +56,13 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Create.cshtml
         }
+        public async Task<IActionResult> TeacherCabinet()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var id = user.Id;
+            var teacher = _context.Teachers.Where(t => t.UserId == id).Include(t => t.Groups).FirstOrDefault();
+            
+            return View(teacher);
+        }
     }
 }
