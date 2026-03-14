@@ -13,15 +13,32 @@
 
 
             
-                <table class="table">
-                   @foreach(var group in Model){
+       
+                 <div class="table2">
+                    <table class="table">
+                       <thead class="table-dark th1">
+                           <tr><th class="th">Номер</th><th>Назва</th><th>Опис</th><th>Дії</th></tr>
+                       </thead>
+                       <tbody>
+                           
+                           
 
-                    <tr>
-                        <td>@group.GroupName</td>
-                        <td>@group.GroupDescription</td>
-                    </tr>
-                    }
-                </table>
+
+
+                        @foreach (var group in Model)
+                        {
+                           <tr><td>@group.StudyGroupId</td>
+                           <td>@group.GroupName</td>
+                           <td>@group.GroupDescription</td>
+                                <td><a asp-controller="Teacherpage" asp-action="Details" asp-route-id="@group.StudyGroupId" type="button" class="btn btn-dark">Деталі</a></td>
+                           </tr>
+
+
+
+                        }
+                        </tbody>
+                    </table>
+                </div>
                 
             
 

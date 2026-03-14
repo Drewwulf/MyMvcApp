@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
+using MyMvcApp.Models;
 
 namespace MyMvcApp.Controllers
 {
@@ -32,8 +33,14 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Teacherpage/Edit.cshtml
         }
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
+            var group = _context.studyGroups.Find(id);
+            var modal = new StudyGroupViewModel
+            {
+                GroupName = group.GroupName,
+                GroupDescription = group.GroupDescription
+            };
             return View(); // повертає Views/Destination/Details.cshtml
         }
         public IActionResult Create()
