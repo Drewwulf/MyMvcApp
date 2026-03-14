@@ -19,6 +19,8 @@ namespace MyMvcApp.Data
         public DbSet<Place> Places { get; set; }
         public DbSet<Direction> Directions { get; set; }
         public DbSet<Homework> Homeworks { get; set; }
+
+        public DbSet<Students> Students { get; set; }
         
     }
 }

@@ -67,12 +67,17 @@ namespace MyMvcApp.Controllers
             var group =  _context.studyGroups
          .Include(x => x.Direction).Include(y => y.Teachers)
          .FirstOrDefault(x => x.StudyGroupId == id);
+            var liststud = _context.Students.ToList();
+           
             var modal = new StudyGroupViewModel
           {
             Group = group,
             studyGroup = _context.studyGroups.Include(g => g.Direction).Include(g => g.Places).ToList(),
             GrId = id,
-            PlId = group.PlaceId
+            PlId = group.PlaceId,
+            students  = liststud,
+
+            
           };
 
             return View(modal); // повертає Views/Destination/Details.cshtml

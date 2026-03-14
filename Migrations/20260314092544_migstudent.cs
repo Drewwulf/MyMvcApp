@@ -5,7 +5,7 @@
 namespace MyMvcApp.Migrations
 {
     /// <inheritdoc />
-    public partial class NewTaskTable3 : Migration
+    public partial class migstudent : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

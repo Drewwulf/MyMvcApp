@@ -17,5 +17,6 @@ namespace MyMvcApp.Models
          public List<Direction> directions = new List<Direction>();
         public List<Place> place = new List<Place>();
         public List<Teachers> users = new List<Teachers>();
+        public List<Students> students = new List<Students>();
     }
 }

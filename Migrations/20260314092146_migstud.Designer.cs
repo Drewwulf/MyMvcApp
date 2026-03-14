@@ -12,8 +12,8 @@ using MyMvcApp.Data;
 namespace MyMvcApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20260307091421_MIGRATIONN2")]
-    partial class MIGRATIONN2
+    [Migration("20260314092146_migstud")]
+    partial class migstud
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -292,6 +292,73 @@ namespace MyMvcApp.Migrations
                     b.ToTable("Places");
                 });
 
+            modelBuilder.Entity("MyMvcApp.Models.Question", b =>
+                {
+                    b.Property<int>("QuestionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("QuestionId"));
+
+                    b.Property<string>("Ansver1Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ansver2Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ansver3Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Ansver4Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QuestionName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TestId")
+                        .HasColumnType("int");
+
+                    b.HasKey("QuestionId");
+
+                    b.HasIndex("TestId");
+
+                    b.ToTable("Tasks");
+                });
+
+            modelBuilder.Entity("MyMvcApp.Models.Students", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("StudyGroupId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("groupStudyGroupId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("groupStudyGroupId");
+
+                    b.ToTable("Students");
+                });
+
             modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
                 {
                     b.Property<int>("StudyGroupId")
@@ -314,17 +381,14 @@ namespace MyMvcApp.Migrations
                     b.Property<int>("PlaceId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("teachersId")
+                    b.Property<int>("TeachersId")
                         .HasColumnType("int");
 
                     b.HasKey("StudyGroupId");
 
                     b.HasIndex("DirectionId");
 
-                    b.HasIndex("teachersId");
+                    b.HasIndex("TeachersId");
 
                     b.ToTable("studyGroups");
                 });
@@ -446,6 +510,28 @@ namespace MyMvcApp.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MyMvcApp.Models.Question", b =>
+                {
+                    b.HasOne("MyMvcApp.Models.Test", "Test")
+                        .WithMany("Questions")
+                        .HasForeignKey("TestId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Test");
+                });
+
+            modelBuilder.Entity("MyMvcApp.Models.Students", b =>
+                {
+                    b.HasOne("MyMvcApp.Models.StudyGroup", "group")
+                        .WithMany("Students")
+                        .HasForeignKey("groupStudyGroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("group");
+                });
+
             modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
                 {
                     b.HasOne("MyMvcApp.Models.Direction", "Direction")
@@ -454,15 +540,15 @@ namespace MyMvcApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MyMvcApp.Models.Teachers", "teachers")
+                    b.HasOne("MyMvcApp.Models.Teachers", "Teachers")
                         .WithMany("Groups")
-                        .HasForeignKey("teachersId")
+                        .HasForeignKey("TeachersId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Direction");
 
-                    b.Navigation("teachers");
+                    b.Navigation("Teachers");
                 });
 
             modelBuilder.Entity("MyMvcApp.Models.Test", b =>
@@ -498,9 +584,19 @@ namespace MyMvcApp.Migrations
                     b.Navigation("Tests");
                 });
 
+            modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
+                {
+                    b.Navigation("Students");
+                });
+
             modelBuilder.Entity("MyMvcApp.Models.Teachers", b =>
                 {
                     b.Navigation("Groups");
+                });
+
+            modelBuilder.Entity("MyMvcApp.Models.Test", b =>
+                {
+                    b.Navigation("Questions");
                 });
 #pragma warning restore 612, 618
         }
