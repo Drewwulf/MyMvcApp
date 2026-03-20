@@ -29,23 +29,26 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Tasks(int id)
         {
-            var allTask = _context.Tasks.ToList();
+            var allTask = _context.Tasks.Where(x=>x.TestId==id).ToList();
             var allDirections = _context.Directions.ToList();
-            var model = new TaskViewModel { Question = allTask };
+            var model = new TaskViewModel { Question = allTask, TestId=id };
 
             return View(model);
         }
+        [HttpPost]
         public IActionResult Create(TaskViewModel TaskViewModel)
         {
-            var direction = _context.Directions.Find(TaskViewModel.DirectionId);
+           
 
             var task = new Question
             {
                 QuestionName = TaskViewModel.Name,
-                Ansver1Name  = TaskViewModel.Name,
-                Ansver2Name = TaskViewModel.Name,
-                Ansver3Name = TaskViewModel.Name,
-                Ansver4Name = TaskViewModel.Name,
+                QuestionDescription = TaskViewModel.Description,
+                Ansver1Name  = TaskViewModel.Ansver1Name,
+                Ansver2Name = TaskViewModel.Ansver2Name,
+                Ansver3Name = TaskViewModel.Ansver3Name,
+                Ansver4Name = TaskViewModel.Ansver4Name,
+                TestId = TaskViewModel.TestId
                 
             };
             _context.Tasks.Add(task);
@@ -53,7 +56,7 @@ namespace MyMvcApp.Controllers
             var allTask = _context.Tasks.ToList();
             var model = new TaskViewModel { Question = allTask };
 
-            return RedirectToAction("Create");
+            return RedirectToAction("Tasks");
 
 
         }

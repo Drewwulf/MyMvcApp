@@ -5,7 +5,7 @@ namespace MyMvcApp.Models
        
         public int QuestionId {get; set;}
         public string QuestionName {get; set;}
-
+        public string QuestionDescription { get; set;}
         public string Ansver1Name {get; set;}
         public string Ansver2Name {get; set;}
         public string Ansver3Name {get; set;}
