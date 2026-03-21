@@ -26,19 +26,26 @@
                 <div class="kpi-value-total fs-3" id="totalStudentsCount">3</div>
                 <div class="kpi-label-total small">Загальна кількість учнів</div>
             </div>
-            <form>
+            <form asp-action="AddStudentToGroup">
             <div class="add-button-container">
                 <h5>Список Учнів</h5>
-               <select>
+               <select asp-for="StId">
                         @foreach (var student in Model.students)
                         {
                             <option value=@student.Id>@student.Username</option>
 
                         }
                </select>
+               <input type="hidden" asp-for="GrId" />
                 <button type="submit" class="btn btn-outline-primary btn-sm">+ Додати Нового</button>
             </div>
             </form>
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["Error"]
+                </div>
+            }
         </div>
      
         <div class="table-responsive">
@@ -52,24 +59,14 @@
                     </tr>
                 </thead>
                 <tbody id="studentsListBody">
-                    <tr>
-                        <td>Іван Коваленко</td>
-                        <td>ivan@example.com</td>
-                        <td>Активний</td>
-                        <td>Сьогодні</td>
-                    </tr>
-                    <tr>
-                        <td>Марія Демчук</td>
-                        <td>mariia@example.com</td>
-                        <td>Новачок</td>
-                        <td>3 дні тому</td>
-                    </tr>
-                    <tr>
-                        <td>Олег Петренко</td>
-                        <td>oleg@example.com</td>
-                        <td>Неактивний</td>
-                        <td>1 тиждень тому</td>
-                    </tr>
+                    @foreach (var studentToGroup in Model.studentsToGroup)
+                    {
+                       <tr>
+                           <td>@studentToGroup.student.Username</td>
+
+
+                       </tr>
+                    }
                 </tbody>
             </table>
         </div>

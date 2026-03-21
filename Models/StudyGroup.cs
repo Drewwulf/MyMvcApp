@@ -13,5 +13,9 @@ namespace MyMvcApp.Models
         public int TeachersId { get; set; }   // foreign key
         public Teachers Teachers { get; set; } // navigation property
         public List<Students> Students { get; set; } = new List<Students>();
+
+        public List<StudentToGroup> StudentToGroups { get; set;} = new List<StudentToGroup>();
+        
+
     }
 }

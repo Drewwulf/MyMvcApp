@@ -15,5 +15,9 @@ namespace MyMvcApp.Models
 
         public StudyGroup group { get; set; }
 
+        public List<StudentToGroup>  studentToGroups { get; set; }
+
+        
+
     }
 }
