@@ -12,14 +12,14 @@
     font-size: 1.6rem;
     margin: 7px auto;
     width: 50%;
-    background-color: rgba(170, 200, 223, 0.73);
+    background-color: rgba(27, 33, 43, 0.73);
     padding: 25px;
     border-bottom: 7px solid #00baa6;
 }
 
-.divselect:hover {
-    background-color: rgba(170, 200, 223, 0.9);
-}
+    .divselect:hover {
+        background-color: rgba(27, 33, 43, 0.9);
+    }
 
 .divselect select:hover {
     cursor: pointer;
@@ -54,3 +54,18 @@
 input file {
     background-color: #aac8df;
 }
+
+.form-select {
+    background-color: #3d4450 !important;
+    color: white !important;
+    border: #3d4450 !important;
+    width: 60%!important;
+    margin: 15px auto;
+    background-repeat: repeat !important;
+    padding: 8px 5px;
+}
+
+    .form-select:hover {
+        transform: scale(1.02);
+        box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.3);
+    }
