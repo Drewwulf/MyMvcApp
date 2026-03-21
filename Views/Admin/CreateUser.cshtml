@@ -2,7 +2,7 @@
     ViewData["Title"] = "Створити користувача";
 }
 
-<h2 class="finish" style=""text-aligne="center">Створити користувача</h2>
+<h2 class="finishText" style=""> Створення користувача </h2>
 
 @if (ViewBag.Success != null)
 {
@@ -11,37 +11,34 @@
 
 <form method="post" class="mainDiv">
     <div>
-        <label>Email</label><br />
-        <input name="email" required />
+        <br />
+        <input name="email" required placeholder="Email"/>
     </div>
 
     <div>
-        <label>Пароль</label><br />
-        <input name="password" type="password" required />
+       <br />
+        <input name="password" type="password" required placeholder="Пароль"/>
     </div>
-   <div style="display: flex; gap: 10px;">
-    <div>
-        <label>Ім’я</label><br />
-        <input name="FirstName" type="text" required />
+    <div style="display: flex; gap: 10px; justify-content: center;">
+        <div>
+            <br />
+            <input name="FirstName" type="text" required placeholder="Ім'я" />
+        </div>
+        <div>
+            <br />
+            <input name="LastName" type="text" required placeholder="Прізвище" />
+        </div>
     </div>
-    <div>
-        <label>Прізвище</label><br />
-        <input name="LastName" type="text" required />
-    </div>
-</div>
 
-
-    <div class="divselect">
-        <label>Роль</label><br />
-        <select name="role">
+   <br />
+        <select name="role" class="form-select">
             <option value="Admin">Admin</option>
             <option value="Teacher">Teacher</option>
             <option value="Student">Student</option>
         </select>
-    </div>
 
     <br />
-    <button type="submit">Створити</button>
+    <input class="submit" type="submit" value="Створити">
 </form>
 
 @if (!ViewData.ModelState.IsValid)
