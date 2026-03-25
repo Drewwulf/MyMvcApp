@@ -1,51 +1,56 @@
-
+@model MyMvcApp.Models.TaskViewModel
         <section class="section">
             <div class="mainDiv">
-                <form class="p-3">
+                <form class="p-3" asp-action="Create" method="post"c>
 
-    <input type="text" class="form-control mb-3" placeholder="Назва">
-    <input type="text" class="form-control mb-4" placeholder="Опис">
+            <input type="text" asp-for="Name" asclass="form-control mb-3" placeholder="Назва">
+            <input type="text" asp-for="Description" class="form-control mb-4" placeholder="Опис">
 
     <!-- Відповідь 1 -->
     <div class="d-flex align-items-center mb-2">
-        <input type="text" class="form-control me-3" placeholder="Перша відповідь">
+                <input type="text" asp-for="Ansver1Name" class="form-control me-3" placeholder="Перша відповідь">
         <input style="width:50px; height:40px; margin: 0px 10px 30px 10px" type="checkbox" class="form-check-input">
     </div>
 
     <!-- Відповідь 2 -->
     <div class="d-flex align-items-center mb-2">
-        <input type="text" class="form-control me-3" placeholder="Друга відповідь">
+                <input type="text" asp-for="Ansver2Name" class="form-control me-3" placeholder="Друга відповідь">
         <input style="width:50px; height:40px; margin: 0px 10px 30px 10px" type="checkbox" class="form-check-input">
     </div>
 
     <!-- Відповідь 3 -->
     <div class="d-flex align-items-center mb-2">
-        <input type="text" class="form-control me-3" placeholder="Третя відповідь">
+                <input type="text" asp-for="Ansver3Name" class="form-control me-3" placeholder="Третя відповідь">
         <input style="width:50px; height:40px; margin: 0px 10px 30px 10px" type="checkbox" class="form-check-input">
     </div>
 
     <!-- Відповідь 4 -->
     <div class="d-flex align-items-center mb-3">
-        <input type="text" class="form-control me-3" placeholder="Четверта відповідь">
+                <input type="text" asp-for="Ansver4Name" class="form-control me-3" placeholder="Четверта відповідь">
         <input style="width:50px; height:40px; margin: 0px 10px 30px 10px" type="checkbox" class="form-check-input">
     </div>
-
+            <input type="hidden" asp-for="TestId">
     <button type="submit" class="btn btn-dark w-100">Створити</button>
 
 </form>
-            </div>
+</div>
         </section>
             <section>
                 <div class="table2">
-                    <table class="table">
-                       <thead class="table-dark">
-                           <tr><th>Номер</th><th>Назва</th><th>Опис</th><th>Складність</th><th>Дії</th></tr>
-                       </thead>
-                       <tbody>
-                           <tr><td>№1</td><td>Заголовок</td><td>h1-h6</td><td>Легко</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
-                           <tr><td>№2</td><td>Параграф</td><td>Весь текст в нього записується</td><td>Легко</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
-                           <tr><td>№3</td><td>Таблиці</td><td>Тут приклад</td><td>Важко</td><td><button type="button" class="btn btn-dark">Деталі</button></td></tr>
+                   <table class="table">
+                    <thead class="table-dark">
+                        <tr><th>Номер</th><th>Назва</th><th>Опис</th><th>Дії</th></tr>
+                    </thead>
+                    <tbody>
+                         @foreach(var task in Model.Question){
+                           <tr><td>1</td>
+                           <td>@task.QuestionName</td>
+                           <td>@task.QuestionDescription</td>
+                           <td><a type="button" asp-controller="Tasks" asp-action="Edit" asp-route-id="@task.QuestionId" class="btn btn-secondary">Редагувати</a>
+                           <a asp-controller="Tasks" asp-action="Details" asp-route-id="@task.QuestionId" type="button" class="btn btn-dark">Деталі</a>
+                           <a type="button" asp-controller="Tasks" asp-action="Delete" asp-route-id="@task.QuestionId" class="btn btn-danger">Видалити</a></td></tr>
+                         }
                         </tbody>
-                    </table>
+                   </table>
                 </div>
             </section>

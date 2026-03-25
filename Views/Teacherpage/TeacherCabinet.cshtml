@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model Teachers
+<section class="section py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-md-6 col-lg-5">
+                <div class="card shadow-lg border-0 rounded-4">
+
+                    <div class="card-body text-center">
+
+                        <h2 class="card-title mb-3">@Model.UserName</h2>
+
+                        <hr />
+
+                        <div class="text-start">
+
+                            <h5 class="fw-bold">Розклад:</h5>
+                            <ul class="list-group mb-3">
+                                @foreach (var groups in Model.Groups)
+                                {
+                                    <li class="list-group-item">
+                                        Група: @groups.StudyGroupId
+                                    </li>
+                                }
+                            </ul>
+
+                            <h5 class="fw-bold">Фото:</h5>
+                            <div class="text-center mb-3">
+                                <img src="/images/default-teacher.png"
+                                     class="img-fluid rounded shadow-sm"
+                                     style="max-height:200px;">
+                            </div>
+
+                            <h5 class="fw-bold">Студенти:</h5>
+                            <p class="text-muted">Список студентів буде тут</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}

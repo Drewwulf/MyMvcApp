@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyMvcApp.Data;
 
@@ -11,9 +12,11 @@ using MyMvcApp.Data;
 namespace MyMvcApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260313161636_init")]
+    partial class init
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -313,10 +316,6 @@ namespace MyMvcApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("QuestionDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("QuestionName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -329,55 +328,6 @@ namespace MyMvcApp.Migrations
                     b.HasIndex("TestId");
 
                     b.ToTable("Tasks");
-                });
-
-            modelBuilder.Entity("MyMvcApp.Models.StudentToGroup", b =>
-                {
-                    b.Property<int>("StudentToGroupId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("StudentToGroupId"));
-
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StudyGroupId")
-                        .HasColumnType("int");
-
-                    b.HasKey("StudentToGroupId");
-
-                    b.HasIndex("StudentId");
-
-                    b.HasIndex("StudyGroupId");
-
-                    b.ToTable("StudentToGroups");
-                });
-
-            modelBuilder.Entity("MyMvcApp.Models.Students", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("StudyGroupId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Username")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StudyGroupId");
-
-                    b.ToTable("Students");
                 });
 
             modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
@@ -534,40 +484,12 @@ namespace MyMvcApp.Migrations
             modelBuilder.Entity("MyMvcApp.Models.Question", b =>
                 {
                     b.HasOne("MyMvcApp.Models.Test", "Test")
-                        .WithMany("Questions")
+                        .WithMany("Tasks")
                         .HasForeignKey("TestId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Test");
-                });
-
-            modelBuilder.Entity("MyMvcApp.Models.StudentToGroup", b =>
-                {
-                    b.HasOne("MyMvcApp.Models.Students", "student")
-                        .WithMany("studentToGroups")
-                        .HasForeignKey("StudentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("MyMvcApp.Models.StudyGroup", "studyGroup")
-                        .WithMany("StudentToGroups")
-                        .HasForeignKey("StudyGroupId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("student");
-
-                    b.Navigation("studyGroup");
-                });
-
-            modelBuilder.Entity("MyMvcApp.Models.Students", b =>
-                {
-                    b.HasOne("MyMvcApp.Models.StudyGroup", "group")
-                        .WithMany("Students")
-                        .HasForeignKey("StudyGroupId");
-
-                    b.Navigation("group");
                 });
 
             modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
@@ -622,18 +544,6 @@ namespace MyMvcApp.Migrations
                     b.Navigation("Tests");
                 });
 
-            modelBuilder.Entity("MyMvcApp.Models.Students", b =>
-                {
-                    b.Navigation("studentToGroups");
-                });
-
-            modelBuilder.Entity("MyMvcApp.Models.StudyGroup", b =>
-                {
-                    b.Navigation("StudentToGroups");
-
-                    b.Navigation("Students");
-                });
-
             modelBuilder.Entity("MyMvcApp.Models.Teachers", b =>
                 {
                     b.Navigation("Groups");
@@ -641,7 +551,7 @@ namespace MyMvcApp.Migrations
 
             modelBuilder.Entity("MyMvcApp.Models.Test", b =>
                 {
-                    b.Navigation("Questions");
+                    b.Navigation("Tasks");
                 });
 #pragma warning restore 612, 618
         }

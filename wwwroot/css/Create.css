@@ -1,4 +1,4 @@
-.mainDiv {
+﻿.mainDiv {
     background-color: #2f3540; /* колір залишився */
     width: 45%; /* трохи ширше */
     min-height: 35vh; /* трохи вище */
@@ -6,43 +6,43 @@
     text-align: center;
     border-radius: 1.2vh; /* плавніший край */
     box-shadow: 3px 3px 40px #46494d;
-    padding: 25px 0;
+    padding: 0px 0px 25px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mainDiv:hover {
-    transform: translateY(-7px); /* підйом при hover */
-    box-shadow: 5px 5px 55px #46494d;
-}
+    .mainDiv:hover {
+        transform: translateY(-7px); /* підйом при hover */
+        box-shadow: 5px 5px 55px #46494d;
+    }
 
-.mainDiv input {
-    width: 60%; /* трохи ширше інпути */
-    background-color: #3d4450 !important; /* колір залишився */
-    border: none;
-    border-bottom: 4px solid #1b212b; /* тонший бордер */
-    padding: 8px 5px;
-    margin: 10px auto;
-    color: white !important;
-    font-size: 1.1rem;
-    border-radius: 0.6vh;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    .mainDiv input {
+        width: 60%; /* трохи ширше інпути */
+        background-color: #3d4450 !important; /* колір залишився */
+        border: none;
+        border-bottom: 4px solid #1b212b; /* тонший бордер */
+        padding: 8px 5px;
+        margin: 10px auto;
+        color: white !important;
+        font-size: 1.1rem;
+        border-radius: 0.6vh;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
 
-.mainDiv input:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-}
+        .mainDiv input:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+        }
 
-.mainDiv input[type="submit"] {
-    cursor: pointer;
-    background-color: #3d4450;
-    transition: transform 0.2s ease, background-color 0.2s ease;
-}
+        .mainDiv input[type="submit"] {
+            cursor: pointer;
+            background-color: #3d4450;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
 
-.mainDiv input[type="submit"]:hover {
-    transform: scale(1.08);
-    background-color: #1b212b;
-}
+            .mainDiv input[type="submit"]:hover {
+                transform: scale(1.08);
+                background-color: #1b212b;
+            }
 
 .section {
     width: 100%;
@@ -64,16 +64,16 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.divselect:hover {
-    background-color: #565c66;
-    transform: translateY(-5px);
-    box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-}
+    .divselect:hover {
+        background-color: #565c66;
+        transform: translateY(-5px);
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+    }
 
-.divselect select:hover {
-    cursor: pointer;
-    transform: scale(1.02);
-}
+    .divselect select:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+    }
 
 .table2 {
     text-align: center;
@@ -91,4 +91,38 @@
 
 td {
     color: white;
+}
+
+.form-select {
+    background-color: #3d4450 !important;
+    color: white !important;
+    border: #3d4450 !important;
+    width: 60% !important;
+    margin: 15px auto;
+    background-repeat: repeat !important;
+    padding: 8px 5px;
+}
+
+    .form-select:hover {
+        transform: scale(1.02);
+        box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.3);
+    }
+
+.table2-02 {
+    text-align: center;
+    height: 89%;
+    align-content: center;
+    display: flex;
+    background-color: #2f3540;
+    width: 80%;
+    margin: 0 auto;
+    padding: 38px;
+    border-radius: 3vh;
+    color: white !important;
+    justify-content: center;
+    box-shadow: 2px 2px 23px black !important;
+}
+
+.finishText{
+    font-size:3.5rem;
 }
