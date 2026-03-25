@@ -7,6 +7,7 @@ namespace MyMvcApp.Models
     public class StudyGroupViewModel
     {
         public int GrId { get; set; } 
+        public int StId { get; set; }
         public int DirId { get; set; } 
         public int PlId { get; set; }
         public int TId { get; set; }
@@ -17,5 +18,7 @@ namespace MyMvcApp.Models
          public List<Direction> directions = new List<Direction>();
         public List<Place> place = new List<Place>();
         public List<Teachers> users = new List<Teachers>();
+        public List<Students> students = new List<Students>();
+        public List<StudentToGroup> studentsToGroup = new List<StudentToGroup>();
     }
 }

@@ -50,6 +50,19 @@ namespace MyMvcApp.Controllers
                 _context.SaveChanges();
 
             }
+            else if( Role ==  "Student")
+            {
+                var modal = new Students
+                {
+                    UserId = user.Id,
+                    Username = user.UserName,
+                    StudyGroupId = null
+
+                };
+                _context.Students.Add(modal);
+                _context.SaveChanges();
+            }
+
 
 
             var result = await _userManager.CreateAsync(user, password); // пароль можна змінити

@@ -1,7 +1,9 @@
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @model MyMvcApp.Models.StudyGroupViewModel
 
-<section class="section container my-4">
+<section class="section2 container my-4 groups-wrapper">
+
+    <!-- Блок групи -->
     <div class="mainDiv card p-4 mb-4 shadow-sm">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2 class="card-title">@Model.Group.GroupName</h2>
@@ -17,79 +19,83 @@
         <a href="/schedule/schedule.html" class="btn btn-success mt-2">Додати розклад групи</a>
     </div>
 
-    <div class="row">
-        <div class="col-lg-6 right-section-students mb-4">
-            <div class="card p-3 shadow-sm">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <div class="total-count-kpi">
-                        <div class="kpi-value-total fs-3" id="totalStudentsCount">3</div>
-                        <div class="kpi-label-total small">Загальна кількість учнів</div>
-                    </div>
-                    <div class="add-button-container">
-                        <h5>Список Учнів</h5>
-                        <button class="btn btn-outline-primary btn-sm">+ Додати Нового</button>
-                    </div>
-                </div>
-
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover students-table mb-0">
-                        <thead class="table-dark">
-                            <tr>
-                                <th>Ім'я та Прізвище</th>
-                                <th>Електронна пошта</th>
-                                <th>Статус</th>
-                                <th>Останній вхід</th>
-                            </tr>
-                        </thead>
-                        <tbody id="studentsListBody">
-                            <tr>
-                                <td data-label="Ім'я та Прізвище">Іван Коваленко</td>
-                                <td data-label="Електронна пошта">ivan@example.com</td>
-                                <td data-label="Статус">Активний</td>
-                                <td data-label="Останній вхід">Сьогодні</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Ім'я та Прізвище">Марія Демчук</td>
-                                <td data-label="Електронна пошта">mariia@example.com</td>
-                                <td data-label="Статус">Новачок</td>
-                                <td data-label="Останній вхід">3 дні тому</td>
-                            </tr>
-                            <tr>
-                                <td data-label="Ім'я та Прізвище">Олег Петренко</td>
-                                <td data-label="Електронна пошта">oleg@example.com</td>
-                                <td data-label="Статус">Неактивний</td>
-                                <td data-label="Останній вхід">1 тиждень тому</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+    <!-- Блок студентів -->
+    <div class="right-section-students card p-3 shadow-sm mb-4">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div class="total-count-kpi">
+                <div class="kpi-value-total fs-3" id="totalStudentsCount">3</div>
+                <div class="kpi-label-total small">Загальна кількість учнів</div>
             </div>
+            <form asp-action="AddStudentToGroup">
+            <div class="add-button-container">
+                <h5>Список Учнів</h5>
+               <select asp-for="StId">
+                        @foreach (var student in Model.students)
+                        {
+                            <option value=@student.Id>@student.Username</option>
+
+                        }
+               </select>
+               <input type="hidden" asp-for="GrId" />
+                <button type="submit" class="btn btn-outline-primary btn-sm">+ Додати Нового</button>
+            </div>
+            </form>
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger">
+                    @TempData["Error"]
+                </div>
+            }
         </div>
+     
+        <div class="table-responsive">
+            <table class="table table-striped table-hover students-table mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Ім'я та Прізвище</th>
+                        <th>Електронна пошта</th>
+                        <th>Статус</th>
+                        <th>Останній вхід</th>
+                    </tr>
+                </thead>
+                <tbody id="studentsListBody">
+                    @foreach (var studentToGroup in Model.studentsToGroup)
+                    {
+                       <tr>
+                           <td>@studentToGroup.student.Username</td>
 
-        <div class="col-lg-6 schedule-container mb-4">
-            <div class="card p-3 shadow-sm">
-                <h5>Розклад Занять Групи [G03]</h5>
-                <div class="table-responsive">
-                    <table class="table table-bordered mb-0">
-                        <thead class="table-light">
-                            <tr>
-                                <th>День Тижня</th>
-                                <th>Початок Дня</th>
-                                <th>Кінець Дня</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>Понеділок</td><td>-</td><td>-</td></tr>
-                            <tr><td>Вівторок</td><td>-</td><td>-</td></tr>
-                            <tr><td>Середа</td><td>-</td><td>-</td></tr>
-                            <tr><td>Четвер</td><td>-</td><td>-</td></tr>
-                            <tr><td>П'ятниця</td><td>-</td><td>-</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
+                       </tr>
+                    }
+                </tbody>
+            </table>
         </div>
     </div>
+
+    <!-- Блок розкладу -->
+    <div class="schedule-container card p-3 shadow-sm">
+        <h5>Розклад Занять Групи [G03]</h5>
+
+        <div class="table-responsive">
+            <table class="table table-bordered mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>День Тижня</th>
+                        <th>Початок Дня</th>
+                        <th>Кінець Дня</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Понеділок</td><td>-</td><td>-</td></tr>
+                    <tr><td>Вівторок</td><td>-</td><td>-</td></tr>
+                    <tr><td>Середа</td><td>-</td><td>-</td></tr>
+                    <tr><td>Четвер</td><td>-</td><td>-</td></tr>
+                    <tr><td>П'ятниця</td><td>-</td><td>-</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 </section>
 
 @section Scripts
