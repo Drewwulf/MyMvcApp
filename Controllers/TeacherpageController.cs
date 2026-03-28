@@ -35,13 +35,14 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Details(int id)
         {
-            var group = _context.studyGroups.Find(id);
+            var group = _context.studyGroups.Where(t => t.StudyGroupId == id).Include(t => t.StudentToGroups).Include(t => t.Places).FirstOrDefault();
             var modal = new StudyGroupViewModel
             {
+                Group = group,
                 GroupName = group.GroupName,
                 GroupDescription = group.GroupDescription
             };
-            return View(); // повертає Views/Destination/Details.cshtml
+            return View(modal); // повертає Views/Destination/Details.cshtml
         }
         public IActionResult Create()
         {
