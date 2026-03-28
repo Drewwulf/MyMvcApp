@@ -118,6 +118,44 @@ namespace MyMvcApp.Controllers
 
             return RedirectToAction("Create");
         }
+        public IActionResult Delete(int id)
+        {
+            var group = _context.studyGroups.FirstOrDefault(x => x.StudyGroupId == id);
+
+            if (group == null)
+            {
+                return NotFound();
+            }
+
+            var students = _context.StudentToGroups
+                .Where(x => x.StudyGroupId == id)
+                .ToList();
+
+            _context.StudentToGroups.RemoveRange(students);
+
+            _context.studyGroups.Remove(group);
+            _context.SaveChanges();
+
+            return RedirectToAction("Create");
+        }
+
+        [HttpGet]
+        public IActionResult DeleteStudentFromGroup(int studentId, int groupId)
+        {
+            var studentInGroup = _context.StudentToGroups
+                .FirstOrDefault(x => x.StudentId == studentId
+                                  && x.StudyGroupId == groupId);
+
+            if (studentInGroup == null)
+            {
+                return NotFound();
+            }
+
+            _context.StudentToGroups.Remove(studentInGroup);
+            _context.SaveChanges();
+
+            return RedirectToAction("Details", "Groups", new { id = groupId });
+        }
 
 
         public IActionResult AddStudentToGroup(StudyGroupViewModel studyGroupViewModel)
