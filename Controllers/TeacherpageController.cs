@@ -35,7 +35,11 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Details(int id)
         {
-            var group = _context.studyGroups.Where(t => t.StudyGroupId == id).Include(t => t.StudentToGroups).Include(t => t.Places).FirstOrDefault();
+            var group = _context.studyGroups
+     .Where(t => t.StudyGroupId == id)
+     .Include(t => t.StudentToGroups)
+         .ThenInclude(stg => stg.student)
+     .FirstOrDefault();
             var modal = new StudyGroupViewModel
             {
                 Group = group,

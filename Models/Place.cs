@@ -5,6 +5,6 @@ namespace MyMvcApp.Models
         public int PlaceId { get; set; } 
         public string DestinationName { get; set; }     
         public string DestinationAddress { get; set; } 
-        public ICollection<StudyGroup> studyGroup { get; set; }  
+        public List <StudyGroup> studyGroup { get; set; }  
     }
 }
