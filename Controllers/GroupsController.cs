@@ -76,7 +76,7 @@ namespace MyMvcApp.Controllers
             var modal = new StudyGroupViewModel
             {
                 Group = group,
-                studyGroup = _context.studyGroups.Include(g => g.Direction).Include(g => g.Places).ToList(),
+                studyGroup = _context.studyGroups.Include(g => g.Direction).Include(g => g.Place).ToList(),
                 GrId = id,
                 PlId = group.PlaceId,
                 students = liststud,

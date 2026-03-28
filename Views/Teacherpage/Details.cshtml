@@ -3,12 +3,12 @@
     <section class="section">
       <div class="mainDiv">
                 <div class="divselect">
-                    <h2>Назва:  </h2>
-                    <p>Опис:</p>
-                    <p>Початок заняття:</p>
-                    <p>Кінець заняття:</p>
-                    <p>фото:</p>
-                    <p>студенти:</p>
+                    <h2>@Model.Group.GroupName </h2>
+                    <p>@Model.Group.GroupDescription</p>
+                    @foreach(var studentstogroup in Model.Group.StudentToGroups)
+                        {
+                           <tr><td>@studentstogroup.student.Username</td></tr>
+                        }
                 </div>
             </div>
     </section>
