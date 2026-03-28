@@ -132,12 +132,21 @@ namespace MyMvcApp.Controllers
                 TempData["Error"] = "У групі вже максимальна кількість учнів (3)";
                 return RedirectToAction("Details", "Groups", new { id = studyGroupViewModel.GrId });
             }
+            bool exists = _context.StudentToGroups
+    .Any(x => x.StudentId == studyGroupViewModel.StId
+           && x.StudyGroupId == studyGroupViewModel.GrId);
+            if (exists)
+            {
+                TempData["Error"] = "Студент вже є в цій групі";
+                return RedirectToAction("Details", "Groups", new { id = studyGroupViewModel.GrId });
+            }
 
             // додаємо студента
             var stdtogr = new StudentToGroup
             {
                 StudentId = studyGroupViewModel.StId,
                 StudyGroupId = studyGroupViewModel.GrId
+
             };
 
             _context.StudentToGroups.Add(stdtogr);
