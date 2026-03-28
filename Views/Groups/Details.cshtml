@@ -53,7 +53,7 @@
                 <thead class="table-dark">
                     <tr>
                         <th>Ім'я та Прізвище</th>
-                        
+                        <th>Дії</th>
                     </tr>
                 </thead>
                 <tbody id="studentsListBody" class="table-dark">
@@ -61,7 +61,7 @@
                     {
                        <tr class="table-dark">
                            <td>@studentToGroup.student.Username</td>
-                            
+                            <td><a asp-action="DeleteStudentFromGroup" method="get" asp-controller="Groups" asp-route-studentId="@studentToGroup.StudentId" asp-route-groupId="@studentToGroup.StudyGroupId" class="btn btn-danger">Видалити</a></td>
                        </tr>
                     }
                 </tbody>
