@@ -10,9 +10,11 @@
 
                 <select asp-for="DirId" class="form-select" aria-label="Default select example">
                     @foreach (var direction in Model.directions)
+                    if (direction.IsDeleted == false){
                     {
 
                         <option value=@direction.DirectionId>@direction.DirectionName</option>
+                    }
                     }
                 </select>
 
@@ -22,10 +24,12 @@
 
                 <select asp-for="PlId" class="form-select" aria-label="Default select example">
                     @foreach (Place place in Model.place)
+                    if (place.isdeleted == false){
                     {
 
                         <option value=@place.PlaceId>@place.DestinationName</option>
 
+                    }
                     }
                 </select>
             </div>
@@ -33,10 +37,12 @@
                 <label for="choose">Вибрати вчителя:</label>
                 <select asp-for="TId" class="form-select" aria-label="Default select example">
                    @foreach (var user in Model.users)
+                   
                         {
                         <option value=@user.Id>@user.UserName</option>
 
                         }
+                   
                     </select>
             </div>
             <input type="submit" value="Створити" class="submit" />

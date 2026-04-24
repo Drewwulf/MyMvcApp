@@ -151,7 +151,8 @@ namespace MyMvcApp.Controllers
                 return NotFound();
             }
 
-            _context.StudentToGroups.Remove(studentInGroup);
+            studentInGroup.isdeleted = true;
+
             _context.SaveChanges();
 
             return RedirectToAction("Details", "Groups", new { id = groupId });

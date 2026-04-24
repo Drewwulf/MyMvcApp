@@ -84,7 +84,7 @@ namespace MyMvcApp.Controllers
         public IActionResult Delete(int id)
         {
             var Direction = _context.Directions.Find(id);
-            _context.Directions.Remove(Direction);
+            Direction.IsDeleted=true;
             _context.SaveChanges();
             return RedirectToAction("Create");
         }

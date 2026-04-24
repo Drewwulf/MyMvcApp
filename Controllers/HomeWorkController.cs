@@ -83,7 +83,7 @@ namespace MyMvcApp.Controllers
         public IActionResult Delete(int id)
         {
             var homeworkPlace =_context.Homeworks.Find(id);
-            _context.Homeworks.Remove(homeworkPlace);
+            homeworkPlace.isdeleted = true;
             _context.SaveChanges();
             return RedirectToAction("Create");
         }

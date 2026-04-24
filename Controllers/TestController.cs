@@ -98,7 +98,7 @@ namespace MyMvcApp.Controllers
         public IActionResult Delete(int id)
         {
             var Test = _context.Tests.Find(id);
-            _context.Tests.Remove(Test);
+            Test.isdeleted = true;
             _context.SaveChanges();
             return RedirectToAction("Create");
         }
