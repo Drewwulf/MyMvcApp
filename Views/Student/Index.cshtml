@@ -1,10 +1,13 @@
-
-            <section class="cartka">
+@model List<Students>
+      
+<section class="cartka">
                 <div class="photoCartka">
                 <img src="/img/account_circle_500dp_BLACK_FILL0_wght400_GRAD0_opsz48.png">
                 </div>
                 <div class="inform">
-                    <div class="name"><p>Iм'я</p></div>
-                    <div class="informatia"><p>Інформація</p></div>
-                </div>
+        @foreach (var user in Model)
+        {
+            <p>@user.Username</p>
+        }
+    </div>
             </section>
