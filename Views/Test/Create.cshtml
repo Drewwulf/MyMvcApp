@@ -27,6 +27,7 @@
                        </thead>
                        <tbody>
                             @foreach(var test in Model.test)
+                                                if (test.isdeleted == false){
                         {
                            <tr><td>@test.TestId</td><td>@test.TestName</td><td>@test.TestDescription</td><td>@test.TestDifficualty</td>
                            <td>
@@ -42,7 +43,7 @@
 
                          </td></tr>
                             
-
+                         }
 
                         }
                         </tbody>

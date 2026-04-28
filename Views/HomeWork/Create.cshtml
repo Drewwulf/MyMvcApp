@@ -27,6 +27,8 @@
 
                     @foreach(var homework in Model.homeworks)
                         {
+                                    if (homework.isdeleted == false)
+                                    {
                            <tr><td>@homework.HomeworkId</td>
                            <td>@homework.HomeworkName</td>
                            <td>@homework.HomeworkDescription</td>
@@ -34,7 +36,7 @@
                            <a type="button" asp-controller="HomeWork" asp-action="Details" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Деталі</a>
                             <a type="button" asp-controller="HomeWork" asp-action="Delete" asp-route-id="@homework.HomeworkId" class="btn btn-danger">Видалити</a></td></tr>
 
-                           
+                           }
 
 
                         }

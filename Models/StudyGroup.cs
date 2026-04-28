@@ -4,7 +4,8 @@ namespace MyMvcApp.Models
     {
         public int StudyGroupId { get; set; } 
         public int DirectionId { get; set; } 
-        public int PlaceId { get; set; } 
+        public int PlaceId { get; set; }
+        public bool isdeleted { get; set; } = false;
         public string GroupName { get; set; }     
         public string GroupDescription { get; set; }   
         public Direction Direction { get; set; }= null!;
