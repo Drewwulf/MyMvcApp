@@ -1,0 +1,19 @@
+﻿@model MyMvcApp.Models.ViewModels.AnswerViewModel
+        <section class="section">
+            <div class="mainDiv">
+                <form class="p-3" asp-action="Create" method="post"c>
+
+    <!-- Відповідь 1 -->
+    <div class="d-flex align-items-center mb-2">
+                <input type="text" asp-for="Name" class="form-control me-3" placeholder="Перша відповідь">
+        <input style="width:50px; height:40px; margin: 0px 10px 30px 10px" type="checkbox" class="form-check-input">
+    </div>
+
+                        <input type="hidden" asp-for="TestId">
+                            <button type="submit" class="btn btn-dark w-100">Створити</button>
+
+                        </form>
+                    </div>
+                </section>
+
+
