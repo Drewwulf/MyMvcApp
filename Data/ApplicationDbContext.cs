@@ -11,7 +11,9 @@ namespace MyMvcApp.Data
         }
 
      public DbSet<Test> Tests { get; set; }
-     public DbSet<Question> Tasks { get; set; }
+
+        public DbSet<Schedule> Schedules { get; set; }
+        public DbSet<Question> Tasks { get; set; }
 
      public DbSet<StudyGroup> studyGroups { get; set; }
 
@@ -24,6 +26,28 @@ namespace MyMvcApp.Data
 
         public DbSet<StudentToGroup> StudentToGroups { get; set; }
 
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Students>()
+                .HasOne(s => s.group)
+                .WithMany(g => g.Students)
+                .HasForeignKey(s => s.StudyGroupId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Schedule>()
+                .HasOne(s => s.StudyGroup)
+                .WithMany()
+                .HasForeignKey(s => s.StudyGroupId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+            modelBuilder.Entity<Schedule>()
+                .HasOne(s => s.Place)
+                .WithMany()
+                .HasForeignKey(s => s.PlaceId)
+                .OnDelete(DeleteBehavior.NoAction);
+        }
+
     }
 }
