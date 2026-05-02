@@ -88,7 +88,6 @@ namespace MyMvcApp.Controllers
         public IActionResult Delete(int id)
         {
             var Place = _context.Places.Find(id);
-            Place.isdeleted = true;
             _context.SaveChanges();
             return RedirectToAction("Create");
         }
