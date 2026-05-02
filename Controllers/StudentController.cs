@@ -3,10 +3,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
+using MyMvcApp.Models;
+using MyMvcApp.Models.ViewModels;
 
 namespace MyMvcApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -14,6 +16,7 @@ namespace MyMvcApp.Controllers
 
         public StudentController(UserManager<IdentityUser> userManager, ApplicationDbContext context)
         {
+            _userManager = userManager;
             _context = context;
         }
         public IActionResult Index()
@@ -30,13 +33,29 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Details.cshtml
         }
-         public IActionResult MyGroup()
+        public async Task<IActionResult> MyGroup()
         {
-            return View(); // повертає Views/Destination/Details.cshtml
+            var user = await _userManager.GetUserAsync(User);
+            var userid = user.Id;
+            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
+            var groups = _context.StudentToGroups
+         .Include(g => g.studyGroup)
+             .ThenInclude(sg => sg.Teachers)
+         .Include(g => g.studyGroup)
+             .ThenInclude(sg => sg.Place)
+         .Include(g => g.student)
+         .Where(g => g.StudentId == studentId)
+         .ToList();
+            var group = _context.StudentToGroups
+        .Select(g => g.studyGroup)
+        .Distinct()
+        .ToList();
+            var model = new StudentPageViewModel {groups = group };
+            return View(model); // повертає Views/Destination/Details.cshtml
         }
         public IActionResult MySchedule()
         {
             return View(); // повертає Views/Destination/Details.cshtml
-        }
+        } 
     }
 }
