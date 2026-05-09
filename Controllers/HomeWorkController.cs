@@ -24,6 +24,22 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Details.cshtml
         }
+
+        public IActionResult Info()
+        {
+            var allStudents = _context.Students.ToList();
+            var allHomeWorks = _context.Homeworks.ToList();
+
+            var model = new HomeworkViewModel { homeworks = allHomeWorks, students = allStudents };
+
+            return View(model); // повертає Views/HomeWork/Info.cshtml
+        }
+        [HttpPost]
+        public IActionResult Add(HomeworkViewModel model)
+        {
+
+            return View();
+        }
         public IActionResult Create()
         {
              var allHomeworks = _context.Homeworks.ToList();

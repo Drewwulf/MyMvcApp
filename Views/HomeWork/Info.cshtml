@@ -1,0 +1,28 @@
+﻿@model MyMvcApp.Models.HomeworkViewModel
+<div class="mainDiv">
+    <form asp-action="Add" method="post">
+    <div class="divselect">
+        <label for="direct">Учні :</label>
+
+        <select asp-for="StudentId" class="form-select" aria-label="Default select example">
+            @foreach (var student in Model.students)
+            {
+                <option value=@student.Id>@student.Username</option>
+            }
+        </select>
+
+    </div>
+    <div class="divselect">
+        <label for="vanue">Домашння :</label>
+
+        <select asp-for="HomeworkId" class="form-select" aria-label="Default select example">
+            @foreach (var homework in Model.homeworks)
+            {
+                <option value=@homework.HomeworkId>@homework.HomeworkName</option>
+            }
+        </select>
+    </div>
+
+    <input type="submit" value="Додати" class="submit" />
+    </form>
+</div>

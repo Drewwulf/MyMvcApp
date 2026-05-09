@@ -17,7 +17,7 @@ namespace MyMvcApp.Models
 
         public List<StudentToGroup>  studentToGroups { get; set; }
 
-        
+        public List<StudentsToHomework> StudentsToHomework { get; set; }
 
     }
 }
