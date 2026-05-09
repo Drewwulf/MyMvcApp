@@ -44,10 +44,7 @@ namespace MyMvcApp.Controllers
             {
                 QuestionName = TaskViewModel.Name,
                 QuestionDescription = TaskViewModel.Description,
-                Ansver1Name  = TaskViewModel.Ansver1Name,
-                Ansver2Name = TaskViewModel.Ansver2Name,
-                Ansver3Name = TaskViewModel.Ansver3Name,
-                Ansver4Name = TaskViewModel.Ansver4Name,
+          
                 TestId = TaskViewModel.TestId
                 
             };
@@ -55,8 +52,7 @@ namespace MyMvcApp.Controllers
             _context.SaveChanges();
             var allTask = _context.Tasks.ToList();
             var model = new TaskViewModel { Question = allTask };
-
-            return RedirectToAction("Tasks");
+            return RedirectToAction("Tasks", new { id = TaskViewModel.TestId });
 
 
         }

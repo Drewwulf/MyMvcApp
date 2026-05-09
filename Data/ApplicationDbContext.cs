@@ -23,6 +23,7 @@ namespace MyMvcApp.Data
         public DbSet<Students> Students { get; set; }
 
         public DbSet<StudentToGroup> StudentToGroups { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
         
     }
