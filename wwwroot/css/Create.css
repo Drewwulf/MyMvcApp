@@ -1,10 +1,14 @@
 ﻿.mainDiv {
-    background-color: #2f3540; /* колір залишився */
-    width: 45%; /* трохи ширше */
-    min-height: 35vh; /* трохи вище */
+    background-color: #2f3540;
+    width: 45%;
+    display: flex;
+    min-height: 35vh;
     margin: 50px auto;
     text-align: center;
-    border-radius: 1.2vh; /* плавніший край */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.2vh;
     box-shadow: 3px 3px 40px #46494d;
     padding: 0px 0px 25px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -46,8 +50,7 @@
 
 .section {
     width: 100%;
-    display:block;
-    
+    display: block;
     align-items: center;
     padding: 20px 0;
 }
@@ -123,6 +126,6 @@ td {
     box-shadow: 2px 2px 23px black !important;
 }
 
-.finishText{
-    font-size:3.5rem;
+.finishText {
+    font-size: 3.5rem;
 }
