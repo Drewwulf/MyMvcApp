@@ -2,6 +2,7 @@
 {
     public class Answer
     {
+        internal object answerDescription;
 
         public int Id { get; set; }
         public bool IsCorrect { get; set; }

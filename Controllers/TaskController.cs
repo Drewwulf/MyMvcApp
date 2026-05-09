@@ -52,8 +52,7 @@ namespace MyMvcApp.Controllers
             _context.SaveChanges();
             var allTask = _context.Tasks.ToList();
             var model = new TaskViewModel { Question = allTask };
-
-            return RedirectToAction("Tasks");
+            return RedirectToAction("Tasks", new { id = TaskViewModel.TestId });
 
 
         }

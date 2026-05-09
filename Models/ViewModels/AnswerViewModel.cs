@@ -3,13 +3,11 @@
     public class AnswerViewModel
     {
 
-        public string Name { get; set; }
+        public List<Answer> answers;
 
-        public int TestId { get; set; }
-
-
-
-
-
+        public static object TestId { get; internal set; }
+        public bool IsCorrect { get; set; }
+        public int TaskId { get; set; }
+        public string answername { get;  set; }
     }
 }

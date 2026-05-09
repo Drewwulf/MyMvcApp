@@ -6,11 +6,13 @@ using MyMvcApp.Models.ViewModels;
 
 namespace MyMvcApp.Controllers
 {
-    public class AnswerController
+    public class AnswerController : Controller
     {
 
         private readonly ApplicationDbContext _context;
-        private object model;
+        private int id;
+        private List<Direction> allDirections;
+        private object allAnswers;
 
         public AnswerController(ApplicationDbContext context)
         {
@@ -20,23 +22,40 @@ namespace MyMvcApp.Controllers
         public IActionResult Create(AnswerViewModel AnswerViewModel,int id)
         {
 
-
-
-            return View();
-
-           
+            var allAnswer = _context.Answers.Where(x => x.QuestionId == id).ToList();
+            var model = new AnswerViewModel { answers = allAnswer,TaskId= id };
+            return View(model);
 
 
         }
-
-        private IActionResult View(object model)
+        [HttpPost]
+        
+        public IActionResult Create(AnswerViewModel AnswerViewModel)
         {
-            throw new NotImplementedException();
+            var answer = new Answer
+            {
+                answerName = AnswerViewModel.answername,
+                QuestionId = AnswerViewModel.TaskId,
+                IsCorrect = AnswerViewModel.IsCorrect
+
+            };
+            _context.Answers.Add(answer);
+            _context.SaveChanges();
+
+
+
+            var allAnswer = _context.Answers.Where(x => x.QuestionId == AnswerViewModel.TaskId).ToList();
+            var model = new AnswerViewModel { answers = allAnswer };
+            return View(model);
+        }
+        public IActionResult Delete(int id)
+        {
+            var Answer = _context.Answers.Find(id);
+            _context.Answers.Remove(Answer);
+            _context.SaveChanges();
+            return RedirectToAction("Create", new { id = Answer.QuestionId});
         }
 
-        private IActionResult RedirectToAction(string v)
-        {
-            throw new NotImplementedException();
-        }
+
     }
 }
