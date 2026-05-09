@@ -20,7 +20,7 @@ namespace MyMvcApp.Controllers
             _context = context;
         }
         public IActionResult Index()
-        {
+        {      
             var studentslist = _context.Students.ToList();
 
             return View(studentslist); // повертає Views/Student/Index.cshtml
@@ -52,6 +52,28 @@ namespace MyMvcApp.Controllers
         .ToList();
             var model = new StudentPageViewModel {groups = group };
             return View(model); // повертає Views/Destination/Details.cshtml
+        }
+
+        public async Task<IActionResult> Directions()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userid = user.Id;
+            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
+            var groups = _context.StudentToGroups
+         .ToList();
+            var directionsID1 = _context.StudentToGroups
+        .Select(g => g.studyGroup).Select(d => d.DirectionId)
+        .Distinct()
+        .ToList();
+            var firstId = directionsID1.FirstOrDefault();
+
+//            var direction = _context.Directions.FirstOrDefault(d => d.DirectionId == firstId);
+
+            var directions = _context.Directions
+    .Where(d => directionsID1.Contains(d.DirectionId))
+    .ToList();
+
+            return View(directions); // повертає /Views/Student/Directions.cshtml
         }
         public IActionResult MySchedule()
         {

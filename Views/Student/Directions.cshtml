@@ -1,0 +1,8 @@
+﻿@model List<Direction>
+<section class="directions">
+    @foreach (var direction in Model)
+    {
+        <p>@direction.DirectionName</p>
+        <p>@direction.DirectionDescription</p>
+    }
+</section>
