@@ -1,225 +1,222 @@
-
-
-
-.geoDiv{
+.section {
+    width: 100%;
+    min-height: 100vh;
+    padding: 40px 20px;
     display: flex;
-    align-items: center;
-    gap: 15px;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e293b, #334155);
 }
 
-.mainDiv3{
+.mainDiv {
+    width: 100%;
+    max-width: 900px;
+    background: #ffffff;
+    border-radius: 25px;
+    padding: 35px;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.25);
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 3px;
+    gap: 25px;
 }
 
-.mainDiv3 i{
-    font-size: 2.8rem;
-}
-
-.mainDiv3 p{
-    font-size: 1.5rem!important;
-}
-
-.maindiv2{
-
-    width: 40%;
-    min-height:30vh;
-    margin: 0 auto;
+.divselect {
     text-align: center;
-    border-radius: 3vh;
-    align-content: center;
-    background-color: #858a92;
 }
 
-
-
-.submit{
-    font-size: 2.1rem;
-    margin-top: 5vh!important;
+.divselect h2 {
+    font-size: 3rem;
+    color: #0f172a;
+    margin-bottom: 15px;
+    font-weight: 700;
 }
 
-.section{
-    align-content: center;
+.divselect p {
+    font-size: 1.2rem;
+    color: #475569;
+    line-height: 1.7;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-shedule {
+    text-decoration: none;
+    padding: 14px 30px;
+    border-radius: 14px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s;
+    background: #2563eb;
+    color: white;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.4);
+}
+
+.btn-shedule:hover {
+    transform: translateY(-3px);
+    background: #1d4ed8;
+}
+
+.divflex {
     width: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column !important;
-}
-
-section{
-    width: 100%;
-    align-content: center;
-    margin: 0 auto;
-
-}
-.divflex{
-    display: flex;
-    background-color: #aac8df;
-    min-height:30vh;
-
-     border-radius: 3vh;
-    width: 80%;
-}
-
-.btn{
-    font-size: 1.4rem;
-}
-
-
-
-@media (max-width: 1000px){
-    .mainDiv{
-        width: 48%;
-    }
-
-    .mainDiv form input{
-        font-size: 2.7rem;
-        width: 70%;
-    }
-
-    .submit{
-        font-size: 3.1rem!important;
-    }
-
-    .navbar-brand{
-        font-size: 3.8rem;
-    }
-
-    .table2{
-        text-align: center;
-        height: 73%;
-        align-content: center;
-        color: #ffffff;
-        display: flex;
-        width: 96%;
-        margin: 0 auto;
-        padding: 38px;
-        border-radius: 3vh;
-        justify-content: center;
-        box-shadow: 2px 2px 23px black;
-    }
-
-    .table2 td{
-        border: outset;
-        width: 100%;
-        font-size: 2.1rem!important;
-        font-weight: 500;
-         color: white;
-        align-content: center;
-    }
-
-    .table2 th{
-        padding: 20px;
-        border: outset;
-        font-size: 2.2rem;
-        align-content: center;
-    }
-
-    .btn{
-        font-size: 1.7rem;
-    }
-
-    .table2 table{
-        width: 17vw;
-    }
-}
-.sect {
-    min-height: 88vh;
-    display: flex;
-    align-items: center;
-    background-color: #cf9100;
+    margin-top: 20px;
+    background: #f8fafc;
+    border-radius: 20px;
+    padding: 25px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
 }
 
 .osnova {
-    min-height:30vh;
-    width: 50%;
-    margin: 0 auto;
-    border-radius: 3vh;
-    box-shadow: 2px 2px 23px black;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: column;
-    align-items: center;
-}
-
-.osnova div {
-    border-radius: 1vh;
-    text-align: center;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    font-size: 2rem;
-    width: 30rem;
-    font-family: "Ubuntu", sans-serif;
-    color: white;
-}
-
-.osnova div div {
-    display: flex;
-    border: 0;
-    justify-content: space-around;
-    padding: 10px;
-}
-
-.osnova div div h3 {
-    margin: 0;
-    align-content: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
 }
 
 .osnova a {
     text-decoration: none;
 }
-.buttonJS {
-    background-color: #e2c000;
-    border-bottom: 8px solid #a28a03;
-    border-right: 6px solid #a28a03;
-    border-radius: 10px;
-}
-.buttonJS:active {
-    background-color: #a28a03;
-}
-.buttonJS:hover {
-    cursor: pointer;
-}
-.buttonJS IMG{
-    background-color: #c1a401;
-    padding: 10px;
+
+.osnova > div {
+    min-height: 120px;
+    border-radius: 20px;
+    padding: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s;
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
 }
 
-.buttonCSS {
- background-color: dodgerblue;
- border-bottom: 8px solid #1c5f9f;
- border-right: 6px solid #1c5f9f;
- border-radius: 10px;
- }
-.buttonCSS:active {
-    background-color: #1c5f9f;
+.osnova > div:hover {
+    transform: translateY(-5px) scale(1.02);
 }
-.buttonCSS:hover {
-    cursor: pointer;
+
+.osnova img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
 }
-.buttonCSS img {
-    background-color: #2376c6;
-    padding: 10px;
+
+.osnova h3 {
+    margin: 0;
+    font-size: 1.6rem;
 }
 
 .buttonHTML {
-    background-color: orange;
-    border-bottom: 8px solid #966100;
-    border-right: 6px solid #966100;
-    border-radius: 10px;
+    background: linear-gradient(135deg, #ff8c00, #ff5f00);
 }
-.buttonHTML:active {
-    background-color: #966100;
+
+.buttonCSS {
+    background: linear-gradient(135deg, #2196f3, #0d47a1);
 }
-.buttonHTML:hover {
-    cursor: pointer;
+
+.buttonJS {
+    background: linear-gradient(135deg, #f7df1e, #c9a500);
+    color: black !important;
 }
-.buttonHTML img{
-    background-color: #bb7b04;
-    padding: 10px;
+
+.geoDiv {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.mainDiv3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mainDiv3 i {
+    font-size: 2rem;
+}
+
+.mainDiv3 p {
+    font-size: 1.1rem !important;
+}
+
+.submit {
+    margin-top: 25px !important;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 12px;
+    background: #22c55e;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.submit:hover {
+    background: #16a34a;
+    transform: scale(1.03);
+}
+
+.table2 {
+    width: 100%;
+    overflow-x: auto;
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.table2 table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table2 th {
+    background: #2563eb;
+    color: white;
+    padding: 15px;
+    font-size: 1.1rem;
+}
+
+.table2 td {
+    padding: 14px;
+    border-bottom: 1px solid #e2e8f0;
+    text-align: center;
+    color: #1e293b;
+}
+
+.table2 tr:hover {
+    background: #f1f5f9;
+}
+
+@media (max-width: 768px) {
+
+    .mainDiv {
+        padding: 25px;
+    }
+
+    .divselect h2 {
+        font-size: 2.2rem;
+    }
+
+    .divselect p {
+        font-size: 1rem;
+    }
+
+    .btn-shedule {
+        width: 100%;
+        text-align: center;
+    }
+
+    .buttons {
+        flex-direction: column;
+    }
+
+    .osnova {
+        grid-template-columns: 1fr;
+    }
+
+    .osnova h3 {
+        font-size: 1.3rem;
+    }
 }
