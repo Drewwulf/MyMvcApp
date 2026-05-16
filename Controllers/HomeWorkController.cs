@@ -24,6 +24,40 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Details.cshtml
         }
+
+        public IActionResult Info()
+        {
+            var allStudents = _context.Students.ToList();
+            var allHomeWorks = _context.Homeworks.ToList();
+            var allStudentsToHomeWorks = _context.StudentsToHomeworks.ToList();
+
+            var model = new HomeworkViewModel { homeworks = allHomeWorks, students = allStudents, studentsToHomeworks = allStudentsToHomeWorks };
+
+            return View(model); // повертає Views/HomeWork/Info.cshtml
+        }
+        [HttpPost]
+        public IActionResult Add(HomeworkViewModel model)
+        {
+
+            var allSH = _context.StudentsToHomeworks.Any(h => h.StudentId == model.StudentId && h.HomeworkId == model.HomeworkId);
+            if (allSH) 
+            {
+                TempData["Error"] = "Ця домашння вже задана учневі";
+                return RedirectToAction("Info");
+            }
+
+
+            var studentToHomeworkRecord = new StudentsToHomework
+            {
+                HomeworkId = model.HomeworkId,
+                StudentId = model.StudentId,
+                IsEnded = false
+            };
+            _context.StudentsToHomeworks.Add(studentToHomeworkRecord);
+            _context.SaveChanges();
+            return RedirectToAction("Info");
+
+        }
         public IActionResult Create()
         {
              var allHomeworks = _context.Homeworks.ToList();

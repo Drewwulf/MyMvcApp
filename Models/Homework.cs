@@ -9,6 +9,8 @@ namespace MyMvcApp.Models
         public bool isdeleted { get; set; } = false;
         public DateTime StartTime { get; set; }      // час початку
         public DateTime SubmitTime { get; set; }  
+
+        public List<StudentsToHomework> StudentsToHomework { get; set; }
     }
 }
  

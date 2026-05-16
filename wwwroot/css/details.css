@@ -4,7 +4,8 @@
 .geoDiv {
     display: flex;
     align-items: center;
-    gap: 15px;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .mainDiv333 {
