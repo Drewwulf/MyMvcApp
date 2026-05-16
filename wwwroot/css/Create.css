@@ -13,6 +13,19 @@
     padding: 0px 0px 25px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.mainDivHomework {
+   width:100%!important;
+}
+.buttonDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+    .mainDiv form{
+        width: 60%;
+    }
 
     .mainDiv:hover {
         transform: translateY(-7px); /* підйом при hover */
@@ -20,7 +33,8 @@
     }
 
     .mainDiv input {
-        width: 60%; /* трохи ширше інпути */
+        display: flex;
+        width: 70%; /* трохи ширше інпути */
         background-color: #3d4450 !important; /* колір залишився */
         border: none;
         border-bottom: 4px solid #1b212b; /* тонший бордер */
