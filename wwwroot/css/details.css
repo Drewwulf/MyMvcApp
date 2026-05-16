@@ -8,40 +8,38 @@
     gap: 10px;
 }
 
-.mainDiv3{
+.mainDiv333 {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 3px;
 }
 
-.mainDiv3 i{
-    font-size: 2.8rem;
-}
+    .mainDiv333 i {
+        font-size: 2.8rem;
+    }
 
-.mainDiv3 p{
-    font-size: 1.5rem!important;
-}
+    .mainDiv333 p {
+        font-size: 1.5rem !important;
+    }
 
-.maindiv2{
-
-    width: 40%;
-    min-height:30vh;
+.maindiv2 {
+    width: 80%;
+    min-height: 30vh;
     margin: 0 auto;
     text-align: center;
     border-radius: 3vh;
     align-content: center;
-    background-color: #858a92;
 }
 
 
 
-.submit{
+.submit {
     font-size: 2.1rem;
-    margin-top: 5vh!important;
+    margin-top: 5vh !important;
 }
 
-.section{
+.section {
     align-content: center;
     width: 100%;
     display: flex;
@@ -49,46 +47,48 @@
     flex-direction: column !important;
 }
 
-section{
+section {
     width: 100%;
     align-content: center;
     margin: 0 auto;
-
 }
-.divflex{
+
+.divflex {
     display: flex;
     background-color: #aac8df;
-    min-height:30vh;
-
-     border-radius: 3vh;
+    min-height: 30vh;
+    border-radius: 3vh;
     width: 80%;
 }
 
-.btn{
+.btn {
     font-size: 1.4rem;
 }
 
+.h2white {
+    color: white !important;
+}
 
 
-@media (max-width: 1000px){
-    .mainDiv{
+@media (max-width: 1000px) {
+    .mainDiv {
         width: 48%;
     }
 
-    .mainDiv form input{
-        font-size: 2.7rem;
-        width: 70%;
+        .mainDiv form input {
+            font-size: 2.7rem;
+            width: 70%;
+        }
+
+    .submit {
+        font-size: 3.1rem !important;
     }
 
-    .submit{
-        font-size: 3.1rem!important;
-    }
-
-    .navbar-brand{
+    .navbar-brand {
         font-size: 3.8rem;
     }
 
-    .table2{
+    .table2 {
         text-align: center;
         height: 73%;
         align-content: center;
@@ -102,30 +102,31 @@ section{
         box-shadow: 2px 2px 23px black;
     }
 
-    .table2 td{
-        border: outset;
-        width: 100%;
-        font-size: 2.1rem!important;
-        font-weight: 500;
-         color: white;
-        align-content: center;
-    }
+        .table2 td {
+            border: outset;
+            width: 100%;
+            font-size: 2.1rem !important;
+            font-weight: 500;
+            color: white;
+            align-content: center;
+        }
 
-    .table2 th{
-        padding: 20px;
-        border: outset;
-        font-size: 2.2rem;
-        align-content: center;
-    }
+        .table2 th {
+            padding: 20px;
+            border: outset;
+            font-size: 2.2rem;
+            align-content: center;
+        }
 
-    .btn{
+    .btn {
         font-size: 1.7rem;
     }
 
-    .table2 table{
+    .table2 table {
         width: 17vw;
     }
 }
+
 .sect {
     min-height: 88vh;
     display: flex;
@@ -134,7 +135,7 @@ section{
 }
 
 .osnova {
-    min-height:30vh;
+    min-height: 30vh;
     width: 50%;
     margin: 0 auto;
     border-radius: 3vh;
@@ -145,68 +146,75 @@ section{
     align-items: center;
 }
 
-.osnova div {
-    border-radius: 1vh;
-    text-align: center;
-    display: flex;
-    align-content: center;
-    align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
-    font-size: 2rem;
-    width: 30rem;
-    font-family: "Ubuntu", sans-serif;
-    color: white;
-}
+    .osnova div {
+        border-radius: 1vh;
+        text-align: center;
+        display: flex;
+        align-content: center;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        font-size: 2rem;
+        width: 30rem;
+        font-family: "Ubuntu", sans-serif;
+        color: white;
+    }
 
-.osnova div div {
-    display: flex;
-    border: 0;
-    justify-content: space-around;
-    padding: 10px;
-}
+        .osnova div div {
+            display: flex;
+            border: 0;
+            justify-content: space-around;
+            padding: 10px;
+        }
 
-.osnova div div h3 {
-    margin: 0;
-    align-content: center;
-}
+            .osnova div div h3 {
+                margin: 0;
+                align-content: center;
+            }
 
-.osnova a {
-    text-decoration: none;
-}
+    .osnova a {
+        text-decoration: none;
+    }
+
 .buttonJS {
     background-color: #e2c000;
     border-bottom: 8px solid #a28a03;
     border-right: 6px solid #a28a03;
     border-radius: 10px;
 }
-.buttonJS:active {
-    background-color: #a28a03;
-}
-.buttonJS:hover {
-    cursor: pointer;
-}
-.buttonJS IMG{
-    background-color: #c1a401;
-    padding: 10px;
-}
+
+    .buttonJS:active {
+        background-color: #a28a03;
+    }
+
+    .buttonJS:hover {
+        cursor: pointer;
+    }
+
+    .buttonJS IMG {
+        background-color: #c1a401;
+        padding: 10px;
+    }
 
 .buttonCSS {
- background-color: dodgerblue;
- border-bottom: 8px solid #1c5f9f;
- border-right: 6px solid #1c5f9f;
- border-radius: 10px;
- }
-.buttonCSS:active {
-    background-color: #1c5f9f;
+    background-color: dodgerblue;
+    border-bottom: 8px solid #1c5f9f;
+    border-right: 6px solid #1c5f9f;
+    border-radius: 10px;
 }
-.buttonCSS:hover {
-    cursor: pointer;
-}
-.buttonCSS img {
-    background-color: #2376c6;
-    padding: 10px;
-}
+
+    .buttonCSS:active {
+        background-color: #1c5f9f;
+    }
+
+    .buttonCSS:hover {
+        cursor: pointer;
+    }
+
+    .buttonCSS img {
+        background-color: #2376c6;
+        padding: 10px;
+    }
 
 .buttonHTML {
     background-color: orange;
@@ -214,13 +222,16 @@ section{
     border-right: 6px solid #966100;
     border-radius: 10px;
 }
-.buttonHTML:active {
-    background-color: #966100;
-}
-.buttonHTML:hover {
-    cursor: pointer;
-}
-.buttonHTML img{
-    background-color: #bb7b04;
-    padding: 10px;
-}
+
+    .buttonHTML:active {
+        background-color: #966100;
+    }
+
+    .buttonHTML:hover {
+        cursor: pointer;
+    }
+
+    .buttonHTML img {
+        background-color: #bb7b04;
+        padding: 10px;
+    }

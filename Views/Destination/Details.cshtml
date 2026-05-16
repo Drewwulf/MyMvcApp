@@ -1,14 +1,15 @@
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @model MyMvcApp.Models.PlaceViewModel
-    <section class="section">
-      <div class="mainDiv">
-                <div class="divselect">
-                    <h2>@Model.Name </h2>
-                    <p>@Model.Address</p>
-                </div>
-            <a href="/Views/Destination/Edit.html">Перейти</a>
-            </div>
-    </section>
+<section class="section">
+    <div class="mainDiv">
+        <div class="maindiv2">
+            <h2 class="h2white">Назва: @Model.Name </h2>
+            <p>Адреса:@Model.Address</p>
+        </div>
+        <a asp-controller="Destination" asp-action="Create" class="btn btn-dark">Повернутися назад</a>
+           
+    </div>
+</section>
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
-} 
+}

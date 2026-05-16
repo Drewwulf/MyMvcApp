@@ -1,14 +1,15 @@
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @model MyMvcApp.Models.DirectionViewModel
-    <section class="section">
-      <div class="mainDiv">
-                <div class="divselect">
-                    <h2>@Model.DirectionName </h2>
-                    <p>@Model.DirectionDescription</p>
-                </div>
-            </div>
-    </section>
-            @section Scripts
-        {
-            <partial name="_ValidationScriptsPartial" />
-                    }
+<section class="section">
+    <div class="mainDiv">
+        <div class="maindiv2">
+            <h2 class="h2white">Назва напрямку: @Model.DirectionName </h2>
+            <p>Опис напрямку: @Model.DirectionDescription</p>
+        </div>
+        <a asp-controller="Direction" asp-action="Create" class="btn btn-dark">Повернутися назад</a>
+    </div>
+</section>
+@section Scripts
+{
+    <partial name="_ValidationScriptsPartial" />
+}
