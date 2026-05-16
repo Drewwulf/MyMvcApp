@@ -79,5 +79,13 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Details.cshtml
         } 
+
+        public async Task<IActionResult> Homework()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userInfo = _context.Students.Where(i => i.UserId == user.Id).Include(hs => hs.StudentsToHomework).ThenInclude(h => h.Homework).ToList();
+
+            return View(userInfo); // повертає Views/Student/Homework.cshtml
+        }
     }
 }

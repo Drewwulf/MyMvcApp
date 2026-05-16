@@ -7,7 +7,7 @@ namespace MyMvcApp.Models
         public int StudentsToHomeworkId { get; set; }
         public int HomeworkId { get; set; }
 
-        public int UserId { get; set; }
+        public int StudentId { get; set; }
 
         public bool IsEnded { get; set; }
 
