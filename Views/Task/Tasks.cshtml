@@ -8,12 +8,12 @@
 
    
                     <div class="d-flex align-items-center mb-2">
-                     </div>
+                    </div>
 
 
    
                     <input type="hidden" asp-for="TestId">
-                        <button  type="submit" class="btn btn-dark w-100">Створити</button>
+                        <button type="submit" class="btn btn-dark w-100">Створити</button>
 
                     </form>
                 </div>
@@ -33,7 +33,7 @@
                                     <td>@task.QuestionDescription</td>
                                     <td>
                                         <a type="button" asp-controller="Tasks" asp-action="Edit" asp-route-id="@task.QuestionId" class="btn btn-secondary">Редагувати</a>
-                                        <a asp-controller="Answer" asp-action="Create" asp-route-id="@task.QuestionId" type="button" class="btn btn-dark">Деталі</a>
+                                        <a asp-controller="Answer" asp-action="Details" asp-route-id="@task.QuestionId" type="button" class="btn btn-dark">Деталі</a>
                                         <a type="button" asp-controller="Tasks" asp-action="Delete" asp-route-id="@task.QuestionId" class="btn btn-danger">Видалити</a>
                                     </td>
                                 </tr>

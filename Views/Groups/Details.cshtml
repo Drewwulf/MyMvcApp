@@ -10,12 +10,12 @@
             <a href="/Views/Group/Edit.html" class="btn btn-primary btn-sm">Редагувати</a>
         </div>
 
-        <div class="divselect mb-3">
+        <div class="maindiv2 mb-3">
             <p class="mb-1"><strong>Опис групи:</strong> @Model.Group.GroupDescription</p>
             <p class="mb-1"><strong>Напрямок:</strong> @Model.Group.Direction.DirectionName</p>
             <p class="mb-0"><strong>Вчитель:</strong> @Model.Group.Teachers.UserName</p>
         </div>
-
+        <a asp-controller="Groups" asp-action="Create" class="btn btn-dark">Повернутися назад</a>
         <a href="/schedule/schedule.html" class="btn btn-success mt-2">Додати розклад групи</a>
     </div>
 
@@ -27,18 +27,18 @@
                 <div class="kpi-label-total small">Загальна кількість учнів</div>
             </div>
             <form asp-action="AddStudentToGroup">
-            <div class="add-button-container">
-                <h5>Список Учнів</h5>
-               <select asp-for="StId">
+                <div class="add-button-container">
+                    <h5>Список Учнів</h5>
+                    <select asp-for="StId">
                         @foreach (var student in Model.students)
                         {
                             <option value=@student.Id>@student.Username</option>
 
                         }
-               </select>
-               <input type="hidden" asp-for="GrId" />
-                <button type="submit" class="btn btn-outline-primary btn-sm">+ Додати Нового</button>
-            </div>
+                    </select>
+                    <input type="hidden" asp-for="GrId" />
+                    <button type="submit" class="btn btn-outline-primary btn-sm">+ Додати Нового</button>
+                </div>
             </form>
             @if (TempData["Error"] != null)
             {
@@ -59,10 +59,10 @@
                 <tbody id="studentsListBody" class="table-dark">
                     @foreach (var studentToGroup in Model.studentsToGroup)
                     {
-                       <tr class="table-dark">
-                           <td>@studentToGroup.student.Username</td>
+                        <tr class="table-dark">
+                            <td>@studentToGroup.student.Username</td>
                             <td><a asp-action="DeleteStudentFromGroup" method="get" asp-controller="Groups" asp-route-studentId="@studentToGroup.StudentId" asp-route-groupId="@studentToGroup.StudyGroupId" class="btn btn-danger">Видалити</a></td>
-                       </tr>
+                        </tr>
                     }
                 </tbody>
             </table>
