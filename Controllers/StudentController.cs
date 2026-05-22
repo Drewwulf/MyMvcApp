@@ -71,9 +71,15 @@ namespace MyMvcApp.Controllers
 
             var directions = _context.Directions
     .Where(d => directionsID1.Contains(d.DirectionId))
+    .Include(st => st.Tests)
     .ToList();
 
             return View(directions); // повертає /Views/Student/Directions.cshtml
+        }
+
+        public IActionResult Test(var s)
+        {
+            return View();
         }
         public IActionResult MySchedule()
         {

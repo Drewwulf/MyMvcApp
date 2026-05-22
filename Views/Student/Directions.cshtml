@@ -1,14 +1,28 @@
 ﻿@model List<Direction>
+
 <section class="directions">
     <section class="section">
         @foreach (var direction in Model)
         {
             <div class="mainDiv">
                 <h2>@direction.DirectionName</h2>
+
                 <div class="mainDiv3">
                     <p>@direction.DirectionDescription</p>
+
+                    <select class="form-select" aria-label="Default select example">
+                        @foreach (var test in direction.Tests)
+                        {
+                            <option value="@test.TestId">
+                                @test.TestName
+                            </option>
+                        }
+                    </select>
+
                     <div class="buttonDiv">
-                        <button class="btn btn-dark">Пройти тест</button>
+                        <button class="btn btn-dark">
+                            Пройти тест
+                        </button>
                     </div>
                 </div>
             </div>
