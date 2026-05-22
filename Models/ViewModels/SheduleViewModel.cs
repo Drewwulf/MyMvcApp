@@ -6,7 +6,7 @@
 
         public string PlaceId { get; set; }
 
-        public List<WeekDay> DayOfWeek { get; set; }
+        public List<WeekDay> DaysOfWeek { get; set; }
 
         public DateTime Time { get; set; }
 

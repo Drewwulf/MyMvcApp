@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
@@ -12,6 +13,11 @@ namespace MyMvcApp.Controllers
     public class ScheduleController : Controller
     {
         private readonly ApplicationDbContext _context;
+        public ScheduleController(ApplicationDbContext context)
+        {
+            _context = context;
+            
+        }
         public IActionResult Index()
         {
             return View(); // повертає Views/Schedule/Index.cshtml
@@ -27,7 +33,11 @@ namespace MyMvcApp.Controllers
         public IActionResult Create()
         {
             var allSchedules = _context.Schedules.ToList();
-            var model = new SheduleViewModel {Places=_context.Places.ToList()};
+            var model = new SheduleViewModel { Places = _context.Places.ToList(),
+                DaysOfWeek = Enum.GetValues(typeof(WeekDay))
+                     .Cast<WeekDay>()
+                     .ToList()
+            };
 
             return View(model);
         }
