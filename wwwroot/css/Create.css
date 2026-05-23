@@ -16,6 +16,27 @@
 .mainDivHomework {
    width:100%!important;
 }
+
+.mainTestDiv {
+    width: 100% !important;
+    background-color: #2f3540;
+    display: flex;
+    margin: 50px auto;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.2vh;
+    box-shadow: 3px 3px 40px #46494d;
+    padding: 15px 0px 15px 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mainTestDiv a{
+    width: 95% !important;
+
+}
+
 .buttonDiv {
     width: 100%;
     display: flex;

@@ -10,19 +10,10 @@
                 <div class="mainDiv3">
                     <p>@direction.DirectionDescription</p>
 
-                    <select class="form-select" aria-label="Default select example">
-                        @foreach (var test in direction.Tests)
-                        {
-                            <option value="@test.TestId">
-                                @test.TestName
-                            </option>
-                        }
-                    </select>
-
                     <div class="buttonDiv">
-                        <button class="btn btn-dark">
-                            Пройти тест
-                        </button>
+                        <a asp-controller="Student" asp-action="Tests" asp-route-id="@direction.DirectionId" class="btn btn-dark">
+                            Подививтись тести 
+                        </a>
                     </div>
                 </div>
             </div>

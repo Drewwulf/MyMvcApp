@@ -71,15 +71,15 @@ namespace MyMvcApp.Controllers
 
             var directions = _context.Directions
     .Where(d => directionsID1.Contains(d.DirectionId))
-    .Include(st => st.Tests)
     .ToList();
 
             return View(directions); // повертає /Views/Student/Directions.cshtml
         }
 
-        public IActionResult Test(var s)
+        public IActionResult Tests(int id)
         {
-            return View();
+            var allTests = _context.Tests.Where(ts => ts.DirectionId == id).ToList();
+            return View(allTests);
         }
         public IActionResult MySchedule()
         {
