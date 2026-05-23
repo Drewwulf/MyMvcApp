@@ -32,9 +32,32 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.mainTestDiv a{
-    width: 95% !important;
+.mainQuestionDiv {
+    width: 100% !important;
+    background-color: #2f3540;
+    display: flex;
+    margin: 20px auto;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+    border-radius: 1.2vh;
+    box-shadow: 3px 3px 40px #46494d;
+    padding: 15px 10px 15px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: whitesmoke;
+}
 
+.TestNameDiv {
+    width: 100% !important;
+    background-color: #2f3540;
+    border-radius: 1.2vh;
+    padding: 5px 10px 5px 30px;
+    color:whitesmoke
+}
+
+.mainTestDiv a {
+    width: 95% !important;
 }
 
 .buttonDiv {

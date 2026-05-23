@@ -81,6 +81,14 @@ namespace MyMvcApp.Controllers
             var allTests = _context.Tests.Where(ts => ts.DirectionId == id).ToList();
             return View(allTests);
         }
+
+        public IActionResult TestPage(int id)
+        {
+            var tasks = _context.Tasks.Where(ts => ts.TestId == id).Include(t=>t.Test).Include(ans => ans.Answers).ToList();
+
+
+            return View(tasks);
+        }
         public IActionResult MySchedule()
         {
             return View(); // повертає Views/Destination/Details.cshtml
