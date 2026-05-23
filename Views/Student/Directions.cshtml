@@ -1,14 +1,19 @@
 ﻿@model List<Direction>
+
 <section class="directions">
     <section class="section">
         @foreach (var direction in Model)
         {
             <div class="mainDiv">
                 <h2>@direction.DirectionName</h2>
+
                 <div class="mainDiv3">
                     <p>@direction.DirectionDescription</p>
+
                     <div class="buttonDiv">
-                        <button class="btn btn-dark">Пройти тест</button>
+                        <a asp-controller="Student" asp-action="Tests" asp-route-id="@direction.DirectionId" class="btn btn-dark">
+                            Подививтись тести 
+                        </a>
                     </div>
                 </div>
             </div>

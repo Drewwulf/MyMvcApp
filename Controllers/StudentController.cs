@@ -75,6 +75,12 @@ namespace MyMvcApp.Controllers
 
             return View(directions); // повертає /Views/Student/Directions.cshtml
         }
+
+        public IActionResult Tests(int id)
+        {
+            var allTests = _context.Tests.Where(ts => ts.DirectionId == id).ToList();
+            return View(allTests);
+        }
         public IActionResult MySchedule()
         {
             return View(); // повертає Views/Destination/Details.cshtml
