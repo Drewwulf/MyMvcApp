@@ -1,0 +1,22 @@
+﻿@model List<Question>
+<div class="TestNameDiv">
+    <h2>@Model.First().Test.TestName<h1>
+    <h5>@Model.First().Test.TestDescription</h5>
+</div>
+@foreach (var task in Model)
+{
+    <div class="mainQuestionDiv">
+        <h2>@task.QuestionName</h2>
+        <p>@task.QuestionDescription</p>
+        <div class="MainAnswerDiv">
+            @foreach (var ans in task.Answers)
+            {
+                <div class="AnswersDiv">
+                        <input class="answersRadio" type="radio" id="@ans.QuestionId" name="drone" value="huey" checked />
+                        <label for="@ans.QuestionId">@ans.answerName</label>
+                </div>
+            }
+        </div>
+    </div>
+}
+<a> Здати тест</a>
