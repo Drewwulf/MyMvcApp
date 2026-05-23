@@ -72,7 +72,7 @@ namespace MyMvcApp.Controllers
             var liststud = _context.Students.ToList();
 
 
-            var allStudents = _context.StudentToGroups.Include(s=>s.student).Where(g=>g.StudyGroupId == id).ToList();
+            var allStudents = _context.StudentToGroups.Include(s=>s.student).Where(g=>g.StudyGroupId == id).Where(s=>s.isdeleted==false).ToList();
             var modal = new StudyGroupViewModel
             {
                 Group = group,
@@ -142,17 +142,18 @@ namespace MyMvcApp.Controllers
         [HttpGet]
         public IActionResult DeleteStudentFromGroup(int studentId, int groupId)
         {
-            var studentInGroup = _context.StudentToGroups
+            var studentInGroup = _context.StudentToGroups.Where(s => s.isdeleted == false)
                 .FirstOrDefault(x => x.StudentId == studentId
                                   && x.StudyGroupId == groupId);
+            
 
             if (studentInGroup == null)
             {
                 return NotFound();
+                
             }
-
-            studentInGroup.isdeleted = true;
-
+           studentInGroup.isdeleted = true;
+          
             _context.SaveChanges();
 
             return RedirectToAction("Details", "Groups", new { id = groupId });
@@ -162,7 +163,7 @@ namespace MyMvcApp.Controllers
         public IActionResult AddStudentToGroup(StudyGroupViewModel studyGroupViewModel)
         {
             // рахуємо скільки вже студентів у групі
-            var count = _context.StudentToGroups
+            var count = _context.StudentToGroups.Where(s=>s.isdeleted==false)
                 .Count(x => x.StudyGroupId == studyGroupViewModel.GrId);
 
             // перевірка
@@ -171,7 +172,7 @@ namespace MyMvcApp.Controllers
                 TempData["Error"] = "У групі вже максимальна кількість учнів (3)";
                 return RedirectToAction("Details", "Groups", new { id = studyGroupViewModel.GrId });
             }
-            bool exists = _context.StudentToGroups
+            bool exists = _context.StudentToGroups.Where(s=>s.isdeleted==false)
     .Any(x => x.StudentId == studyGroupViewModel.StId
            && x.StudyGroupId == studyGroupViewModel.GrId);
             if (exists)
