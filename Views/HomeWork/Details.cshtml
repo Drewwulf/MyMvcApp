@@ -1,9 +1,12 @@
-
+@using Microsoft.AspNetCore.Mvc.ModelBinding
+@model MyMvcApp.Models.HomeworkViewModel
 <section class="section">
     <div class="mainDiv">
         <div class="maindiv2">
-            <h2>Назва:</h2>
-            <p>Опис:</p>
+            <h1 class="hmwname">Назва:@Model.HomeworkName</h1>
+            <p class="opisssp">Опис: @Model.HomeworkDescription </p>
+            <p>Початок: @Model.StartTime</p>
+            <p>Здача: @Model.SubmitTime</p>
             <a asp-controller="HomeWork" asp-action="Create" class="btn btn-dark">Повернутися назад</a>
         </div>
     </div>

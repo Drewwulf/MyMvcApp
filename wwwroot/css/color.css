@@ -10,12 +10,19 @@ footer{
     background-color: #1a1d24 !important;
 }
 
-h1{
+h1 {
     color: white;
+    
 }
+.hmwname{
+    font-size: 3rem;
 
-p{
+}
+p {
     color: white;
+    font-size: 1.5rem !important;
+    font-family: "Ubuntu", sans-serif;
+    font-weight: bold;
 }
 
 header .nav-link, .navbar-brand

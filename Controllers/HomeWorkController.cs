@@ -10,6 +10,8 @@ namespace MyMvcApp.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+       
+
         public HomeWorkController(ApplicationDbContext context)
         {
             _context = context;
@@ -20,9 +22,18 @@ namespace MyMvcApp.Controllers
             return View(); // повертає Views/Homework/Index.cshtml
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View(); // повертає Views/Destination/Details.cshtml
+            var HomeworkPlace = _context.Homeworks.Find(id);
+            var modal = new HomeworkViewModel
+            {
+                HomeworkName = HomeworkPlace.HomeworkName,
+                HomeworkDescription = HomeworkPlace.HomeworkDescription,
+                StartTime = HomeworkPlace.StartTime,
+                SubmitTime = HomeworkPlace.SubmitTime,
+            };
+
+            return View(modal); 
         }
 
         public IActionResult Info()
