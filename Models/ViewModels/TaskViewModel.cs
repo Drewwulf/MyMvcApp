@@ -4,6 +4,7 @@
     {
         public int DirectionId { get; set; }
         public int TestId { get; set; }
+        public int TaskId { get; set; }
         public string Name { get; set; }
         public string Ansver1Name { get; set; }
         public string Ansver2Name { get; set; }
