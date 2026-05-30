@@ -19,9 +19,17 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Task/Index.cshtml
         }
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View(); // повертає Views/Task/Edit.cshtml
+            var task = _context.Tasks.Find(id);
+            var modal = new TaskViewModel
+            {
+                TaskId = task.QuestionId,
+                Name = task.QuestionName,
+                Description = task.QuestionDescription,
+            };
+
+            return View(modal); // повертає Views/Task/Edit.cshtml
         }
         public IActionResult Details()
         {
@@ -36,6 +44,19 @@ namespace MyMvcApp.Controllers
             return View(model);
         }
         [HttpPost]
+
+        public IActionResult Edit(TaskViewModel modal)
+        {
+            var task = _context.Tasks.Find(modal.TaskId);
+
+            task.QuestionName = modal.Name;
+            task.QuestionDescription = modal.Description;
+
+            _context.SaveChanges();
+
+            return View(modal);
+        }
+
         public IActionResult Create(TaskViewModel TaskViewModel)
         {
            

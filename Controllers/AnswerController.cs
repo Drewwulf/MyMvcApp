@@ -19,7 +19,21 @@ namespace MyMvcApp.Controllers
             _context = context;
         }
         [HttpGet]
-        public IActionResult Create(AnswerViewModel AnswerViewModel,int id)
+
+        public IActionResult Edit(int id)
+        {
+            var answer = _context.Answers.Find(id);
+
+            var modal = new AnswerViewModel
+            {
+                AnswerName = answer.answerName,
+                AnswerId = answer.Id,
+                IsCorrect = answer.IsCorrect
+            };
+
+            return View(modal);
+        }
+        public IActionResult Details(int id)
         {
 
             var allAnswer = _context.Answers.Where(x => x.QuestionId == id).ToList();
@@ -29,12 +43,23 @@ namespace MyMvcApp.Controllers
 
         }
         [HttpPost]
-        
+        public IActionResult Edit(AnswerViewModel modal)
+        {
+            var answer = _context.Answers.Find(modal.AnswerId);
+
+            answer.answerName = modal.AnswerName;
+            answer.IsCorrect = modal.IsCorrect;
+
+            _context.SaveChanges();
+
+            return View(modal);
+        }
+
         public IActionResult Create(AnswerViewModel AnswerViewModel)
         {
             var answer = new Answer
             {
-                answerName = AnswerViewModel.answername,
+                answerName = AnswerViewModel.AnswerName,
                 QuestionId = AnswerViewModel.TaskId,
                 IsCorrect = AnswerViewModel.IsCorrect
 
