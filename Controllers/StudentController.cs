@@ -89,6 +89,41 @@ namespace MyMvcApp.Controllers
 
             return View(tasks);
         }
+
+        [HttpGet]
+        public IActionResult ShowScore(int score, int total)
+        {
+            double percentage = (double)score / total * 100;
+
+            return View((score, total, percentage));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CheckTest(List<AnswerSubmission> submissions)
+        {
+            int correctAnswersCount = 0;
+            int totalQuestions = submissions.Count;
+
+            foreach (var submission in submissions)
+            {
+                var question = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submission.QuestionId);
+
+                if (question != null)
+                {
+                    var selectedAnswer = question.Answers
+                                                 .FirstOrDefault(a => a.Id == submission.SelectedAnswerId);
+
+                    if (selectedAnswer != null && selectedAnswer.IsCorrect)
+                    {
+                        correctAnswersCount++;
+                    }
+                }
+            }
+
+            return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions });
+        }
+
         public IActionResult MySchedule()
         {
             return View(); // повертає Views/Destination/Details.cshtml

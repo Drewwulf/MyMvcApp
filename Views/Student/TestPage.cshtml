@@ -1,22 +1,32 @@
-﻿@model List<Question>
+﻿@model List<MyMvcApp.Models.Question>
+
 <div class="TestNameDiv">
-    <h2>@Model.First().Test.TestName<h1>
+    <h2>@Model.First().Test.TestName</h2>
     <h5>@Model.First().Test.TestDescription</h5>
 </div>
-@foreach (var task in Model)
-{
-    <div class="mainQuestionDiv">
-        <h2>@task.QuestionName</h2>
-        <p>@task.QuestionDescription</p>
-        <div class="MainAnswerDiv">
-            @foreach (var ans in task.Answers)
-            {
-                <div class="AnswersDiv">
-                        <input class="answersRadio" type="radio" id="@ans.QuestionId" name="drone" value="huey" checked />
-                        <label for="@ans.QuestionId">@ans.answerName</label>
-                </div>
-            }
+
+<form method="post" asp-action="CheckTest">
+    
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <input type="hidden" name="[@i].QuestionId" value="@Model[i].QuestionId" />
+
+        <div class="mainQuestionDiv">
+            <h2>@Model[i].QuestionName</h2>
+            <p>@Model[i].QuestionDescription</p>
+            
+            <div class="MainAnswerDiv">
+                @foreach (var ans in Model[i].Answers)
+                {
+                    <div class="AnswersDiv">
+                        <input class="answersRadio" type="radio" id="ans_@ans.Id" name="[@i].SelectedAnswerId" value="@ans.Id" required />
+                        
+                        <label for="ans_@ans.Id">@ans.answerName</label>
+                    </div>
+                }
+            </div>
         </div>
-    </div>
-}
-<a> Здати тест</a>
+    }
+
+    <button type="submit" class="btn-submit">Здати тест</button>
+</form>
