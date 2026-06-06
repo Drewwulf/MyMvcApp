@@ -1,0 +1,18 @@
+﻿@model List<Students>
+
+@foreach (var homew in Model)
+{
+    @foreach (var home in homew.StudentsToHomework)
+    {
+        <div class="mainDivHomework mainDiv">
+            <h2>@home.Homework.HomeworkName</h2>
+            <div class="mainDiv3">
+                <p>@home.Homework.HomeworkDescription</p>
+                <div class="buttonDiv">
+                    <button class="btn btn-dark">Здати домашнє завдання</button>
+                </div>
+            </div>
+            <p>З @home.Homework.StartTime До @home.Homework.SubmitTime</p>
+        </div>
+    }
+}

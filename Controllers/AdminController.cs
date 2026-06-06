@@ -33,6 +33,15 @@ namespace MyMvcApp.Controllers
             // Формуємо повне ім'я
             var fullName = FirstName + "." + LastName;
 
+            var emailList = _userManager.Users
+        .Select(u => u.Email)
+        .ToList();
+
+            if (!emailList.Contains(Email))
+            {
+
+           
+
             // Створюємо нового користувача
             var user = new IdentityUser
             {
@@ -81,7 +90,7 @@ namespace MyMvcApp.Controllers
             {
                 ModelState.AddModelError("", error.Description);
             }
-
+            }
             return View();
         }
 

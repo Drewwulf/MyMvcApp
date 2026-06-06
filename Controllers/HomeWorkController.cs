@@ -10,6 +10,8 @@ namespace MyMvcApp.Controllers
     {
         private readonly ApplicationDbContext _context;
 
+       
+
         public HomeWorkController(ApplicationDbContext context)
         {
             _context = context;
@@ -20,9 +22,52 @@ namespace MyMvcApp.Controllers
             return View(); // повертає Views/Homework/Index.cshtml
         }
 
-        public IActionResult Details()
+        public IActionResult Details(int id)
         {
-            return View(); // повертає Views/Destination/Details.cshtml
+            var HomeworkPlace = _context.Homeworks.Find(id);
+            var modal = new HomeworkViewModel
+            {
+                HomeworkName = HomeworkPlace.HomeworkName,
+                HomeworkDescription = HomeworkPlace.HomeworkDescription,
+                StartTime = HomeworkPlace.StartTime,
+                SubmitTime = HomeworkPlace.SubmitTime,
+            };
+
+            return View(modal); 
+        }
+
+        public IActionResult Info()
+        {
+            var allStudents = _context.Students.ToList();
+            var allHomeWorks = _context.Homeworks.ToList();
+            var allStudentsToHomeWorks = _context.StudentsToHomeworks.ToList();
+
+            var model = new HomeworkViewModel { homeworks = allHomeWorks, students = allStudents, studentsToHomeworks = allStudentsToHomeWorks };
+
+            return View(model); // повертає Views/HomeWork/Info.cshtml
+        }
+        [HttpPost]
+        public IActionResult Add(HomeworkViewModel model)
+        {
+
+            var allSH = _context.StudentsToHomeworks.Any(h => h.StudentId == model.StudentId && h.HomeworkId == model.HomeworkId);
+            if (allSH) 
+            {
+                TempData["Error"] = "Ця домашння вже задана учневі";
+                return RedirectToAction("Info");
+            }
+
+
+            var studentToHomeworkRecord = new StudentsToHomework
+            {
+                HomeworkId = model.HomeworkId,
+                StudentId = model.StudentId,
+                IsEnded = false
+            };
+            _context.StudentsToHomeworks.Add(studentToHomeworkRecord);
+            _context.SaveChanges();
+            return RedirectToAction("Info");
+
         }
         public IActionResult Create()
         {
@@ -83,7 +128,7 @@ namespace MyMvcApp.Controllers
         public IActionResult Delete(int id)
         {
             var homeworkPlace =_context.Homeworks.Find(id);
-            _context.Homeworks.Remove(homeworkPlace);
+            homeworkPlace.isdeleted = true;
             _context.SaveChanges();
             return RedirectToAction("Create");
         }

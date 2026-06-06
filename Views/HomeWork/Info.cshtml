@@ -1,0 +1,70 @@
+﻿@model MyMvcApp.Models.HomeworkViewModel
+<div class="mainDiv">
+    <form asp-action="Add" method="post">
+    <div class="divselect">
+        <label for="direct">Учні :</label>
+
+        <select asp-for="StudentId" class="form-select" aria-label="Default select example">
+            @foreach (var student in Model.students)
+            {
+                <option value=@student.Id>@student.Username</option>
+            }
+        </select>
+
+    </div>
+    <div class="divselect">
+        <label for="vanue">Домашння :</label>
+
+        <select asp-for="HomeworkId" class="form-select" aria-label="Default select example">
+            @foreach (var homework in Model.homeworks)
+            {
+                <option value=@homework.HomeworkId>@homework.HomeworkName</option>
+            }
+        </select>
+    </div>
+
+    <input type="submit" value="Додати" class="submit" />
+    </form>
+    @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
+
+</div>
+<section>
+    <div class="table2">
+       
+        <table class="table">
+            <thead class="table-dark th1">
+                <tr><th class="th">Номер</th><th>Назва</th><th>Учень</th><th>Дії</th></tr>
+            </thead>
+            <tbody>
+
+                @foreach (var homew in Model.homeworks)
+                {
+                    if (!homew.isdeleted)
+                    {
+                        @foreach (var homework in Model.studentsToHomeworks)
+                        {
+                            <tr>
+                                <td>@homework.StudentsToHomeworkId</td>
+                                <td>@homework.Homework.HomeworkName</td>
+                                <td>@homework.Student.Username</td>
+                                <td>
+                                    <a type="button" asp-controller="HomeWork" asp-action="Details" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Деталі</a>
+                                    <a type="button" asp-controller="HomeWork" asp-action="Delete" asp-route-id="@homework.HomeworkId" class="btn btn-danger">Видалити</a>
+                                </td>
+                            </tr>
+
+
+
+                        }
+                    }
+                }
+            </tbody>
+
+        </table>
+    </div>
+</section>

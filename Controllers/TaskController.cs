@@ -19,9 +19,17 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Task/Index.cshtml
         }
-        public IActionResult Edit()
+        public IActionResult Edit(int id)
         {
-            return View(); // повертає Views/Task/Edit.cshtml
+            var task = _context.Tasks.Find(id);
+            var modal = new TaskViewModel
+            {
+                TaskId = task.QuestionId,
+                Name = task.QuestionName,
+                Description = task.QuestionDescription,
+            };
+
+            return View(modal); // повертає Views/Task/Edit.cshtml
         }
         public IActionResult Details()
         {
@@ -36,6 +44,19 @@ namespace MyMvcApp.Controllers
             return View(model);
         }
         [HttpPost]
+
+        public IActionResult Edit(TaskViewModel modal)
+        {
+            var task = _context.Tasks.Find(modal.TaskId);
+
+            task.QuestionName = modal.Name;
+            task.QuestionDescription = modal.Description;
+
+            _context.SaveChanges();
+
+            return View(modal);
+        }
+
         public IActionResult Create(TaskViewModel TaskViewModel)
         {
            
@@ -44,10 +65,7 @@ namespace MyMvcApp.Controllers
             {
                 QuestionName = TaskViewModel.Name,
                 QuestionDescription = TaskViewModel.Description,
-                Ansver1Name  = TaskViewModel.Ansver1Name,
-                Ansver2Name = TaskViewModel.Ansver2Name,
-                Ansver3Name = TaskViewModel.Ansver3Name,
-                Ansver4Name = TaskViewModel.Ansver4Name,
+          
                 TestId = TaskViewModel.TestId
                 
             };
@@ -55,8 +73,7 @@ namespace MyMvcApp.Controllers
             _context.SaveChanges();
             var allTask = _context.Tasks.ToList();
             var model = new TaskViewModel { Question = allTask };
-
-            return RedirectToAction("Tasks");
+            return RedirectToAction("Tasks", new { id = TaskViewModel.TestId });
 
 
         }

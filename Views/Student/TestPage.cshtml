@@ -1,0 +1,32 @@
+﻿@model List<MyMvcApp.Models.Question>
+
+<div class="TestNameDiv">
+    <h2>@Model.First().Test.TestName</h2>
+    <h5>@Model.First().Test.TestDescription</h5>
+</div>
+
+<form method="post" asp-action="CheckTest">
+    
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <input type="hidden" name="[@i].QuestionId" value="@Model[i].QuestionId" />
+
+        <div class="mainQuestionDiv">
+            <h2>@Model[i].QuestionName</h2>
+            <p>@Model[i].QuestionDescription</p>
+            
+            <div class="MainAnswerDiv">
+                @foreach (var ans in Model[i].Answers)
+                {
+                    <div class="AnswersDiv">
+                        <input class="answersRadio" type="radio" id="ans_@ans.Id" name="[@i].SelectedAnswerId" value="@ans.Id" required />
+                        
+                        <label for="ans_@ans.Id">@ans.answerName</label>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+
+    <button type="submit" class="btn-submit">Здати тест</button>
+</form>

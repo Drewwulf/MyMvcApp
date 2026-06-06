@@ -1,14 +1,75 @@
 ﻿.mainDiv {
-    background-color: #2f3540; /* колір залишився */
-    width: 45%; /* трохи ширше */
-    min-height: 35vh; /* трохи вище */
+    background-color: #2f3540;
+    width: 45%;
+    display: flex;
+    min-height: 35vh;
     margin: 50px auto;
     text-align: center;
-    border-radius: 1.2vh; /* плавніший край */
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.2vh;
     box-shadow: 3px 3px 40px #46494d;
     padding: 0px 0px 25px 0px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.mainDivHomework {
+   width:100%!important;
+}
+
+.mainTestDiv {
+    width: 100% !important;
+    background-color: #2f3540;
+    display: flex;
+    margin: 50px auto;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 1.2vh;
+    box-shadow: 3px 3px 40px #46494d;
+    padding: 15px 0px 15px 0px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mainQuestionDiv {
+    width: 100% !important;
+    background-color: #2f3540;
+    display: flex;
+    margin: 20px auto;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+    border-radius: 1.2vh;
+    box-shadow: 3px 3px 40px #46494d;
+    padding: 15px 10px 15px 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: whitesmoke;
+}
+
+.TestNameDiv {
+    width: 100% !important;
+    background-color: #2f3540;
+    border-radius: 1.2vh;
+    padding: 5px 10px 5px 30px;
+    color:whitesmoke
+}
+
+.mainTestDiv a {
+    width: 95% !important;
+}
+
+.buttonDiv {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+    .mainDiv form{
+        width: 60%;
+    }
 
     .mainDiv:hover {
         transform: translateY(-7px); /* підйом при hover */
@@ -16,7 +77,8 @@
     }
 
     .mainDiv input {
-        width: 60%; /* трохи ширше інпути */
+        display: flex;
+        width: 70%; /* трохи ширше інпути */
         background-color: #3d4450 !important; /* колір залишився */
         border: none;
         border-bottom: 4px solid #1b212b; /* тонший бордер */
@@ -46,8 +108,7 @@
 
 .section {
     width: 100%;
-    display:block;
-    
+    display: block;
     align-items: center;
     padding: 20px 0;
 }
@@ -123,6 +184,6 @@ td {
     box-shadow: 2px 2px 23px black !important;
 }
 
-.finishText{
-    font-size:3.5rem;
+.finishText {
+    font-size: 3.5rem;
 }

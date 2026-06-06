@@ -7,7 +7,7 @@ namespace MyMvcApp.Models
         public int DirectionId { get; set; }
 
         public string TestName { get; set; }
-
+        public bool isdeleted { get; set; } = false;
         public string TestDescription { get; set; }
 
         public Direction Direction { get; set; }

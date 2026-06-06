@@ -25,6 +25,7 @@ namespace MyMvcApp.Data
         public DbSet<Students> Students { get; set; }
 
         public DbSet<StudentToGroup> StudentToGroups { get; set; }
+        public DbSet<Answer> Answers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -49,5 +50,8 @@ namespace MyMvcApp.Data
                 .OnDelete(DeleteBehavior.NoAction);
         }
 
+        public DbSet<StudentsToHomework> StudentsToHomeworks { get; set; }
+
+        public DbSet<ResultTest> ResultsTests { get; set; }
     }
 }

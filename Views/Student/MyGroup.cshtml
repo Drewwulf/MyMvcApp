@@ -1,21 +1,27 @@
+@model MyMvcApp.Models.ViewModels.StudentPageViewModel
 <section class="section">
-            <div class="mainDiv">
-                <h2>G03</h2>
-                <div class="mainDiv3">
-                    <div class="geoDiv">
-                        <i class="bi bi-mortarboard"></i>
-                        <p>Дмитро Цоцинець</p>
-                    </div>
-                    <div class="geoDiv">
-                        <i class="bi bi-geo-alt"></i>
-                        <p>Виноградів,вул.Вакарова 13</p>
-                    </div>
+    @foreach (var group in Model.groups) 
+    {
+        <div class="mainDiv">
+            <h2>@group.GroupName</h2>
+            <div class="mainDiv3">
+                <div class="geoDiv">
+                    <i class="bi bi-mortarboard"></i>
+                    <p>Вчитель : @group.Teachers.UserName</p>
                 </div>
-                <p>Субота,10:00-13:20</p>
+                <div class="geoDiv">
+                    <i class="bi bi-geo-alt"></i>
+                    <p>Місце проведення :</p>
+                    <p>@group.Place.DestinationName </p>
+                    <p> (@group.Place.DestinationAddress)</p>
+                </div>
             </div>
-        </section>
+            <p>Субота,10:00-13:20</p>
+        </div>
+    }
+</section>
         <div class="schedule-container">
-            <h2>Розклад Занять Групи [G03]</h2>
+    <h2>Розклад Занять Групи</h2>
             <table class="table table-dark">
                 <thead>
                     <tr>

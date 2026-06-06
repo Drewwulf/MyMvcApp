@@ -8,11 +8,11 @@
                     <br>
                     <label for="start" class="finish">початок завдання</label>
                     <br>
-                    <input type="datetime-local" asp-for="StartTime" value="" id="start">
+                    <input type="datetime-local" asp-for="StartTime"  id="start">
                     <br>
                     <label for="finish" class="finish">здача завдання</label>
                     <br>
-                    <input type="datetime-local" asp-for="SubmitTime" value="" id="finish">
+                    <input type="datetime-local" asp-for="SubmitTime"  id="finish">
                     <input type="submit" value="Створити" class="submit">
                 </form>
             </div>
@@ -27,6 +27,8 @@
 
                     @foreach(var homework in Model.homeworks)
                         {
+                                    if (homework.isdeleted == false)
+                                    {
                            <tr><td>@homework.HomeworkId</td>
                            <td>@homework.HomeworkName</td>
                            <td>@homework.HomeworkDescription</td>
@@ -34,11 +36,12 @@
                            <a type="button" asp-controller="HomeWork" asp-action="Details" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Деталі</a>
                             <a type="button" asp-controller="HomeWork" asp-action="Delete" asp-route-id="@homework.HomeworkId" class="btn btn-danger">Видалити</a></td></tr>
 
-                           
+                           }
 
 
                         }
+                            </tbody>
+
                     </table>    
-                    </tbody>
                 </div>
             </section>

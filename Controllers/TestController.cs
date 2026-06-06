@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
+using MyMvcApp.Models.ViewModels;
 
 namespace MyMvcApp.Controllers
 {
@@ -34,7 +36,8 @@ namespace MyMvcApp.Controllers
             };
             return View(modal); // повертає Views/Direction/Edit.cshtml
         }
- [HttpPost]
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(TestViewModel test)
         {
@@ -98,7 +101,7 @@ namespace MyMvcApp.Controllers
         public IActionResult Delete(int id)
         {
             var Test = _context.Tests.Find(id);
-            _context.Tests.Remove(Test);
+            Test.isdeleted = true;
             _context.SaveChanges();
             return RedirectToAction("Create");
         }

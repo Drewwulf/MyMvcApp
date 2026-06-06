@@ -7,7 +7,7 @@ namespace MyMvcApp.Models
         public string DirectionName { get; set; }     
         public string DirectionDescription { get; set; }  
         public ICollection<Test> Tests { get; set; } 
-        public ICollection<StudyGroup> Groups { get; set; } 
-
+        public ICollection<StudyGroup> Groups { get; set; }
+        public bool IsDeleted { get; set; }=false;
     }
 }
