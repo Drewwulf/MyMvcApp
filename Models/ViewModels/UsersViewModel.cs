@@ -1,4 +1,4 @@
-namespace MyMvcApp.Models
+namespace MyMvcApp.Models.ViewModels
 {
 public class UsersViewModel
 {
