@@ -33,11 +33,12 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Create(int groupId)
         {
-            var allSchedules = _context.Schedules.ToList();
+            var allSchedules = _context.Schedules.Where(s=>s.StudyGroupId==groupId).Include(p=>p.Place).ToList();
+            var allDestinations = _context.Places.ToList();
             var model = new SheduleViewModel { Places = _context.Places.ToList(),
                 DaysOfWeek = Enum.GetValues(typeof(WeekDay))
                      .Cast<WeekDay>()
-                     .ToList(),StudyGroupId = groupId
+                     .ToList(),StudyGroupId = groupId, Schedules = allSchedules
             };
 
             return View(model);
@@ -56,10 +57,10 @@ namespace MyMvcApp.Controllers
             };
             _context.Schedules.Add(model);
             _context.SaveChanges();
-            var allDestinations = _context.Places.ToList();
+            
             
 
-            return RedirectToAction("Create");
+            return RedirectToAction("Create", new { groupId =  SheduleViewModel.StudyGroupId});
         }
       
     

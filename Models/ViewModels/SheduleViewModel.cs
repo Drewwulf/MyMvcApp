@@ -8,6 +8,8 @@
 
         public int PlaceId { get; set; }
 
+        public List<Schedule> Schedules { get; set; } = new List<Schedule>();
+
         public List<WeekDay> DaysOfWeek { get; set; }
 
         public WeekDay DayOfWeek { get; set; }
