@@ -5,7 +5,7 @@
                 <form asp-action="Create" method="post">
                     <div class="divselect">
                         <label for="vanue">Місце проведення:</label>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" asp-for="PlaceId">
                             @foreach (var schedule in Model.Places)
                             {
                                 <option value=@schedule.PlaceId>@schedule.DestinationName</option>
@@ -14,15 +14,19 @@
                     </div>
                     <div class="divselect">
                         <label for="vanue">День проведення:</label>
-                        <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" asp-for="DayOfWeek">
                             @foreach (var day in Model.DaysOfWeek)
                             {
-                                <option value=@day">@day</option>
+                                <option value=@day>@day</option>
                             }
                         </select>
                     </div>
+                    <label for="vanue">Початок заняття:</label>
                     <input type="time" asp-for="Time">
+                    <label for="vanue">Кінцець заняття:</label>
+                    <input type="time" asp-for="EndTime">
                     <input type="submit" value="Створити" class="button" />
+                    <input  type="hidden" asp-for="StudyGroupId"/>
                 </form>
             </div>
             <section>

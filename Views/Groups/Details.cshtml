@@ -16,7 +16,7 @@
             <p class="mb-0"><strong>Вчитель:</strong> @Model.Group.Teachers.UserName</p>
         </div>
 
-        <a asp-controller="Schedule" asp-action="Create"class="btn btn-success mt-2">Додати розклад групи</a>
+        <a asp-controller="Schedule" asp-route-groupId="@Model.GrId" asp-action="Create" class="btn btn-success mt-2">Додати розклад групи</a>
     </div>
 
     <!-- Блок студентів -->

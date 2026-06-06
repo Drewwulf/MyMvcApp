@@ -6,6 +6,7 @@ using MyMvcApp.Data;
 using MyMvcApp.Models;
 using MyMvcApp.Models.ViewModels;
 using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace MyMvcApp.Controllers
 {
@@ -30,34 +31,37 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Destination/Details.cshtml
         }
-        public IActionResult Create()
+        public IActionResult Create(int groupId)
         {
             var allSchedules = _context.Schedules.ToList();
             var model = new SheduleViewModel { Places = _context.Places.ToList(),
                 DaysOfWeek = Enum.GetValues(typeof(WeekDay))
                      .Cast<WeekDay>()
-                     .ToList()
+                     .ToList(),StudyGroupId = groupId
             };
 
             return View(model);
         }
-//        [HttpPost]
-//        [ValidateAntiForgeryToken]
-//        public IActionResult Create(SheduleViewModel sheduleViewModel)
-//        {
-//            var schedule = new Schedule
-//            {
-//                DestinationName = placeViewModel.Name,
-//                DestinationAddress = placeViewModel.Address
-//            };
-//            _context.Places.Add(place);
-//            _context.SaveChanges();
-//            var allDestinations = _context.Places.ToList();
-//            var model = new SheduleViewModel { };
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(SheduleViewModel SheduleViewModel)
+        {
+            var model = new Schedule
+            {
+                PlaceId = SheduleViewModel.PlaceId,
+                StudyGroupId = SheduleViewModel.StudyGroupId,
+                DayOfWeek = SheduleViewModel.DayOfWeek,
+                startTime = SheduleViewModel.Time,
+                endTime = SheduleViewModel.EndTime,
+            };
+            _context.Schedules.Add(model);
+            _context.SaveChanges();
+            var allDestinations = _context.Places.ToList();
+            
 
-//            return RedirectToAction("Create");
-//        }
-//            return View(); // повертає Views/Destination/Details.cshtml
-//    }
+            return RedirectToAction("Create");
+        }
+      
+    
 }
 }
