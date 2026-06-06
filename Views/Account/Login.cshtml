@@ -18,6 +18,16 @@
             <div>
                 <input type="submit" value="Login" />
             </div>
+
+        </form>
+        <form asp-controller="Account"
+              asp-action="GoogleLogin"
+              method="post">
+
+            <button class="btn btn-outline-dark" style = "height : auto ; font-size : 1rem;" type="submit">
+                Увійти через Google
+            </button>
+
         </form>
 
         @if (!ViewData.ModelState.IsValid)

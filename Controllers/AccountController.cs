@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace MyMvcApp.Controllers
 {
@@ -28,7 +29,7 @@ namespace MyMvcApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string email, string password)
+        public async Task<IActionResult> Login(string email, string password = "", string googleKey = "")
         {
             var user = await _userManager.FindByEmailAsync(email);
 
@@ -51,6 +52,38 @@ namespace MyMvcApp.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult GoogleLogin()
+        {
+            var redirectUrl = Url.Action("GoogleResponse", "Account");
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(
+                "Google", redirectUrl);
+
+            return Challenge(properties, "Google");
+        }
+
+        public async Task<IActionResult> GoogleResponse()
+        {
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            if (info == null)
+                return RedirectToAction(nameof(Login));
+
+            var email = info.Principal.FindFirst(ClaimTypes.Email)?.Value;
+            var user = await _userManager.FindByEmailAsync(email);
+
+            if (user != null)
+            {
+                await _signInManager.SignInAsync(user, isPersistent: false);
+                return RedirectToAction("Index", "Home");
+            }
+            else
+            {
+                ViewBag.Error = "Користувач не знайдений";
+                return RedirectToAction("Login", "Account");
+            }
         }
         public async Task<IActionResult> Logout()
         {
