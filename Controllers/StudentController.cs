@@ -13,6 +13,7 @@ namespace MyMvcApp.Controllers
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ApplicationDbContext _context;
+        private Students student;
 
         public StudentController(UserManager<IdentityUser> userManager, ApplicationDbContext context)
         {
@@ -20,7 +21,7 @@ namespace MyMvcApp.Controllers
             _context = context;
         }
         public IActionResult Index()
-        {      
+        {
             var studentslist = _context.Students.ToList();
 
             return View(studentslist); // повертає Views/Student/Index.cshtml
@@ -50,7 +51,7 @@ namespace MyMvcApp.Controllers
         .Select(g => g.studyGroup)
         .Distinct()
         .ToList();
-            var model = new StudentPageViewModel {groups = group };
+            var model = new StudentPageViewModel { groups = group };
             return View(model); // повертає Views/Destination/Details.cshtml
         }
 
@@ -67,7 +68,7 @@ namespace MyMvcApp.Controllers
         .ToList();
             var firstId = directionsID1.FirstOrDefault();
 
-//            var direction = _context.Directions.FirstOrDefault(d => d.DirectionId == firstId);
+            //            var direction = _context.Directions.FirstOrDefault(d => d.DirectionId == firstId);
 
             var directions = _context.Directions
     .Where(d => directionsID1.Contains(d.DirectionId))
@@ -84,7 +85,7 @@ namespace MyMvcApp.Controllers
 
         public IActionResult TestPage(int id)
         {
-            var tasks = _context.Tasks.Where(ts => ts.TestId == id).Include(t=>t.Test).Include(ans => ans.Answers).ToList();
+            var tasks = _context.Tasks.Where(ts => ts.TestId == id).Include(t => t.Test).Include(ans => ans.Answers).ToList();
 
 
             return View(tasks);
@@ -100,11 +101,14 @@ namespace MyMvcApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CheckTest(List<AnswerSubmission> submissions)
+        public async Task<IActionResult> CheckTest(List<AnswerSubmission> submissions)
         {
             int correctAnswersCount = 0;
             int totalQuestions = submissions.Count;
 
+            var user = await _userManager.GetUserAsync(User);
+            var userid = user.Id;
+            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
             foreach (var submission in submissions)
             {
                 var question = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submission.QuestionId);
@@ -120,14 +124,16 @@ namespace MyMvcApp.Controllers
                     }
                 }
             }
-
+            var gett = new ResultTest { Score = correctAnswersCount, TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now };
+            _context.ResultsTests.Add(gett);
+            _context.SaveChanges();
             return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions });
         }
 
         public IActionResult MySchedule()
         {
             return View(); // повертає Views/Destination/Details.cshtml
-        } 
+        }
 
         public async Task<IActionResult> Homework()
         {
