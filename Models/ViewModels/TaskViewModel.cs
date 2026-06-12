@@ -12,6 +12,7 @@
         public string Ansver4Name { get; set; }
         public string Description { get; set; }
         public string Difficualty { get; set; }
+        public string TaskType { get; set; } 
 
         public List<Question> Question = new List<Question>();
 

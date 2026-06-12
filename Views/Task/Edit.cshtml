@@ -4,6 +4,10 @@
                 <form asp-action="Edit" asp-controller="Task" method="post">
                     <input asp-for="Name" type="text" placeholder="Змінити назву">
                     <input asp-for="Description" type="text" placeholder="Змінити опис">
+                    <select asp-for="TaskType" class="form-select" aria-label="Default select example">
+                        <option value="Radio">Radio (1 Відповідь)</option>
+                        <option value="CheckBox">CheckBox (2 відповіді і більше)</option>
+                    </select>
                     <input asp-for="TaskId" type="hidden" />
                     <input type="submit" value="Редагувати" class="button">
                 </form>
