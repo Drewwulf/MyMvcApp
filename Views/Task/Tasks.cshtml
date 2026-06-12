@@ -5,6 +5,10 @@
 
             <input type="text" asp-for="Name" asclass="form-control mb-3" placeholder="Назва">
                 <input type="text" asp-for="Description" class="form-control mb-4" placeholder="Опис">
+                <select asp-for="TaskType" class="form-select" aria-label="Default select example">
+                <option value="Radio">Radio (1 Відповідь)</option>
+                <option value="CheckBox">CheckBox (2 відповіді і більше)</option>
+                </select>
 
    
                     <div class="d-flex align-items-center mb-2">

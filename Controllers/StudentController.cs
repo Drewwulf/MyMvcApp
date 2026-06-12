@@ -94,9 +94,16 @@ namespace MyMvcApp.Controllers
         [HttpGet]
         public IActionResult ShowScore(int score, int total)
         {
-            double percentage = (double)score / total * 100;
+            double percentage = total > 0 ? (double)score / total * 100 : 0;
 
-            return View((score, total, percentage));
+            var viewModel = new ScoreViewModel
+            {
+                Score = score,
+                TotalQuestions = total,
+                Percentage = Math.Round(percentage, 1) 
+            };
+
+            return View(viewModel);
         }
 
         [HttpPost]
@@ -111,12 +118,34 @@ namespace MyMvcApp.Controllers
             var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
             foreach (var submission in submissions)
             {
-                var question = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submission.QuestionId);
+                var question = _context.Tasks
+                                       .Include(q => q.Answers)
+                                       .FirstOrDefault(q => q.QuestionId == submission.QuestionId);
 
-                if (question != null)
+                if (question == null) continue;
+                if (question.QuestionType == "CheckBox") 
                 {
+                    var correctAnswersIds = question.Answers
+                                                    .Where(a => a.IsCorrect)
+                                                    .Select(a => a.Id)
+                                                    .ToList();
+
+                    var userSelectedIds = submission.SelectedAnswerId ?? new List<int>();
+
+                    bool isAllCorrect = correctAnswersIds.Count == userSelectedIds.Count &&
+                                        userSelectedIds.All(id => correctAnswersIds.Contains(id));
+
+                    if (isAllCorrect)
+                    {
+                        correctAnswersCount++;
+                    }
+                }
+                else 
+                {
+                    var firstSelectedId = submission.SelectedAnswerId?.FirstOrDefault();
+
                     var selectedAnswer = question.Answers
-                                                 .FirstOrDefault(a => a.Id == submission.SelectedAnswerId);
+                                                 .FirstOrDefault(a => a.Id == firstSelectedId);
 
                     if (selectedAnswer != null && selectedAnswer.IsCorrect)
                     {
