@@ -78,7 +78,7 @@ namespace MyMvcApp.Controllers
             var Answer = _context.Answers.Find(id);
             _context.Answers.Remove(Answer);
             _context.SaveChanges();
-            return RedirectToAction("Create", new { id = Answer.QuestionId});
+            return RedirectToAction("Details", new { id = Answer.QuestionId});
         }
 
 

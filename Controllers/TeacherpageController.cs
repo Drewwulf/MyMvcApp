@@ -40,7 +40,7 @@ namespace MyMvcApp.Controllers
      .Include(t => t.StudentToGroups)
          .ThenInclude(stg => stg.student)
      .FirstOrDefault();
-            var modal = new StudyGroupViewModel
+            var modal = new MyMvcApp.Models.ViewModels.StudyGroupViewModel
             {
                 Group = group,
                 GroupName = group.GroupName,

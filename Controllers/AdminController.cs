@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
+using MyMvcApp.Models.ViewModels;
 
 namespace MyMvcApp.Controllers
 {
