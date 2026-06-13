@@ -14,8 +14,10 @@
             <p class="mb-1"><strong>Напрямок:</strong> @Model.Group.Direction.DirectionName</p>
             <p class="mb-0"><strong>Вчитель:</strong> @Model.Group.Teachers.UserName</p>
         </div>
+
+        <a asp-controller="Schedule" asp-route-groupId="@Model.GrId" asp-action="Create" class="btn btn-success mt-2">Додати розклад групи</a>
         <a asp-controller="Groups" asp-action="Create" class="btn btn-dark">Повернутися назад</a>
-        <a href="/schedule/schedule.html" class="btn btn-success mt-2">Додати розклад групи</a>
+        
     </div>
 
     <!-- Блок студентів -->
