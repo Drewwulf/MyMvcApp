@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
 using MyMvcApp.Models.ViewModels;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace MyMvcApp.Controllers
 {
@@ -159,7 +160,7 @@ namespace MyMvcApp.Controllers
             return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions });
         }
 
-        public IActionResult MySchedule()
+        public async Task<IActionResult> MySchedule()
         {
             return View();
         }
@@ -172,6 +173,31 @@ namespace MyMvcApp.Controllers
             
             return View(scoree); 
          }
+            var user = await _userManager.GetUserAsync(User);
+            var userid = user.Id;
+            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
+            var groups = _context.StudentToGroups
+         .Include(g => g.studyGroup)
+             .ThenInclude(sg => sg.Teachers)
+         .Include(g => g.studyGroup)
+             .ThenInclude(sg => sg.Place)
+         .Include(g => g.student)
+         .Where(g => g.StudentId == studentId)
+         .ToList();
+            var group = groups
+        .Select(g => g.studyGroup)
+        .Distinct()
+        .ToList();
+            var schedules = _context.Schedules.Where(g => g.StudyGroupId == group.First().StudyGroupId).Include(sg => sg.Place).ToList();
+            var viewModel = new SheduleViewModel
+            {
+                Schedules = schedules
+
+            };
+            return View(viewModel); // повертає Views/Destination/Details.cshtml
+        }
+
+
         public async Task<IActionResult> Homework()
         {
             var user = await _userManager.GetUserAsync(User);

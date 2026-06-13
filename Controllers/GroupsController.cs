@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
+using MyMvcApp.Models.ViewModels;
 using System.Text.RegularExpressions;
 
 namespace MyMvcApp.Controllers

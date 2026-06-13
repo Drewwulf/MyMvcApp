@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.Security.Cryptography.Xml;
 
-namespace MyMvcApp.Models
+namespace MyMvcApp.Models.ViewModels
 {
     public class StudyGroupViewModel
     {
