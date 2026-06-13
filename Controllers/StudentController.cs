@@ -162,6 +162,17 @@ namespace MyMvcApp.Controllers
 
         public async Task<IActionResult> MySchedule()
         {
+            return View();
+        }
+        public async Task<IActionResult> HistoryTest()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userid = user.Id;
+            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
+            var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
+            
+            return View(scoree); 
+         }
             var user = await _userManager.GetUserAsync(User);
             var userid = user.Id;
             var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;

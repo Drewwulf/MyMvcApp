@@ -1,0 +1,14 @@
+﻿@model List<ResultTest>
+@foreach (var result in Model)
+{
+    <div class="mainDivHomework mainDiv">
+        <h2>@result.Test.TestName</h2>
+        <div class="mainDiv3">
+            <p>@result.Test.TestDescription</p>
+            <div class="buttonDiv">
+                <p>Ваш результат: @result.Score балів</p>
+            </div>
+        </div>
+        <p>Час проходження тесту: @result.DateTime</p>
+    </div>
+}
