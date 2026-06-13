@@ -1,6 +1,12 @@
 ﻿@model MyMvcApp.Models.ViewModels.AnswerViewModel
 <section class="section">
     <div class="mainDiv">
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
         <form class="p-3" asp-controller="Answer" asp-action="Create" method="post">
 
             <div class="d-flex align-items-center mb-2">

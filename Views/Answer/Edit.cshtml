@@ -1,6 +1,12 @@
 ﻿@model MyMvcApp.Models.ViewModels.AnswerViewModel
 <section class="section">
     <div class="mainDiv">
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
         <form asp-action="Edit" asp-controller="Answer" method="post">
             <input asp-for="AnswerName" type="text" placeholder="Змінити назву">
                 <input asp-for="IsCorrect" style="width:50px; height:40px; margin: 0px 10px 30px 10px" type="checkbox" class="form-check-input">

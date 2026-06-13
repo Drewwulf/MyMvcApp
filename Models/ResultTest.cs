@@ -7,7 +7,7 @@
         public int TestId { get; set; }
         public int StudentId { get; set; }
 
-        public decimal Score { get; set; }
+        public double Score { get; set; }
 
         public DateTime DateTime { get; set; }
     }
