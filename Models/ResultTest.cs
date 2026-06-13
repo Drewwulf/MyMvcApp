@@ -8,6 +8,7 @@
         public int StudentId { get; set; }
 
         public decimal Score { get; set; }
+        public Test Test { get; set; }
 
         public DateTime DateTime { get; set; }
     }

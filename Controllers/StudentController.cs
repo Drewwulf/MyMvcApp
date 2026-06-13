@@ -161,9 +161,17 @@ namespace MyMvcApp.Controllers
 
         public IActionResult MySchedule()
         {
-            return View(); // повертає Views/Destination/Details.cshtml
+            return View();
         }
-
+        public async Task<IActionResult> HistoryTest()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userid = user.Id;
+            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
+            var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
+            
+            return View(scoree); 
+         }
         public async Task<IActionResult> Homework()
         {
             var user = await _userManager.GetUserAsync(User);
