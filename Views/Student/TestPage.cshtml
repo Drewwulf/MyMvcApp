@@ -19,8 +19,17 @@
                 @foreach (var ans in Model[i].Answers)
                 {
                     <div class="AnswersDiv">
-                        <input class="answersRadio" type="radio" id="ans_@ans.Id" name="[@i].SelectedAnswerId" value="@ans.Id" required />
-                        
+                        @switch (ans.Question.QuestionType)
+                        {
+                            case "Radio":
+                                <input class="answersRadio" type="radio" id="ans_@ans.Id" name="[@i].SelectedAnswerId[0]" value="@ans.Id" required />
+                                break;
+
+                            case "CheckBox":
+                                <input class="answersCheckbox" type="checkbox" id="ans_@ans.Id" name="[@i].SelectedAnswerId" value="@ans.Id" />
+                                break;
+                        }
+
                         <label for="ans_@ans.Id">@ans.answerName</label>
                     </div>
                 }

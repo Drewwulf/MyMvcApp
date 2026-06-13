@@ -4,6 +4,6 @@
     {
         public int QuestionId { get; set; }
 
-        public int SelectedAnswerId { get; set; }
+        public List<int> SelectedAnswerId { get; set; } = new List<int>();
     }
 }

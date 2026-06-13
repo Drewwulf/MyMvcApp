@@ -27,6 +27,7 @@ namespace MyMvcApp.Controllers
                 TaskId = task.QuestionId,
                 Name = task.QuestionName,
                 Description = task.QuestionDescription,
+                TaskType = task.QuestionType,
             };
 
             return View(modal); // повертає Views/Task/Edit.cshtml
@@ -51,6 +52,7 @@ namespace MyMvcApp.Controllers
 
             task.QuestionName = modal.Name;
             task.QuestionDescription = modal.Description;
+            task.QuestionType = modal.TaskType;
 
             _context.SaveChanges();
 
@@ -65,6 +67,7 @@ namespace MyMvcApp.Controllers
             {
                 QuestionName = TaskViewModel.Name,
                 QuestionDescription = TaskViewModel.Description,
+                QuestionType = TaskViewModel.TaskType,
           
                 TestId = TaskViewModel.TestId
                 

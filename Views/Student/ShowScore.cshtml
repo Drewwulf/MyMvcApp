@@ -1,12 +1,13 @@
-﻿@model ValueTuple<int, int, double>
+﻿@model MyMvcApp.Models.ViewModels.ScoreViewModel
 
 <div class="mainDiv">
     <h1>Тест завершено!</h1>
     <hr />
     
     <h3>Твій результат:</h3>
-    <h2 style="color: #28a745;">@Model.Item1 / @Model.Item2</h2>
+    <h2 style="color: #28a745;">@Model.Score / @Model.TotalQuestions</h2>
     
-    <p>Правильних відповідей: <strong>@Model.Item3%</strong></p>
-    <a class="btn btn-dark" asp-controller="Student" asp-action="Directions"> Поветнутись </a>
+    <p>Успішність: @Model.Percentage%</p>
+    
+    <a class="btn btn-dark" asp-controller="Student" asp-action="Directions">Повернутись</a>
 </div>
