@@ -60,7 +60,7 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Create()
         {
-            var allDirections = _context.Directions.ToList();
+            var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
             var model = new DirectionViewModel { directions = allDirections };
             return View(model); // повертає Views/Destination/Details.cshtml
         }
@@ -76,7 +76,7 @@ namespace MyMvcApp.Controllers
             };
             _context.Directions.Add(direction);
             _context.SaveChanges();
-            var allDirections = _context.Directions.ToList();
+            var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
             var model = new DirectionViewModel { directions = allDirections };
             return View(model);
         }
