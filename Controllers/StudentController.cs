@@ -111,7 +111,7 @@ namespace MyMvcApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CheckTest(List<AnswerSubmission> submissions)
         {
-            double correctAnswersCount = 0;
+            decimal correctAnswersCount = 0;
             int totalQuestions = submissions.Count;
 
             var user = await _userManager.GetUserAsync(User);
@@ -136,7 +136,7 @@ namespace MyMvcApp.Controllers
 
                     if (userSelectedIds.Any())
                     {
-                        double matchedAnswerscoof = (double)1 / correctAnswersIds.Count;
+                        decimal matchedAnswerscoof = (decimal)1 / correctAnswersIds.Count;
                         var matchedAnswersCount = matchedAnswerscoof * userSelectedIds.Count(id => correctAnswersIds.Contains(id));
                         correctAnswersCount += matchedAnswersCount;
                     }
@@ -154,7 +154,7 @@ namespace MyMvcApp.Controllers
                     }
                 }
             }
-            var gett = new ResultTest { Score = correctAnswersCount, TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now };
+            var gett = new ResultTest { Score = Math.Round(totalQuestions > 0 ? correctAnswersCount / totalQuestions * 100 : 0, 1), TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now };
             _context.ResultsTests.Add(gett);
             _context.SaveChanges();
             return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions });
@@ -170,12 +170,8 @@ namespace MyMvcApp.Controllers
             var userid = user.Id;
             var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
             var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
+      
             
-            return View(scoree); 
-         }
-            var user = await _userManager.GetUserAsync(User);
-            var userid = user.Id;
-            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
             var groups = _context.StudentToGroups
          .Include(g => g.studyGroup)
              .ThenInclude(sg => sg.Teachers)
