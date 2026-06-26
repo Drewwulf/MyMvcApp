@@ -2,9 +2,12 @@
 
 @foreach (var test in Model)
 {
-    <div class="mainTestDiv">
-        <h2 style="color:whitesmoke;">@test.TestName</h2>
-        <p style="color:whitesmoke;">@test.TestDescription</p>
-        <a asp-controller="Student" asp-action="TestPage" asp-route-id = "@test.TestId" class="btn btn-dark">Пройти тест</a>
-    </div>
+    @if (!test.isdeleted)
+    {
+        <div class="mainTestDiv">
+            <h2 style="color:whitesmoke;">@test.TestName</h2>
+            <p style="color:whitesmoke;">@test.TestDescription</p>
+            <a asp-controller="Student" asp-action="TestPage" asp-route-id="@test.TestId" class="btn btn-dark">Пройти тест</a>
+        </div>
+    }
 }

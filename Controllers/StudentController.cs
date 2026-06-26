@@ -93,7 +93,7 @@ namespace MyMvcApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult ShowScore(int score, int total)
+        public IActionResult ShowScore(double score, int total)
         {
             double percentage = total > 0 ? (double)score / total * 100 : 0;
 
@@ -111,7 +111,7 @@ namespace MyMvcApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CheckTest(List<AnswerSubmission> submissions)
         {
-            int correctAnswersCount = 0;
+            double correctAnswersCount = 0;
             int totalQuestions = submissions.Count;
 
             var user = await _userManager.GetUserAsync(User);
@@ -133,12 +133,12 @@ namespace MyMvcApp.Controllers
 
                     var userSelectedIds = submission.SelectedAnswerId ?? new List<int>();
 
-                    bool isAllCorrect = correctAnswersIds.Count == userSelectedIds.Count &&
-                                        userSelectedIds.All(id => correctAnswersIds.Contains(id));
 
-                    if (isAllCorrect)
+                    if (userSelectedIds.Any())
                     {
-                        correctAnswersCount++;
+                        double matchedAnswerscoof = (double)1 / correctAnswersIds.Count;
+                        var matchedAnswersCount = matchedAnswerscoof * userSelectedIds.Count(id => correctAnswersIds.Contains(id));
+                        correctAnswersCount += matchedAnswersCount;
                     }
                 }
                 else 

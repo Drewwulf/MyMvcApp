@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
+using MyMvcApp.Models.ViewModels;
 
 namespace MyMvcApp.Controllers
 {
@@ -49,10 +50,22 @@ namespace MyMvcApp.Controllers
         public IActionResult Edit(TaskViewModel modal)
         {
             var task = _context.Tasks.Find(modal.TaskId);
+            var taskCorrectCount = _context.Answers.Where(c => c.QuestionId == modal.TaskId).ToList().Count;
 
             task.QuestionName = modal.Name;
             task.QuestionDescription = modal.Description;
-            task.QuestionType = modal.TaskType;
+            if (taskCorrectCount == 1)
+            {
+                task.QuestionType = modal.TaskType;
+            }
+            else
+            {
+                if (modal.TaskType == "Radio")
+                {
+                    TempData["Error"] = "Неможиво змінити тип на Radio тому що в тесті більеш одної відповіді.";
+                    return View(modal);
+                }
+            }
 
             _context.SaveChanges();
 
