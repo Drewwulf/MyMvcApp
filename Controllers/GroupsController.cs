@@ -38,8 +38,8 @@ namespace MyMvcApp.Controllers
                 GrId = id,
                 GroupName = GroupPlace.GroupName,
                 GroupDescription = GroupPlace.GroupDescription,
-                directions = _context.Directions.ToList(),
-                place = _context.Places.ToList()
+                directions = _context.Directions.OrderByDescending(d => d.DirectionId).ToList(),
+                place = _context.Places.OrderByDescending(p => p.PlaceId).ToList()
             };
             return View(modal); // повертає Views/Direction/Edit.cshtml
         }
@@ -55,8 +55,8 @@ namespace MyMvcApp.Controllers
             group.GroupDescription = modal.GroupDescription;
             group.PlaceId = modal.PlId;
             group.DirectionId = modal.DirId;
-            var allGroups = _context.studyGroups.ToList();
-            var allDirections = _context.Directions.ToList();
+            var allGroups = _context.studyGroups.OrderByDescending(g => g.StudyGroupId).ToList();
+            var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
             var model = new StudyGroupViewModel { studyGroup = allGroups, directions = allDirections, place = _context.Places.ToList() };
 
             _context.SaveChanges();
@@ -77,12 +77,11 @@ namespace MyMvcApp.Controllers
      .ToList();
 
 
-            var allStudents = _context.StudentToGroups.Include(s=>s.student).Where(g=>g.StudyGroupId == id).Where(s=>s.isdeleted==false).ToList();
+            var allStudents = _context.StudentToGroups.OrderByDescending(s => s.StudentToGroupId).Include(s=>s.student).Where(g=>g.StudyGroupId == id).Where(s=>s.isdeleted==false).ToList();
             var modal = new StudyGroupViewModel
             {
                 Group = group,
-                studyGroup = _context.studyGroups.Include(g => g.Direction).Include(g => g.Place).ToList(),
-                GrId = id,
+                studyGroup = _context.studyGroups.OrderByDescending(g => g.StudyGroupId).Include(g => g.Direction).Include(g => g.Place).ToList(),
                 PlId = group.PlaceId,
                 students = liststud,
                 l = students,
@@ -94,8 +93,8 @@ namespace MyMvcApp.Controllers
         }
         public async Task<IActionResult> Create()
         {
-            var allGroups = _context.studyGroups.ToList();
-            var allDirections = _context.Directions.ToList();
+            var allGroups = _context.studyGroups.OrderByDescending(g => g.StudyGroupId).ToList();
+            var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
             var users = await _userManager.Users.OrderBy(u => u.UserName).ToListAsync();
             var teacherUsers = _context.Teachers.ToList();
 

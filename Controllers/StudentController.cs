@@ -160,10 +160,7 @@ namespace MyMvcApp.Controllers
             return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions });
         }
 
-        public async Task<IActionResult> MySchedule()
-        {
-            return View();
-        }
+    
         public async Task<IActionResult> HistoryTest()
         {
             var user = await _userManager.GetUserAsync(User);
@@ -172,6 +169,14 @@ namespace MyMvcApp.Controllers
             var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
       
             
+            return View(scoree); 
+         }
+
+
+        public async Task<IActionResult> MySchedule() { 
+            var user = await _userManager.GetUserAsync(User);
+            var userid = user.Id;
+            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
             var groups = _context.StudentToGroups
          .Include(g => g.studyGroup)
              .ThenInclude(sg => sg.Teachers)
