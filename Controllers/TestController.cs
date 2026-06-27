@@ -70,8 +70,8 @@ namespace MyMvcApp.Controllers
       
         public IActionResult Create()
         {
-            var allTest = _context.Tests.ToList();
-            var allDirections = _context.Directions.ToList();
+            var allTest = _context.Tests.OrderByDescending(t => t.TestId).ToList();
+            var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
             var model = new TestViewModel{ test = allTest,directions = allDirections};
 
             return View(model); 
@@ -91,7 +91,7 @@ namespace MyMvcApp.Controllers
             };
             _context.Tests.Add(test);
             _context.SaveChanges();
-            var allTest = _context.Tests.ToList();
+            var allTest = _context.Tests.OrderByDescending(t => t.TestId).ToList();
             var model = new TestViewModel{ test = allTest};
 
             return RedirectToAction("Create"); 

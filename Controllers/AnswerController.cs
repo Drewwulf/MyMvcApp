@@ -69,7 +69,7 @@ namespace MyMvcApp.Controllers
 
 
 
-            var allAnswer = _context.Answers.Where(x => x.QuestionId == AnswerViewModel.TaskId).ToList();
+            var allAnswer = _context.Answers.OrderByDescending(a => a.Id).Where(x => x.QuestionId == AnswerViewModel.TaskId).ToList();
             var model = new AnswerViewModel { answers = allAnswer };
             return View(model);
         }
