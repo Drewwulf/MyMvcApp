@@ -93,7 +93,7 @@ namespace MyMvcApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult ShowScore(int score, int total)
+        public IActionResult ShowScore(double score, int total)
         {
             double percentage = total > 0 ? (double)score / total * 100 : 0;
 
@@ -111,7 +111,7 @@ namespace MyMvcApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CheckTest(List<AnswerSubmission> submissions)
         {
-            int correctAnswersCount = 0;
+            decimal correctAnswersCount = 0;
             int totalQuestions = submissions.Count;
 
             var user = await _userManager.GetUserAsync(User);
@@ -133,12 +133,12 @@ namespace MyMvcApp.Controllers
 
                     var userSelectedIds = submission.SelectedAnswerId ?? new List<int>();
 
-                    bool isAllCorrect = correctAnswersIds.Count == userSelectedIds.Count &&
-                                        userSelectedIds.All(id => correctAnswersIds.Contains(id));
 
-                    if (isAllCorrect)
+                    if (userSelectedIds.Any())
                     {
-                        correctAnswersCount++;
+                        decimal matchedAnswerscoof = (decimal)1 / correctAnswersIds.Count;
+                        var matchedAnswersCount = matchedAnswerscoof * userSelectedIds.Count(id => correctAnswersIds.Contains(id));
+                        correctAnswersCount += matchedAnswersCount;
                     }
                 }
                 else 
@@ -154,7 +154,7 @@ namespace MyMvcApp.Controllers
                     }
                 }
             }
-            var gett = new ResultTest { Score = correctAnswersCount, TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now };
+            var gett = new ResultTest { Score = Math.Round(totalQuestions > 0 ? correctAnswersCount / totalQuestions * 100 : 0, 1), TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now };
             _context.ResultsTests.Add(gett);
             _context.SaveChanges();
             return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions });
@@ -167,6 +167,7 @@ namespace MyMvcApp.Controllers
             var userid = user.Id;
             var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
             var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
+      
             
             return View(scoree); 
          }

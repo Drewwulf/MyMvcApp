@@ -1,6 +1,12 @@
 @model MyMvcApp.Models.TaskViewModel
         <section class="section">
             <div class="mainDiv">
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">
+                @TempData["Error"]
+            </div>
+        }
                 <form asp-action="Edit" asp-controller="Task" method="post">
                     <input asp-for="Name" type="text" placeholder="Змінити назву">
                     <input asp-for="Description" type="text" placeholder="Змінити опис">

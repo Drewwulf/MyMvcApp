@@ -47,6 +47,18 @@ namespace MyMvcApp.Controllers
         {
             var answer = _context.Answers.Find(modal.AnswerId);
 
+            var q = _context.Tasks.Where(i => i.QuestionId == answer.QuestionId).ToList().FirstOrDefault().QuestionType;
+            var question = _context.Answers.Where(q => q.QuestionId == modal.TaskId).ToList();
+            var isCoreectExist = question.Any(q => q.IsCorrect == true);
+
+            if (q.Any()) { return View(modal); }
+
+            if (isCoreectExist && q == "Radio")
+            {
+                TempData["Error"] = "Неможиво створити ще одну правильну відповідь, змініть тип запитання.";
+                return View(modal);
+            }
+
             answer.answerName = modal.AnswerName;
             answer.IsCorrect = modal.IsCorrect;
 
@@ -57,6 +69,11 @@ namespace MyMvcApp.Controllers
 
         public IActionResult Create(AnswerViewModel AnswerViewModel)
         {
+
+            var questionType = _context.Tasks.Where(q => q.QuestionId == AnswerViewModel.TaskId).FirstOrDefault().QuestionType;
+            var question = _context.Answers.Where(q => q.QuestionId == AnswerViewModel.TaskId).ToList();
+            var isCoreectExist = question.Any(q => q.IsCorrect == true);
+
             var answer = new Answer
             {
                 answerName = AnswerViewModel.AnswerName,
@@ -64,13 +81,24 @@ namespace MyMvcApp.Controllers
                 IsCorrect = AnswerViewModel.IsCorrect
 
             };
-            _context.Answers.Add(answer);
-            _context.SaveChanges();
 
-
+            if ((isCoreectExist && questionType == "Radio" && !AnswerViewModel.IsCorrect) || (!isCoreectExist && questionType == "Radio" && AnswerViewModel.IsCorrect) || ( questionType== "CheckBox"))
+            {
+                _context.Answers.Add(answer);
+                _context.SaveChanges();
+            }
 
             var allAnswer = _context.Answers.OrderByDescending(a => a.Id).Where(x => x.QuestionId == AnswerViewModel.TaskId).ToList();
             var model = new AnswerViewModel { answers = allAnswer };
+
+            if (!questionType.Any()) { return View(model); }
+
+            if (isCoreectExist && AnswerViewModel.IsCorrect && questionType == "Radio")
+            {
+                TempData["Error"] = "Неможиво створити ще одну правильну відповідь, змініть тип запитання.";
+                return View(model);
+            }
+
             return View(model);
         }
         public IActionResult Delete(int id)
