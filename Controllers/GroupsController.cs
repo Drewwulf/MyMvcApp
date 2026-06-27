@@ -70,7 +70,11 @@ namespace MyMvcApp.Controllers
             var group = _context.studyGroups
      .Include(x => x.Direction).Include(y => y.Teachers)
      .FirstOrDefault(x => x.StudyGroupId == id);
-            var liststud = _context.Students.OrderByDescending(s => s.Id).ToList();
+            var liststud = _context.Students.Include(sg=>sg.studentToGroups).ToList();
+            var students = _context.Students
+     .Include(s => s.studentToGroups)
+     .Where(s => !s.studentToGroups.Any(g => g.StudyGroupId == id&& s.studentToGroups.Any(d => d.isdeleted == false)))
+     .ToList();
 
 
             var allStudents = _context.StudentToGroups.OrderByDescending(s => s.StudentToGroupId).Include(s=>s.student).Where(g=>g.StudyGroupId == id).Where(s=>s.isdeleted==false).ToList();
@@ -80,6 +84,7 @@ namespace MyMvcApp.Controllers
                 studyGroup = _context.studyGroups.OrderByDescending(g => g.StudyGroupId).Include(g => g.Direction).Include(g => g.Place).ToList(),
                 PlId = group.PlaceId,
                 students = liststud,
+                l = students,
                 studentsToGroup = allStudents
 
             };
@@ -186,7 +191,6 @@ namespace MyMvcApp.Controllers
             {
                 StudentId = studyGroupViewModel.StId,
                 StudyGroupId = studyGroupViewModel.GrId
-
             };
 
             _context.StudentToGroups.Add(stdtogr);
