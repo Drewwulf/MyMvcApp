@@ -30,11 +30,10 @@
             <form asp-action="AddStudentToGroup">
                 <div class="add-button-container">
                     <h5>Список Учнів</h5>
-                    <select asp-for="StId">
-                        @foreach (var student in Model.students)
+                    <select asp-for="StId" class="form-select" aria-label="Default select example">
+                        @foreach (var student in Model.l)
                         {
                             <option value=@student.Id>@student.Username</option>
-
                         }
                     </select>
                     <input type="hidden" asp-for="GrId" />
