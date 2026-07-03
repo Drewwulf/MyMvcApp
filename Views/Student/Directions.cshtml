@@ -1,8 +1,22 @@
-﻿@model List<Direction>
+﻿@model MyMvcApp.Models.ViewModels.StudentDirectionViewModel
+
+<div class="card mb-4">
+    <div class="card-body d-flex justify-content-between">
+        <div>
+            <h5 class="mb-0">Level</h5>
+            <span class="fs-4">@Model.StudentLevel</span>
+        </div>
+
+        <div>
+            <h5 class="mb-0">Points</h5>
+            <span class="fs-4">@Model.StudentPoints</span>
+        </div>
+    </div>
+</div>
 
 <section class="directions">
     <section class="section">
-        @foreach (var direction in Model)
+        @foreach (var direction in Model.directions)
         {
             <div class="mainDiv">
                 <h2>@direction.DirectionName</h2>

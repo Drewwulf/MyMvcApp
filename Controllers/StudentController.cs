@@ -52,6 +52,27 @@ namespace MyMvcApp.Controllers
             return group;
         }
 
+        private async Task<int> GetStudentPoints()
+        {
+            int studentId = await GetStudentId();
+            var studentLevel = _context.Students.Where(s => s.Id == studentId).Select(l => l.StudentPoints).FirstOrDefault();
+            return studentLevel;
+        }
+
+        public async Task<int> GetStudentLevel()
+        {
+            int studentPoints = await GetStudentPoints();
+
+            return studentPoints switch
+            {
+                >= 1 and <= 10 => 1,
+                > 10 and <= 25 => 2,
+                > 25 and <= 50 => 3,
+                > 50 => 4 + (studentPoints - 51) / 50,
+                _ => 1
+            };
+        }
+
         public IActionResult Index()
         {
             var studentslist = _context.Students.ToList();
@@ -88,7 +109,17 @@ namespace MyMvcApp.Controllers
     .Where(d => directionsID1.Contains(d.DirectionId))
     .ToList();
 
-            return View(directions);
+            var studentLevel = await GetStudentLevel();
+            var studentPoints = await GetStudentPoints();
+
+            var model = new StudentDirectionViewModel
+            {
+                directions = directions,
+                StudentLevel = studentLevel,
+                StudentPoints = studentPoints
+            };
+
+            return View(model);
         }
 
         public IActionResult Tests(int id)

@@ -13,6 +13,8 @@ namespace MyMvcApp.Models
 
         public int? StudyGroupId { get; set; } = 0;
 
+        public int StudentPoints { get; set; } = 0;
+
         public StudyGroup group { get; set; }
 
         public List<StudentToGroup>  studentToGroups { get; set; }
