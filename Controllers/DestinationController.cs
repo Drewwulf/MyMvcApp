@@ -63,7 +63,7 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Create()
         {
-            var allDestinations = _context.Places.ToList();
+            List<Place> allDestinations = _context.Places.OrderByDescending(p => p.PlaceId).ToList();
             var model = new PlaceViewModel{ places = allDestinations};
 
             return View(model); 
@@ -79,7 +79,7 @@ namespace MyMvcApp.Controllers
             };
             _context.Places.Add(place);
             _context.SaveChanges();
- var allDestinations = _context.Places.ToList();
+            var allDestinations = _context.Places.OrderByDescending(p => p.PlaceId).ToList();
             var model = new PlaceViewModel{ places = allDestinations};
 
             return RedirectToAction("Create"); 

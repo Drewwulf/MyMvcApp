@@ -39,8 +39,8 @@ namespace MyMvcApp.Controllers
         public IActionResult Info()
         {
             var allStudents = _context.Students.ToList();
-            var allHomeWorks = _context.Homeworks.ToList();
-            var allStudentsToHomeWorks = _context.StudentsToHomeworks.ToList();
+            var allHomeWorks = _context.Homeworks.OrderByDescending(h => h.HomeworkId).ToList();
+            var allStudentsToHomeWorks = _context.StudentsToHomeworks.OrderByDescending(s => s.StudentsToHomeworkId).ToList();
 
             var model = new HomeworkViewModel { homeworks = allHomeWorks, students = allStudents, studentsToHomeworks = allStudentsToHomeWorks };
 
@@ -71,7 +71,7 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Create()
         {
-             var allHomeworks = _context.Homeworks.ToList();
+             var allHomeworks = _context.Homeworks.OrderByDescending(h => h.HomeworkId).ToList();
             var model = new HomeworkViewModel{ homeworks = allHomeworks};
 
             return View(model); 
@@ -89,7 +89,7 @@ namespace MyMvcApp.Controllers
             };
             _context.Homeworks.Add(homework);
             _context.SaveChanges();
- var allHomeworks = _context.Homeworks.ToList();
+ var allHomeworks = _context.Homeworks.OrderByDescending(h => h.HomeworkId).ToList();
             var model = new HomeworkViewModel{ homeworks = allHomeworks};
 
             return RedirectToAction("Create"); 
@@ -107,7 +107,7 @@ namespace MyMvcApp.Controllers
             };
             _context.Homeworks.Update(homework);
             _context.SaveChanges();
- var allHomeworks = _context.Homeworks.ToList();
+ var allHomeworks = _context.Homeworks.OrderByDescending(h => h.HomeworkId).ToList();
             var model = new HomeworkViewModel{ homeworks = allHomeworks};
 
             return RedirectToAction("Edit"); 

@@ -14,6 +14,9 @@ namespace MyMvcApp.Models.ViewModels
         public StudyGroup Group { get; set; }
         public string GroupName { get; set; }     
         public string GroupDescription { get; set; }
+
+        public List<Students> l = new List<Students>();
+
          public List<StudyGroup> studyGroup = new List<StudyGroup>();
          public List<Direction> directions = new List<Direction>();
         public List<Place> place = new List<Place>();

@@ -21,6 +21,55 @@ namespace MyMvcApp.Controllers
             _userManager = userManager;
             _context = context;
         }
+
+        private async Task<int> GetStudentId()
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            var studentId = _context.Students
+                .First(s => s.UserId == user.Id)
+                .Id;
+
+            return studentId;
+        }
+
+        private async Task<List<StudyGroup>> GetStudentsGroup()
+        {
+            var studentId = await GetStudentId();
+            var groups = _context.StudentToGroups
+         .Include(g => g.studyGroup)
+             .ThenInclude(sg => sg.Teachers)
+         .Include(g => g.studyGroup)
+             .ThenInclude(sg => sg.Place)
+         .Include(g => g.student)
+         .Where(g => g.StudentId == (int)studentId)
+         .ToList();
+            var group = _context.StudentToGroups
+        .Select(g => g.studyGroup)
+        .Distinct()
+        .ToList();
+
+            return group;
+        }
+
+        private async Task<List<Direction>> GetStudentsDirection()
+        {
+            var studentId = await GetStudentId();
+            var groups = _context.StudentToGroups
+         .ToList();
+            var directionsID1 = _context.StudentToGroups
+        .Select(g => g.studyGroup).Select(d => d.DirectionId)
+        .Distinct()
+        .ToList();
+            var firstId = directionsID1.FirstOrDefault();
+
+            var directions = _context.Directions
+    .Where(d => directionsID1.Contains(d.DirectionId))
+    .ToList();
+
+            return directions;
+        }
+
         public IActionResult Index()
         {
             var studentslist = _context.Students.ToList();
@@ -37,45 +86,16 @@ namespace MyMvcApp.Controllers
         }
         public async Task<IActionResult> MyGroup()
         {
-            var user = await _userManager.GetUserAsync(User);
-            var userid = user.Id;
-            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
-            var groups = _context.StudentToGroups
-         .Include(g => g.studyGroup)
-             .ThenInclude(sg => sg.Teachers)
-         .Include(g => g.studyGroup)
-             .ThenInclude(sg => sg.Place)
-         .Include(g => g.student)
-         .Where(g => g.StudentId == studentId)
-         .ToList();
-            var group = _context.StudentToGroups
-        .Select(g => g.studyGroup)
-        .Distinct()
-        .ToList();
+            var group = await GetStudentsGroup();
             var model = new StudentPageViewModel { groups = group };
-            return View(model); // повертає Views/Destination/Details.cshtml
+            return View(model);
         }
 
         public async Task<IActionResult> Directions()
         {
-            var user = await _userManager.GetUserAsync(User);
-            var userid = user.Id;
-            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
-            var groups = _context.StudentToGroups
-         .ToList();
-            var directionsID1 = _context.StudentToGroups
-        .Select(g => g.studyGroup).Select(d => d.DirectionId)
-        .Distinct()
-        .ToList();
-            var firstId = directionsID1.FirstOrDefault();
+            var directions = await GetStudentsDirection();
 
-            //            var direction = _context.Directions.FirstOrDefault(d => d.DirectionId == firstId);
-
-            var directions = _context.Directions
-    .Where(d => directionsID1.Contains(d.DirectionId))
-    .ToList();
-
-            return View(directions); // повертає /Views/Student/Directions.cshtml
+            return View(directions);
         }
 
         public IActionResult Tests(int id)
@@ -114,9 +134,7 @@ namespace MyMvcApp.Controllers
             decimal correctAnswersCount = 0;
             int totalQuestions = submissions.Count;
 
-            var user = await _userManager.GetUserAsync(User);
-            var userid = user.Id;
-            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
+            var studentId = await GetStudentId();
             foreach (var submission in submissions)
             {
                 var question = _context.Tasks
@@ -188,24 +206,16 @@ namespace MyMvcApp.Controllers
         
         public async Task<IActionResult> HistoryTest()
         {
-            var user = await _userManager.GetUserAsync(User);
-            var userid = user.Id;
-            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
+            var studentId = await GetStudentId();
             var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
       
             
-            var groups = _context.StudentToGroups
-         .Include(g => g.studyGroup)
-             .ThenInclude(sg => sg.Teachers)
-         .Include(g => g.studyGroup)
-             .ThenInclude(sg => sg.Place)
-         .Include(g => g.student)
-         .Where(g => g.StudentId == studentId)
-         .ToList();
-            var group = groups
-        .Select(g => g.studyGroup)
-        .Distinct()
-        .ToList();
+            return View(scoree); 
+         }
+
+
+        public async Task<IActionResult> MySchedule() {
+            var group = await GetStudentsGroup();
             var schedules = _context.Schedules.Where(g => g.StudyGroupId == group.First().StudyGroupId).Include(sg => sg.Place).ToList();
             var viewModel = new SheduleViewModel
             {

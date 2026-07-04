@@ -39,8 +39,8 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Tasks(int id)
         {
-            var allTask = _context.Tasks.Where(x=>x.TestId==id).ToList();
-            var allDirections = _context.Directions.ToList();
+            var allTask = _context.Tasks.OrderByDescending(t => t.QuestionId).Where(x=>x.TestId==id).ToList();
+            var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
             var model = new TaskViewModel { Question = allTask, TestId=id };
 
             return View(model);
@@ -87,7 +87,7 @@ namespace MyMvcApp.Controllers
             };
             _context.Tasks.Add(task);
             _context.SaveChanges();
-            var allTask = _context.Tasks.ToList();
+            var allTask = _context.Tasks.OrderByDescending(t => t.QuestionId).ToList();
             var model = new TaskViewModel { Question = allTask };
             return RedirectToAction("Tasks", new { id = TaskViewModel.TestId });
 
