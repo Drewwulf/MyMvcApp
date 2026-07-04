@@ -166,7 +166,7 @@ namespace MyMvcApp.Controllers
             var user = await _userManager.GetUserAsync(User);
             var userid = user.Id;
             var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
-            var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
+            var scoree = _context.ResultsTests.OrderByDescending(s => s.DateTime).Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
       
             
             return View(scoree); 
