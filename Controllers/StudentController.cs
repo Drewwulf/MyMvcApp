@@ -52,6 +52,24 @@ namespace MyMvcApp.Controllers
             return group;
         }
 
+        private async Task<List<Direction>> GetStudentsDirection()
+        {
+            var studentId = await GetStudentId();
+            var groups = _context.StudentToGroups
+         .ToList();
+            var directionsID1 = _context.StudentToGroups
+        .Select(g => g.studyGroup).Select(d => d.DirectionId)
+        .Distinct()
+        .ToList();
+            var firstId = directionsID1.FirstOrDefault();
+
+            var directions = _context.Directions
+    .Where(d => directionsID1.Contains(d.DirectionId))
+    .ToList();
+
+            return directions;
+        }
+
         public IActionResult Index()
         {
             var studentslist = _context.Students.ToList();
@@ -75,18 +93,7 @@ namespace MyMvcApp.Controllers
 
         public async Task<IActionResult> Directions()
         {
-            var studentId = await GetStudentId();
-            var groups = _context.StudentToGroups
-         .ToList();
-            var directionsID1 = _context.StudentToGroups
-        .Select(g => g.studyGroup).Select(d => d.DirectionId)
-        .Distinct()
-        .ToList();
-            var firstId = directionsID1.FirstOrDefault();
-
-            var directions = _context.Directions
-    .Where(d => directionsID1.Contains(d.DirectionId))
-    .ToList();
+            var directions = await GetStudentsDirection();
 
             return View(directions);
         }
@@ -183,19 +190,7 @@ namespace MyMvcApp.Controllers
 
 
         public async Task<IActionResult> MySchedule() {
-            var studentId = await GetStudentId();
-            var groups = _context.StudentToGroups
-         .Include(g => g.studyGroup)
-             .ThenInclude(sg => sg.Teachers)
-         .Include(g => g.studyGroup)
-             .ThenInclude(sg => sg.Place)
-         .Include(g => g.student)
-         .Where(g => g.StudentId == studentId)
-         .ToList();
-            var group = groups
-        .Select(g => g.studyGroup)
-        .Distinct()
-        .ToList();
+            var group = await GetStudentsGroup();
             var schedules = _context.Schedules.Where(g => g.StudyGroupId == group.First().StudyGroupId).Include(sg => sg.Place).ToList();
             var viewModel = new SheduleViewModel
             {
