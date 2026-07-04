@@ -52,6 +52,25 @@ namespace MyMvcApp.Controllers
             return group;
         }
 
+        private async Task<int> GetStudentPoints()
+        {
+            int studentId = await GetStudentId();
+            var studentLevel = _context.Students.Where(s => s.Id == studentId).Select(l => l.StudentPoints).FirstOrDefault();
+            return studentLevel;
+        }
+
+        public async Task<int> GetStudentLevel()
+        {
+            int studentPoints = await GetStudentPoints();
+
+            return studentPoints switch // 1 - 
+            {
+                >= 1 and <= 10 => 1,
+                > 10 and <= 25 => 2,
+                > 25 and <= 50 => 3,
+                > 50 => 4 + (studentPoints - 51) / 50,
+                _ => 1
+            };}
         private async Task<List<Direction>> GetStudentsDirection()
         {
             var studentId = await GetStudentId();
@@ -95,7 +114,17 @@ namespace MyMvcApp.Controllers
         {
             var directions = await GetStudentsDirection();
 
-            return View(directions);
+            var studentLevel = await GetStudentLevel();
+            var studentPoints = await GetStudentPoints();
+
+            var model = new StudentDirectionViewModel
+            {
+                directions = directions,
+                StudentLevel = studentLevel,
+                StudentPoints = studentPoints
+            };
+
+            return View(model);
         }
 
         public IActionResult Tests(int id)
@@ -113,7 +142,7 @@ namespace MyMvcApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult ShowScore(double score, int total)
+        public async Task<IActionResult> ShowScore(double score, int total, TestDifficualtyEnum TestDifficualty)
         {
             double percentage = total > 0 ? (double)score / total * 100 : 0;
 
@@ -123,6 +152,17 @@ namespace MyMvcApp.Controllers
                 TotalQuestions = total,
                 Percentage = Math.Round(percentage, 1) 
             };
+
+            int userid = await GetStudentId();
+            var user = _context.Students.Where(s => s.Id == userid).FirstOrDefault();
+
+            if (user != null)
+            {
+                user.StudentPoints += Convert.ToInt32(
+                Math.Round((int)TestDifficualty * (percentage / 100.0))
+                );
+                _context.SaveChanges();
+            }
 
             return View(viewModel);
         }
@@ -172,10 +212,11 @@ namespace MyMvcApp.Controllers
                     }
                 }
             }
-            var gett = new ResultTest { Score = Math.Round(totalQuestions > 0 ? correctAnswersCount / totalQuestions * 100 : 0, 1), TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now };
+            var gett = new ResultTest { Score = Math.Round(totalQuestions > 0 ? correctAnswersCount / totalQuestions * 100 : 0, 1), TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now, TestDifficualty = _context.Tasks.Include(q => q.Test).FirstOrDefault().Test.TestDifficualty };
             _context.ResultsTests.Add(gett);
             _context.SaveChanges();
-            return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions });
+            var tt = _context.Tasks.Include(q => q.Test).FirstOrDefault().Test.TestDifficualty;
+            return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions, TestDifficualty  = tt});
         }
 
         public async Task<IActionResult> MySchedule()

@@ -7,8 +7,10 @@ namespace MyMvcApp.Models
         public string Name { get; set; }     
         public string Description { get; set; }   
         public string Difficualty { get; set; }  
+       public TestDifficualtyEnum difficualtyEnum { get; set; } = new TestDifficualtyEnum();
 
          public List<Test> test = new List<Test>();
          public List<Direction> directions = new List<Direction>();
+        public List<TestDifficualtyEnum> TestDifficualty = new List<TestDifficualtyEnum>();
     }
 }
