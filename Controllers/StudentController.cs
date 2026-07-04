@@ -178,7 +178,32 @@ namespace MyMvcApp.Controllers
             return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions });
         }
 
-    
+        public async Task<IActionResult> MySchedule()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            var userid = user.Id;
+            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
+            var groups = _context.StudentToGroups
+         .Include(g => g.studyGroup)
+             .ThenInclude(sg => sg.Teachers)
+         .Include(g => g.studyGroup)
+             .ThenInclude(sg => sg.Place)
+         .Include(g => g.student)
+         .Where(g => g.StudentId == studentId)
+         .ToList();
+            var group = groups
+        .Select(g => g.studyGroup)
+        .Distinct()
+        .ToList();
+            var schedules = _context.Schedules.Where(g => g.StudyGroupId == group.First().StudyGroupId).Include(sg => sg.Place).ToList();
+            var viewModel = new SheduleViewModel
+            {
+                Schedules = schedules
+
+            };
+            return View(viewModel); // повертає Views/Destination/Details.cshtml
+        }
+        
         public async Task<IActionResult> HistoryTest()
         {
             var studentId = await GetStudentId();
