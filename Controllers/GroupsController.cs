@@ -83,6 +83,7 @@ namespace MyMvcApp.Controllers
                 Group = group,
                 studyGroup = _context.studyGroups.OrderByDescending(g => g.StudyGroupId).Include(g => g.Direction).Include(g => g.Place).ToList(),
                 PlId = group.PlaceId,
+                GrId = group.StudyGroupId,
                 students = liststud,
                 l = students,
                 studentsToGroup = allStudents

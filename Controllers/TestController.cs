@@ -30,8 +30,11 @@ namespace MyMvcApp.Controllers
                 TestId = id,
                 Name=test.TestName,
                 Description=test.TestDescription,
-                Difficualty=test.TestDifficualty,
-                directions=allDirections
+                difficualtyEnum = test.TestDifficualty,
+                TestDifficualty = Enum.GetValues(typeof(TestDifficualtyEnum))
+                     .Cast<TestDifficualtyEnum>()
+                     .ToList(),
+                directions =allDirections
 
             };
             return View(modal); // повертає Views/Direction/Edit.cshtml
@@ -47,7 +50,7 @@ namespace MyMvcApp.Controllers
 
     test1.TestName = test.Name;
     test1.TestDescription = test.Description;
-    test1.TestDifficualty = test.Difficualty;
+    test1.TestDifficualty = test.difficualtyEnum;
     test1.DirectionId=test.DirectionId;
 
     _context.SaveChanges();
@@ -72,7 +75,10 @@ namespace MyMvcApp.Controllers
         {
             var allTest = _context.Tests.OrderByDescending(t => t.TestId).ToList();
             var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
-            var model = new TestViewModel{ test = allTest,directions = allDirections};
+            var model = new TestViewModel{ test = allTest,directions = allDirections,TestDifficualty = Enum.GetValues(typeof(TestDifficualtyEnum))
+                     .Cast<TestDifficualtyEnum>()
+                     .ToList()
+            };
 
             return View(model); 
         }
@@ -86,7 +92,7 @@ namespace MyMvcApp.Controllers
             {
                 TestName = TestViewModel.Name,
                 TestDescription = TestViewModel.Description,
-                TestDifficualty = TestViewModel.Difficualty,
+                TestDifficualty =TestViewModel.difficualtyEnum ,
                 Direction = direction
             };
             _context.Tests.Add(test);

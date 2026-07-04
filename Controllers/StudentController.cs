@@ -63,7 +63,7 @@ namespace MyMvcApp.Controllers
         {
             int studentPoints = await GetStudentPoints();
 
-            return studentPoints switch
+            return studentPoints switch // 1 - 
             {
                 >= 1 and <= 10 => 1,
                 > 10 and <= 25 => 2,
@@ -137,7 +137,7 @@ namespace MyMvcApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult ShowScore(double score, int total)
+        public async Task<IActionResult> ShowScore(double score, int total, TestDifficualtyEnum TestDifficualty)
         {
             double percentage = total > 0 ? (double)score / total * 100 : 0;
 
@@ -147,6 +147,17 @@ namespace MyMvcApp.Controllers
                 TotalQuestions = total,
                 Percentage = Math.Round(percentage, 1) 
             };
+
+            int userid = await GetStudentId();
+            var user = _context.Students.Where(s => s.Id == userid).FirstOrDefault();
+
+            if (user != null)
+            {
+                user.StudentPoints += Convert.ToInt32(
+                Math.Round((int)TestDifficualty * (percentage / 100.0))
+                );
+                _context.SaveChanges();
+            }
 
             return View(viewModel);
         }
@@ -196,10 +207,11 @@ namespace MyMvcApp.Controllers
                     }
                 }
             }
-            var gett = new ResultTest { Score = Math.Round(totalQuestions > 0 ? correctAnswersCount / totalQuestions * 100 : 0, 1), TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now };
+            var gett = new ResultTest { Score = Math.Round(totalQuestions > 0 ? correctAnswersCount / totalQuestions * 100 : 0, 1), TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now, TestDifficualty = _context.Tasks.Include(q => q.Test).FirstOrDefault().Test.TestDifficualty };
             _context.ResultsTests.Add(gett);
             _context.SaveChanges();
-            return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions });
+            var tt = _context.Tasks.Include(q => q.Test).FirstOrDefault().Test.TestDifficualty;
+            return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions, TestDifficualty  = tt});
         }
 
     

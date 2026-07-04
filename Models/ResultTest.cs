@@ -10,6 +10,7 @@
         public decimal Score { get; set; }
         public Test Test { get; set; }
 
+        public TestDifficualtyEnum TestDifficualty { get; set; }
         public DateTime DateTime { get; set; }
     }
 }
