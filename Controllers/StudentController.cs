@@ -70,7 +70,23 @@ namespace MyMvcApp.Controllers
                 > 25 and <= 50 => 3,
                 > 50 => 4 + (studentPoints - 51) / 50,
                 _ => 1
-            };
+            };}
+        private async Task<List<Direction>> GetStudentsDirection()
+        {
+            var studentId = await GetStudentId();
+            var groups = _context.StudentToGroups
+         .ToList();
+            var directionsID1 = _context.StudentToGroups
+        .Select(g => g.studyGroup).Select(d => d.DirectionId)
+        .Distinct()
+        .ToList();
+            var firstId = directionsID1.FirstOrDefault();
+
+            var directions = _context.Directions
+    .Where(d => directionsID1.Contains(d.DirectionId))
+    .ToList();
+
+            return directions;
         }
 
         public IActionResult Index()
@@ -96,18 +112,7 @@ namespace MyMvcApp.Controllers
 
         public async Task<IActionResult> Directions()
         {
-            var studentId = await GetStudentId();
-            var groups = _context.StudentToGroups
-         .ToList();
-            var directionsID1 = _context.StudentToGroups
-        .Select(g => g.studyGroup).Select(d => d.DirectionId)
-        .Distinct()
-        .ToList();
-            var firstId = directionsID1.FirstOrDefault();
-
-            var directions = _context.Directions
-    .Where(d => directionsID1.Contains(d.DirectionId))
-    .ToList();
+            var directions = await GetStudentsDirection();
 
             var studentLevel = await GetStudentLevel();
             var studentPoints = await GetStudentPoints();
@@ -214,19 +219,11 @@ namespace MyMvcApp.Controllers
             return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions, TestDifficualty  = tt});
         }
 
-    
-        public async Task<IActionResult> HistoryTest()
+        public async Task<IActionResult> MySchedule()
         {
-            var studentId = await GetStudentId();
-            var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
-      
-            
-            return View(scoree); 
-         }
-
-
-        public async Task<IActionResult> MySchedule() {
-            var studentId = await GetStudentId();
+            var user = await _userManager.GetUserAsync(User);
+            var userid = user.Id;
+            var studentId = _context.Students.Where(s => s.UserId == userid).First().Id;
             var groups = _context.StudentToGroups
          .Include(g => g.studyGroup)
              .ThenInclude(sg => sg.Teachers)
@@ -239,6 +236,27 @@ namespace MyMvcApp.Controllers
         .Select(g => g.studyGroup)
         .Distinct()
         .ToList();
+            var schedules = _context.Schedules.Where(g => g.StudyGroupId == group.First().StudyGroupId).Include(sg => sg.Place).ToList();
+            var viewModel = new SheduleViewModel
+            {
+                Schedules = schedules
+
+            };
+            return View(viewModel); // повертає Views/Destination/Details.cshtml
+        }
+        
+        public async Task<IActionResult> HistoryTest()
+        {
+            var studentId = await GetStudentId();
+            var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
+      
+            
+            return View(scoree); 
+         }
+
+
+        public async Task<IActionResult> MySchedule() {
+            var group = await GetStudentsGroup();
             var schedules = _context.Schedules.Where(g => g.StudyGroupId == group.First().StudyGroupId).Include(sg => sg.Place).ToList();
             var viewModel = new SheduleViewModel
             {
