@@ -168,7 +168,7 @@ td {
         transform: scale(1.02);
         box-shadow: 2px 2px 15px rgba(255, 255, 255, 0.3);
     }
-
+     
 .table2-02 {
     text-align: center;
     height: 89%;
@@ -304,6 +304,83 @@ td {
     color: #0fb814 !important;
 }
 
+
+
+
+.mainSection{
+    display:flex;
+    justify-content:right;
+    align-items: center;
 }
 
+.firstDiv {
+    width: 49%;
+    justify-content: left;
+    background-color: #212529;
+    margin-right: 6vh;
+    margin-top: 2vh;
+    height: 37vh;
+    border-radius: 3vh;
+}
 
+.secondDiv {
+    width: 49%;
+    justify-content: right;
+}
+
+body {
+    background-color: #121212;
+}
+.tr td {
+    padding: 36px !important;
+    font-size: 1.1rem;
+    border: 3px solid #2A2F36;
+}
+
+th {
+    padding: 25px 0 !important;
+    font-size: 1.2rem;
+    text-align: center;
+    border: 3px solid #2A2F36;
+}
+
+.table4 {
+    margin-top: 5vh;
+    border: 1px solid #2A2F36;
+}
+
+.thirdDiv {
+    background-color: #212529;
+    margin-right: 6vh;
+    margin-top: 3vh;
+    min-height: 35vh;
+    padding: 40px;
+    border-radius:3vh;
+}
+
+.mainH {
+    font-size: 3rem;
+    color: #FFFFFF;
+    margin-left: 4vh;
+    padding: 20px;
+}
+
+.hr {
+    color: #FFFFFF;
+    width: 50%;
+    margin-left: 6vh;
+    
+}
+
+.pSchedule {
+    color: #FFFFFF;
+    font-size: 1.1rem !important;
+    margin-left: 4vh;
+    padding: 20px;
+}
+
+.calendarIcon{
+    font-size: 4rem;
+    margin-left: 4vh;
+    padding: 20px;
+}
