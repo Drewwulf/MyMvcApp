@@ -38,10 +38,10 @@ namespace MyMvcApp.Data
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Schedule>()
-                .HasOne(s => s.StudyGroup)
-                .WithMany()
-                .HasForeignKey(s => s.StudyGroupId)
-                .OnDelete(DeleteBehavior.NoAction);
+            .HasOne(s => s.StudyGroup)
+            .WithMany(g => g.Schedule)
+            .HasForeignKey(s => s.StudyGroupId)
+            .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Schedule>()
                 .HasOne(s => s.Place)
