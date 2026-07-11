@@ -1,41 +1,70 @@
 ﻿@model List<MyMvcApp.Models.Question>
 
-<div class="TestNameDiv">
-    <h2>@Model.First().Test.TestName</h2>
-    <h5>@Model.First().Test.TestDescription</h5>
+<div class="testHeaderCard">
+    <h2 class="testTitle">@Model.First().Test.TestName</h2>
+    <p class="testDescription">@Model.First().Test.TestDescription</p>
 </div>
 
-<form method="post" asp-action="CheckTest">
-    
+<form method="post" asp-action="CheckTest" class="testForm">
+
     @for (int i = 0; i < Model.Count; i++)
     {
         <input type="hidden" name="[@i].QuestionId" value="@Model[i].QuestionId" />
 
-        <div class="mainQuestionDiv">
-            <h2>@Model[i].QuestionName</h2>
-            <p>@Model[i].QuestionDescription</p>
-            
-            <div class="MainAnswerDiv">
+        <div class="questionCard">
+
+            <h2 class="questionTitle">
+                Питання @(i + 1)
+            </h2>
+
+            <h4 class="questionName">
+                @Model[i].QuestionName
+            </h4>
+
+            <p class="questionDescription">
+                @Model[i].QuestionDescription
+            </p>
+
+            <div class="answersContainer">
+
                 @foreach (var ans in Model[i].Answers)
                 {
-                    <div class="AnswersDiv">
+                    <label class="answerItem">
+
                         @switch (ans.Question.QuestionType)
                         {
                             case "Radio":
-                                <input class="answersRadio" type="radio" id="ans_@ans.Id" name="[@i].SelectedAnswerId[0]" value="@ans.Id" required />
+                                <input class="answerRadio"
+                                       type="radio"
+                                       id="ans_@ans.Id"
+                                       name="[@i].SelectedAnswerId[0]"
+                                       value="@ans.Id"
+                                       required />
                                 break;
 
                             case "CheckBox":
-                                <input class="answersCheckbox" type="checkbox" id="ans_@ans.Id" name="[@i].SelectedAnswerId" value="@ans.Id" />
+                                <input class="answerCheckbox"
+                                       type="checkbox"
+                                       id="ans_@ans.Id"
+                                       name="[@i].SelectedAnswerId"
+                                       value="@ans.Id" />
                                 break;
                         }
 
-                        <label for="ans_@ans.Id">@ans.answerName</label>
-                    </div>
+                        <span>@ans.answerName</span>
+
+                    </label>
                 }
+
             </div>
+
         </div>
     }
 
-    <button type="submit" class="btn-submit">Здати тест</button>
+    <div class="submitContainer">
+        <button class="submitTestButton">
+            ✈ Здати тест
+        </button>
+    </div>
+
 </form>

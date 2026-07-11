@@ -38,7 +38,7 @@
                                     <td>
                                         <a type="button" asp-controller="Task" asp-action="Edit" asp-route-id="@task.QuestionId" class="btn btn-secondary">Редагувати</a>
                                         <a asp-controller="Answer" asp-action="Details" asp-route-id="@task.QuestionId" type="button" class="btn btn-dark">Деталі</a>
-                                        <a type="button" asp-controller="Task" asp-action="Delete" asp-route-id="@task.QuestionId" class="btn btn-danger">Видалити</a>
+                                        <a type="button" asp-controller="Tasks" asp-action="Delete" asp-route-id="@task.QuestionId" class="btn btn-danger">Видалити</a>
                                     </td>
                                 </tr>
                             }
