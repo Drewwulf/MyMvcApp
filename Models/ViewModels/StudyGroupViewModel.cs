@@ -23,5 +23,6 @@ namespace MyMvcApp.Models.ViewModels
         public List<Teachers> users = new List<Teachers>();
         public List<Students> students = new List<Students>();
         public List<StudentToGroup> studentsToGroup = new List<StudentToGroup>();
+        public List<Schedule> schedules = new List<Schedule>();
     }
 }
