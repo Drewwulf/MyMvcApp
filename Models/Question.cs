@@ -13,5 +13,8 @@ namespace MyMvcApp.Models
         public Test Test {get; set;}
 
         public List<Answer> Answers {get; set;}
+
+        public bool isdeleted { get; set; } = false;
+
     }
 }

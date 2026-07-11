@@ -39,7 +39,7 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Tasks(int id)
         {
-            var allTask = _context.Tasks.OrderByDescending(t => t.QuestionId).Where(x=>x.TestId==id).ToList();
+            var allTask = _context.Tasks.OrderByDescending(t => t.QuestionId).Where(x => x.TestId == id && !x.isdeleted).ToList();
             var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
             var model = new TaskViewModel { Question = allTask, TestId=id };
 
@@ -92,6 +92,13 @@ namespace MyMvcApp.Controllers
             return RedirectToAction("Tasks", new { id = TaskViewModel.TestId });
 
 
+        }
+        public IActionResult Delete(int id)
+        {
+            var task = _context.Tasks.Find(id);
+            task.isdeleted = true;
+            _context.SaveChanges();
+            return RedirectToAction("Tasks", new { id = task.TestId });
         }
     }
 }
