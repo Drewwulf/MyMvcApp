@@ -75,6 +75,7 @@ namespace MyMvcApp.Controllers
         {
             var allTest = _context.Tests.OrderByDescending(t => t.TestId).ToList();
             var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
+          
             var model = new TestViewModel{ test = allTest,directions = allDirections,TestDifficualty = Enum.GetValues(typeof(TestDifficualtyEnum))
                      .Cast<TestDifficualtyEnum>()
                      .ToList()
