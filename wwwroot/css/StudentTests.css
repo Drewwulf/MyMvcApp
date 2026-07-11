@@ -1,0 +1,178 @@
+﻿body {
+    background: #0f1117;
+    color: #fff;
+    font-family: Segoe UI,Tahoma,Geneva,Verdana,sans-serif;
+}
+
+/*==========================
+ HEADER
+===========================*/
+
+.testHeaderCard {
+    width: 70%;
+    margin: 40px auto 20px;
+    background: linear-gradient(145deg,#313847,#252b37);
+    border-radius: 18px;
+    padding: 28px 35px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.45);
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.testTitle {
+    margin: 0;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.testDescription {
+    margin-top: 10px;
+    color: #b5bcc9;
+    font-size: 20px;
+}
+
+/*==========================
+ QUESTIONS
+===========================*/
+
+.testForm {
+    width: 70%;
+    margin: auto;
+}
+
+.questionCard {
+    background: linear-gradient(145deg,#313847,#252b37);
+    border-radius: 18px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.45);
+    border: 1px solid rgba(255,255,255,.06);
+}
+
+.questionTitle {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 700;
+}
+
+.questionName {
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.questionDescription {
+    color: #c8ced8;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+/*==========================
+ ANSWERS
+===========================*/
+
+.answersContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.answerItem {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(255,255,255,.05);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 10px;
+    padding: 14px 18px;
+    cursor: pointer;
+    transition: .25s;
+}
+
+    .answerItem:hover {
+        background: rgba(255,255,255,.08);
+        transform: translateY(-2px);
+    }
+
+    .answerItem span {
+        font-size: 20px;
+        color: #f2f2f2;
+    }
+
+/*==========================
+ RADIO
+===========================*/
+
+.answerRadio,
+.answerCheckbox {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+/*==========================
+ BUTTON
+===========================*/
+
+.submitContainer {
+    display: flex;
+    justify-content: center;
+    margin: 35px 0 60px;
+}
+
+.submitTestButton {
+    width: 260px;
+    height: 60px;
+    border: none;
+    border-radius: 14px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    background: linear-gradient(145deg,#4b5569,#313847);
+    transition: .3s;
+    box-shadow: 0 12px 25px rgba(0,0,0,.35);
+}
+
+    .submitTestButton:hover {
+        transform: translateY(-3px);
+        background: linear-gradient(145deg,#5d6b82,#3d4555);
+    }
+
+/*==========================
+ RESPONSIVE
+===========================*/
+
+@media(max-width:1200px) {
+
+    .testHeaderCard,
+    .testForm {
+        width: 90%;
+    }
+}
+
+@media(max-width:768px) {
+
+    .testTitle {
+        font-size: 30px;
+    }
+
+    .questionTitle {
+        font-size: 28px;
+    }
+
+    .questionName {
+        font-size: 22px;
+    }
+
+    .questionDescription {
+        font-size: 17px;
+    }
+
+    .answerItem span {
+        font-size: 17px;
+    }
+
+    .submitTestButton {
+        width: 100%;
+    }
+}
