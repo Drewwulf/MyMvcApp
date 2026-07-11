@@ -84,7 +84,7 @@ namespace MyMvcApp.Controllers
 
             };
 
-            if ((questionType == "Radio") || ( questionType== "CheckBox"))
+            if ((questionType == "Radio" && !isCoreectExist) || (questionType == "Radio" && isCoreectExist && !AnswerViewModel.IsCorrect) || ( questionType== "CheckBox"))
             {
                 _context.Answers.Add(answer);
                 _context.SaveChanges();

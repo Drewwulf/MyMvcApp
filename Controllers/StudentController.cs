@@ -135,8 +135,8 @@ namespace MyMvcApp.Controllers
 
         public IActionResult TestPage(int id)
         {
-            var tasks = _context.Tasks.Where(ts => ts.TestId == id).Include(t => t.Test).Include(ans => ans.Answers).ToList();
-
+            var tasks = _context.Tasks.Where(ts => ts.TestId == id).Include(t => t.Test).Include(ans => ans.Answers).Where(ts => ts.isdeleted != true).ToList();
+            var bb = tasks.FirstOrDefault().Answers.Any(a => a.IsCorrect == true);
 
             return View(tasks);
         }
