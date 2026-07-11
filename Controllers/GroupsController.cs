@@ -78,6 +78,7 @@ namespace MyMvcApp.Controllers
 
 
             var allStudents = _context.StudentToGroups.OrderByDescending(s => s.StudentToGroupId).Include(s=>s.student).Where(g=>g.StudyGroupId == id).Where(s=>s.isdeleted==false).ToList();
+            var allSchedules = _context.Schedules.Where(schedule1 => schedule1.StudyGroupId == id).ToList();
             var modal = new StudyGroupViewModel
             {
                 Group = group,
@@ -86,7 +87,8 @@ namespace MyMvcApp.Controllers
                 GrId = group.StudyGroupId,
                 students = liststud,
                 l = students,
-                studentsToGroup = allStudents
+                studentsToGroup = allStudents,
+                schedules = allSchedules
 
             };
 

@@ -71,8 +71,7 @@
 
     <!-- Блок розкладу -->
     <div class="schedule-container card p-3 shadow-sm">
-        <h5>Розклад Занять Групи [G03]</h5>
-
+        <h5>Розклад занять групи @Model.Group.GroupName</h5>
         <div class="table-responsive">
             <table class="table table-bordered mb-0">
                 <thead class="table-light">
@@ -83,11 +82,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr><td>Понеділок</td><td>-</td><td>-</td></tr>
-                    <tr><td>Вівторок</td><td>-</td><td>-</td></tr>
-                    <tr><td>Середа</td><td>-</td><td>-</td></tr>
-                    <tr><td>Четвер</td><td>-</td><td>-</td></tr>
-                    <tr><td>П'ятниця</td><td>-</td><td>-</td></tr>
+                    @foreach (var shedule in Model.schedules)
+                    {
+                            <tr class="table-dark"><td>@shedule.DayOfWeek</td><td>@shedule.startTime</td><td>@shedule.endTime</td></tr>
+                    }
                 </tbody>
             </table>
         </div>
