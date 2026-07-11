@@ -236,3 +236,18 @@ section {
         background-color: #bb7b04;
         padding: 10px;
     }
+
+.Questionname {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.QuestionDescription {
+    color: #FFFFFF;
+    text-align: center;
+}
+
+hr{
+    width: 50%;
+
+}

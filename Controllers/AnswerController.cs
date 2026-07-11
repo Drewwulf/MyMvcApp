@@ -36,8 +36,10 @@ namespace MyMvcApp.Controllers
         public IActionResult Details(int id)
         {
 
-            var allAnswer = _context.Answers.Where(x => x.QuestionId == id).ToList();
-            var model = new AnswerViewModel { answers = allAnswer,TaskId= id };
+            var allAnswer = _context.Answers.Where(x => x.QuestionId == id).ToList(); 
+            var Task = _context.Tasks.Where(task => task.QuestionId == id).FirstOrDefault();
+            var model = new AnswerViewModel { answers = allAnswer,TaskId = id, task = Task};
+      
             return View(model);
 
 
