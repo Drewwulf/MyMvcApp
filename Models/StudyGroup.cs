@@ -16,6 +16,8 @@ namespace MyMvcApp.Models
         public List<Students> Students { get; set; } = new List<Students>();
 
         public List<StudentToGroup> StudentToGroups { get; set;} = new List<StudentToGroup>();
+
+        public List<Schedule> Schedule { get; set; } = new List<Schedule>();
         
 
     }

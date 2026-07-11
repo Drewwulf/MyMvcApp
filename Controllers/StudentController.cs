@@ -1,3 +1,4 @@
+using AspNetCoreGeneratedDocument;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -5,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
 using MyMvcApp.Models.ViewModels;
+using System.Runtime.InteropServices;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace MyMvcApp.Controllers
@@ -33,23 +35,21 @@ namespace MyMvcApp.Controllers
             return studentId;
         }
 
-        private async Task<List<StudyGroup>> GetStudentsGroup()
+        private async Task<List<StudentToGroup>> GetStudentsGroup()
         {
             var studentId = await GetStudentId();
             var groups = _context.StudentToGroups
          .Include(g => g.studyGroup)
              .ThenInclude(sg => sg.Teachers)
          .Include(g => g.studyGroup)
-             .ThenInclude(sg => sg.Place)
+             .ThenInclude(sg => sg.Place).Include(g => g.studyGroup)
+             .ThenInclude(sg => sg.Direction)
+             .Include(g => g.studyGroup).ThenInclude(sg => sg.Schedule)
          .Include(g => g.student)
          .Where(g => g.StudentId == (int)studentId)
          .ToList();
-            var group = _context.StudentToGroups
-        .Select(g => g.studyGroup)
-        .Distinct()
-        .ToList();
 
-            return group;
+            return groups;
         }
 
         private async Task<int> GetStudentPoints()
@@ -70,23 +70,25 @@ namespace MyMvcApp.Controllers
                 > 25 and <= 50 => 3,
                 > 50 => 4 + (studentPoints - 51) / 50,
                 _ => 1
-            };}
+            };
+        }
         private async Task<List<Direction>> GetStudentsDirection()
         {
             var studentId = await GetStudentId();
-            var groups = _context.StudentToGroups
-         .ToList();
-            var directionsID1 = _context.StudentToGroups
-        .Select(g => g.studyGroup).Select(d => d.DirectionId)
-        .Distinct()
-        .ToList();
-            var firstId = directionsID1.FirstOrDefault();
+            var groups = await GetStudentsGroup();
+            var directions = new List<Direction>();
+            var directions2 = groups.Select(g => g.studyGroup.Direction).ToList();
 
-            var directions = _context.Directions
-    .Where(d => directionsID1.Contains(d.DirectionId))
-    .ToList();
 
-            return directions;
+            if (groups != null && groups.Count > 0 && groups[0].studyGroup != null)
+            {
+                foreach (var Did in groups)
+                {
+                    directions.Append(Did.studyGroup.Direction);
+                }
+            }
+
+            return directions2;
         }
 
         public IActionResult Index()
@@ -106,7 +108,7 @@ namespace MyMvcApp.Controllers
         public async Task<IActionResult> MyGroup()
         {
             var group = await GetStudentsGroup();
-            var model = new StudentPageViewModel { groups = group };
+            var model = new StudentPageViewModel { allGroups = group };
             return View(model);
         }
 
@@ -150,7 +152,7 @@ namespace MyMvcApp.Controllers
             {
                 Score = score,
                 TotalQuestions = total,
-                Percentage = Math.Round(percentage, 1) 
+                Percentage = Math.Round(percentage, 1)
             };
 
             int userid = await GetStudentId();
@@ -185,7 +187,7 @@ namespace MyMvcApp.Controllers
                                        .FirstOrDefault(q => q.QuestionId == submission.QuestionId);
 
                 if (question == null) continue;
-                if (question.QuestionType == "CheckBox") 
+                if (question.QuestionType == "CheckBox")
                 {
                     var correctAnswersIds = question.Answers
                                                     .Where(a => a.IsCorrect)
@@ -202,7 +204,7 @@ namespace MyMvcApp.Controllers
                         correctAnswersCount += matchedAnswersCount;
                     }
                 }
-                else 
+                else
                 {
                     var firstSelectedId = submission.SelectedAnswerId?.FirstOrDefault();
 
@@ -215,32 +217,33 @@ namespace MyMvcApp.Controllers
                     }
                 }
             }
-            var gett = new ResultTest { Score = Math.Round(totalQuestions > 0 ? correctAnswersCount / totalQuestions * 100 : 0, 1), TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId,StudentId = studentId, DateTime = DateTime.Now, TestDifficualty = _context.Tasks.Include(q => q.Test).FirstOrDefault().Test.TestDifficualty };
+            var gett = new ResultTest { Score = Math.Round(totalQuestions > 0 ? correctAnswersCount / totalQuestions * 100 : 0, 1), TestId = _context.Tasks.Include(q => q.Answers).FirstOrDefault(q => q.QuestionId == submissions.First().QuestionId).TestId, StudentId = studentId, DateTime = DateTime.Now, TestDifficualty = _context.Tasks.Include(q => q.Test).FirstOrDefault().Test.TestDifficualty };
             _context.ResultsTests.Add(gett);
             _context.SaveChanges();
             var tt = _context.Tasks.Include(q => q.Test).FirstOrDefault().Test.TestDifficualty;
-            return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions, TestDifficualty  = tt});
+            return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions, TestDifficualty = tt });
         }
 
-       
-        
+
+
         public async Task<IActionResult> HistoryTest()
         {
             var studentId = await GetStudentId();
-            var scoree = _context.ResultsTests.Where(s => s.StudentId==studentId).Include(t=>t.Test).ToList();
-      
-            
-            return View(scoree); 
-         }
+            var scoree = _context.ResultsTests.Where(s => s.StudentId == studentId).Include(t => t.Test).ToList();
 
 
-        public async Task<IActionResult> MySchedule() {
+            return View(scoree);
+        }
+
+
+        public async Task<IActionResult> MySchedule()
+        {
             var group = await GetStudentsGroup();
-            var schedules = _context.Schedules.Where(g => g.StudyGroupId == group.First().StudyGroupId).Include(sg => sg.Place).ToList();
+            var schedules = group.SelectMany(gs => gs.studyGroup.Schedule).ToList();
+           
             var viewModel = new SheduleViewModel
             {
                 Schedules = schedules
-
             };
             return View(viewModel); // повертає Views/Destination/Details.cshtml
         }

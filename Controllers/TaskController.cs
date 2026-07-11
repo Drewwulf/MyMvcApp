@@ -60,9 +60,9 @@ namespace MyMvcApp.Controllers
             }
             else
             {
-                if (modal.TaskType == "Radio")
+                if (modal.TaskType == "Radio" )
                 {
-                    TempData["Error"] = "Неможиво змінити тип на Radio тому що в тесті більеш одної відповіді.";
+                    TempData["Error"] = "Неможиво змінити тип на Radio тому що в тесті більше одної відповіді.";
                     return View(modal);
                 }
             }
