@@ -62,7 +62,7 @@ namespace MyMvcApp.Controllers
 
                 ViewBag.Success = "Користувача створено!";
 
-                    if (Role == "Teacher" || result == IdentityResult.Success)
+                    if (Role == "Teacher" && result == IdentityResult.Success)
                     {
                         var modal = new Teachers
                         {
@@ -73,7 +73,7 @@ namespace MyMvcApp.Controllers
                         _context.SaveChanges();
 
                     }
-                    else if (Role == "Student" || result == IdentityResult.Success)
+                    else if (Role == "Student" && result == IdentityResult.Success)
                     {
                         var modal = new Students
                         {

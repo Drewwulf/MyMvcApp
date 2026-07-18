@@ -1,17 +1,43 @@
 ﻿@model MyMvcApp.Models.ViewModels.StudentDirectionViewModel
 
-<div class="card mb-4">
-    <div class="card-body d-flex justify-content-between">
-        <div>
-            <h5 style="color: black"  class="mb-0">Level</h5>
-            <span style="color: black" class="fs-4">@Model.StudentLevel</span>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<div class="studentDashboard">
+
+    <div class="studentInfoCard">
+
+        <div class="studentInfo">
+            <div class="studentIcon levelIcon">
+                <i class="fa-solid fa-shield-halved"></i>
+            </div>
+
+            <div>
+                <span class="studentLabel">Рівень</span>
+                <h2>@Model.StudentLevel</h2>
+            </div>
         </div>
 
-        <div>
-            <h5 style="color: black" class="mb-0">Points</h5>
-            <span style="color: black" class="fs-4">@Model.StudentPoints</span>
+        <div class="leaderboardButton">
+            <a asp-controller="Student" asp-action="LiderBoard">
+                <i class="fa-solid fa-trophy"></i>
+                Таблиця лідерів
+            </a>
         </div>
+
+        <div class="studentInfo rightInfo">
+            <div class="studentIcon pointsIcon">
+                <i class="fa-solid fa-star"></i>
+            </div>
+
+            <div>
+                <span class="studentLabel">Досвід</span>
+                <h2>@Model.StudentPoints XP</h2>
+            </div>
+        </div>
+
     </div>
+
 </div>
 
 <section class="directions">
@@ -25,8 +51,11 @@
                     <p>@direction.DirectionDescription</p>
 
                     <div class="buttonDiv">
-                        <a asp-controller="Student" asp-action="Tests" asp-route-id="@direction.DirectionId" class="btn btn-dark">
-                            Подививтись тести 
+                        <a asp-controller="Student"
+                               asp-action="Tests"
+                               asp-route-id="@direction.DirectionId"
+                               class="btn btn-dark">
+                            Подивитися тести
                         </a>
                     </div>
                 </div>
