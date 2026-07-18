@@ -18,7 +18,10 @@
         <select asp-for="HomeworkId" class="form-select" aria-label="Default select example">
             @foreach (var homework in Model.homeworks)
             {
-                <option value=@homework.HomeworkId>@homework.HomeworkName</option>
+                            @if (!homework.isdeleted)
+                            {
+                        <option value=@homework.HomeworkId>@homework.HomeworkName</option>
+                            }        
             }
         </select>
     </div>
