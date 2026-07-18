@@ -17,5 +17,6 @@
                     <input asp-for="TaskId" type="hidden" />
                     <input type="submit" value="Редагувати" class="button">
                 </form>
+                <a asp-controller="Task" asp-action="Tasks" asp-route-id="@Model.TestId" class="btn btn-dark">Повернутися назад</a>
             </div>
         </section>
