@@ -131,14 +131,14 @@ namespace MyMvcApp.Controllers
 
         public IActionResult Tests(int id)
         {
-            var allTests = _context.Tests.Where(ts => ts.DirectionId == id).ToList();
+            var allTests = _context.Tests.Where(ts => ts.DirectionId == id).Where( q=> q.Questions.Any()).Where(q => q.Questions.Any(a => a.Answers.Any())).ToList();
             return View(allTests);
         }
 
         public IActionResult TestPage(int id)
         {
-            var tasks = _context.Tasks.Where(ts => ts.TestId == id).Include(t => t.Test).Include(ans => ans.Answers).ToList();
-
+            var tasks = _context.Tasks.Where(ts => ts.TestId == id).Include(t => t.Test).Include(ans => ans.Answers).Where(ts => ts.isdeleted != true).ToList();
+            var bb = tasks.FirstOrDefault().Answers.Any(a => a.IsCorrect == true);
 
             return View(tasks);
         }

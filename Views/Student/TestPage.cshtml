@@ -24,39 +24,46 @@
             <p class="questionDescription">
                 @Model[i].QuestionDescription
             </p>
-
-            <div class="answersContainer">
-
-                @foreach (var ans in Model[i].Answers)
+                @if (Model.FirstOrDefault().Answers.Any(a => a.IsCorrect == true) || Model != null)
                 {
-                    <label class="answerItem">
+                <div class="answersContainer">
 
-                        @switch (ans.Question.QuestionType)
-                        {
-                            case "Radio":
-                                <input class="answerRadio"
-                                       type="radio"
-                                       id="ans_@ans.Id"
-                                       name="[@i].SelectedAnswerId[0]"
-                                       value="@ans.Id"
-                                       required />
-                                break;
+                
+                    @foreach (var ans in Model[i].Answers)
+                    {
+                        <label class="answerItem">
 
-                            case "CheckBox":
-                                <input class="answerCheckbox"
-                                       type="checkbox"
-                                       id="ans_@ans.Id"
-                                       name="[@i].SelectedAnswerId"
-                                       value="@ans.Id" />
-                                break;
-                        }
+                            @switch (ans.Question.QuestionType)
+                            {
+                                case "Radio":
+                                    <input class="answerRadio"
+                                           type="radio"
+                                           id="ans_@ans.Id"
+                                           name="[@i].SelectedAnswerId[0]"
+                                           value="@ans.Id"
+                                           required />
+                                    break;
 
-                        <span>@ans.answerName</span>
+                                case "CheckBox":
+                                    <input class="answerCheckbox"
+                                           type="checkbox"
+                                           id="ans_@ans.Id"
+                                           name="[@i].SelectedAnswerId"
+                                           value="@ans.Id" />
+                                    break;
+                            }
 
-                    </label>
+                            <span>@ans.answerName</span>
+
+                        </label>
+                        
+                
+                    }
+                </div>
                 }
+               
 
-            </div>
+            
 
         </div>
     }
