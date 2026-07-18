@@ -7,7 +7,7 @@
 
         public Question task { get; set; }
 
-        public static object TestId { get; internal set; }
+        public int TestId { get; set; } = 0;
         public string TestName { get; set; }
         public int AnswerId { get; set; }
         public bool IsCorrect { get; set; }
