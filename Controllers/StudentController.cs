@@ -101,6 +101,16 @@ namespace MyMvcApp.Controllers
         {
             return View(); // повертає Views/Student/Edit.cshtml
         }
+        public async Task<IActionResult> StudentKabinet()
+        {
+            var group = await GetStudentsGroup();
+            var dir = await GetStudentsDirection();
+            var user = await _userManager.GetUserAsync(User);
+            
+            var model = new StudentPageViewModel { directions = dir,allGroups = group,user  =  user.UserName,email = user.Email};
+            return View(model);
+           
+        }
         public IActionResult Details()
         {
             return View(); // повертає Views/Destination/Details.cshtml
