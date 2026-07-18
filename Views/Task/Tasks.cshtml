@@ -3,12 +3,12 @@
     <div class="mainDiv">
         <form class="p-3" asp-controller="Task" asp-action="Create" asp-route-id="@Model.TestId" method="post" c>
 
-            <input type="text" asp-for="Name" asclass="form-control mb-3" placeholder="Назва">
-                <input type="text" asp-for="Description" class="form-control mb-4" placeholder="Опис">
+            <input type="text" asp-for="Name" asclass="form-control mb-3" placeholder="Назва" required  />
+                <input type="text" asp-for="Description" class="form-control mb-4" placeholder="Опис"  required>
                 <select asp-for="TaskType" class="form-select" aria-label="Default select example">
                 <option value="Radio">Radio (1 Відповідь)</option>
                 <option value="CheckBox">CheckBox (2 відповіді і більше)</option>
-                </select>
+               </select>
 
    
                     <div class="d-flex align-items-center mb-2">
@@ -18,8 +18,9 @@
    
                     <input type="hidden" asp-for="TestId">
                         <button type="submit" class="btn btn-dark w-100">Створити</button>
-
-                    </form>
+                       
+               
+                </form> <a asp-controller="Test" asp-action="Details" asp-route-id="@Model.TestId" style="margin-top : 15px" class="btn btn-dark">Повернутися назад</a>
                 </div>
             </section>
             <section>

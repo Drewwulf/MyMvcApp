@@ -28,7 +28,8 @@ namespace MyMvcApp.Controllers
             {
                 AnswerName = answer.answerName,
                 AnswerId = answer.Id,
-                IsCorrect = answer.IsCorrect
+                IsCorrect = answer.IsCorrect,
+                TestId = answer.Question.TestId
             };
 
             return View(modal);
@@ -36,9 +37,12 @@ namespace MyMvcApp.Controllers
         public IActionResult Details(int id)
         {
 
-            var allAnswer = _context.Answers.Where(x => x.QuestionId == id).ToList(); 
+            var allAnswer = _context.Answers.Where(x => x.QuestionId == id).ToList();
+
+            var Question = _context.Tasks.Where(ixx=> ixx.QuestionId == id).ToList();
+         
             var Task = _context.Tasks.Where(task => task.QuestionId == id).FirstOrDefault();
-            var model = new AnswerViewModel { answers = allAnswer,TaskId = id, task = Task};
+            var model = new AnswerViewModel { answers = allAnswer, TaskId = id, task = Task, TestId = Question.FirstOrDefault().TestId };
       
             return View(model);
 
@@ -68,7 +72,7 @@ namespace MyMvcApp.Controllers
 
             return View(modal);
         }
-
+        
         public IActionResult Create(AnswerViewModel AnswerViewModel)
         {
 
