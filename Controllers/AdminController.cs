@@ -49,29 +49,7 @@ namespace MyMvcApp.Controllers
                 UserName = fullName,
                 Email = Email
             };
-            if (Role == "Teacher")
-            {
-                var modal = new Teachers
-                {
-                    UserId = user.Id,
-                    UserName = user.UserName,
-                };
-                _context.Teachers.Add(modal);
-                _context.SaveChanges();
-
-            }
-            else if( Role ==  "Student")
-            {
-                var modal = new Students
-                {
-                    UserId = user.Id,
-                    Username = user.UserName,
-                    StudyGroupId = null
-
-                };
-                _context.Students.Add(modal);
-                _context.SaveChanges();
-            }
+            
 
 
 
@@ -83,7 +61,32 @@ namespace MyMvcApp.Controllers
                 await _userManager.AddToRoleAsync(user, Role);
 
                 ViewBag.Success = "Користувача створено!";
-                return View();
+
+                    if (Role == "Teacher" || result == IdentityResult.Success)
+                    {
+                        var modal = new Teachers
+                        {
+                            UserId = user.Id,
+                            UserName = user.UserName,
+                        };
+                        _context.Teachers.Add(modal);
+                        _context.SaveChanges();
+
+                    }
+                    else if (Role == "Student" || result == IdentityResult.Success)
+                    {
+                        var modal = new Students
+                        {
+                            UserId = user.Id,
+                            Username = user.UserName,
+                            StudyGroupId = null
+
+                        };
+                        _context.Students.Add(modal);
+                        _context.SaveChanges();
+                    }
+
+                    return View();
             }
 
             // Якщо є помилки
@@ -91,6 +94,9 @@ namespace MyMvcApp.Controllers
             {
                 ModelState.AddModelError("", error.Description);
             }
+
+           
+
             }
             return View();
         }
