@@ -101,7 +101,7 @@ namespace MyMvcApp.Controllers
                 return View(model);
             }
 
-            return View(model);
+            return RedirectToAction("Details", new { id = answer.QuestionId });
         }
         public IActionResult Delete(int id)
         {
