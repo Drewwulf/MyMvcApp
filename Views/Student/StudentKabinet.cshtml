@@ -1,0 +1,96 @@
+﻿
+@model MyMvcApp.Models.ViewModels.StudentPageViewModel
+@{
+}
+
+<section class="section1">
+
+    <!-- Фото -->
+    <div class="Div10">
+        <div class="photoDiv d-flex justify-content-center align-items-center">
+            <i class="bi bi-person-circle iconuser text-light"></i>
+        </div>
+    </div>
+
+    <!-- Інформація -->
+    <div class="Div20">
+
+        <!-- Верхній блок -->
+        <div class="SmallDiv1">
+
+            <div class="p-4">
+
+                <h3 class="text-white fw-bold">
+                    <i class="bi bi-person-circle me-2"></i>
+                    Особистий кабінет
+                </h3>
+
+                <hr class="text-secondary" />
+
+                <p class="text-secondary mb-2">
+                    <i class="bi bi-person me-2"></i>
+                    <strong>Ім'я: @Model.user</strong> 
+                </p>
+
+                <p class="text-secondary mb-2">
+                    <i class="bi bi-envelope me-2"></i>
+                    <strong>Email: @Model.email</strong>
+                </p>
+
+                <p class="text-secondary">
+                    <i class="bi bi-telephone me-2"></i>
+                    <strong>Телефон:</strong> 
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- Нижній блок -->
+        <div class="SmallDiv2">
+
+            <div class="p-4">
+
+                <h4 class="text-white fw-bold mb-3">
+                    <i class="bi bi-mortarboard-fill me-2"></i>
+                    Навчання
+                </h4>
+
+                <table class="table table-dark table-borderless align-middle">
+
+                    <tbody>
+
+                        <tr>
+                            <td>Група</td>
+                            <td class="text-end">
+                            @Model.allGroups.First().studyGroup.GroupName 
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Напрям</td>
+                            <td class="text-end">
+
+
+                                @Model.directions.First().DirectionName
+                                 </td>
+                        </tr>
+
+                        <tr>
+                            <td>Статус</td>
+                            <td class="text-end text-success">
+                                Активний
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
