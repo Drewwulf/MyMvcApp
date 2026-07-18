@@ -324,8 +324,9 @@ td {
 }
 
 .secondDiv {
+    margin: 0 auto!important;
     width: 49%;
-    justify-content: right;
+    
 }
 
 body {
