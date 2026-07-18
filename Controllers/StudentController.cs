@@ -129,7 +129,7 @@ namespace MyMvcApp.Controllers
 
         public IActionResult Tests(int id)
         {
-            var allTests = _context.Tests.Where(ts => ts.DirectionId == id).ToList();
+            var allTests = _context.Tests.Where(ts => ts.DirectionId == id).Where( q=> q.Questions.Any()).Where(q => q.Questions.Any(a => a.Answers.Any())).ToList();
             return View(allTests);
         }
 
