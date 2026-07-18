@@ -29,7 +29,7 @@ namespace MyMvcApp.Controllers
                 AnswerName = answer.answerName,
                 AnswerId = answer.Id,
                 IsCorrect = answer.IsCorrect,
-                TestId = answer.Question.TestId
+                TaskId = answer.QuestionId
             };
 
             return View(modal);
@@ -57,7 +57,6 @@ namespace MyMvcApp.Controllers
             var question = _context.Answers.Where(q => q.QuestionId == modal.TaskId).ToList();
             var isCoreectExist = question.Any(q => q.IsCorrect == true);
 
-            if (q.Any()) { return View(modal); }
 
             if (isCoreectExist && q == "Radio")
             {
@@ -67,7 +66,7 @@ namespace MyMvcApp.Controllers
 
             answer.answerName = modal.AnswerName;
             answer.IsCorrect = modal.IsCorrect;
-
+            modal.TaskId = answer.QuestionId;
             _context.SaveChanges();
 
             return View(modal);

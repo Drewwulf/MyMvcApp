@@ -131,7 +131,7 @@ namespace MyMvcApp.Controllers
 
         public IActionResult Tests(int id)
         {
-            var allTests = _context.Tests.Where(ts => ts.DirectionId == id).Where( q=> q.Questions.Any()).Where(q => q.Questions.Any(a => a.Answers.Any())).ToList();
+            var allTests = _context.Tests.Where(ts => ts.DirectionId == id).Where(q => q.Questions.Any()).Where(q => q.Questions.Any(a => a.Answers.Any())).ToList();
             return View(allTests);
         }
 
@@ -143,34 +143,7 @@ namespace MyMvcApp.Controllers
             return View(tasks);
         }
 
-        [HttpGet]
-        public async Task<IActionResult> ShowScore(double score, int total, TestDifficualtyEnum TestDifficualty)
-        {
-            double percentage = total > 0 ? (double)score / total * 100 : 0;
-
-            var viewModel = new ScoreViewModel
-            {
-                Score = score,
-                TotalQuestions = total,
-                Percentage = Math.Round(percentage, 1)
-            };
-
-            int userid = await GetStudentId();
-            var user = _context.Students.Where(s => s.Id == userid).FirstOrDefault();
-
-            if (user != null)
-            {
-                if (percentage != 60)
-                {
-                    user.StudentPoints += Convert.ToInt32(
-                Math.Round((int)TestDifficualty * (percentage / 100.0))
-                );
-                    _context.SaveChanges();
-                }
-            }
-
-            return View(viewModel);
-        }
+        [HttpGet] public async Task<IActionResult> ShowScore(double score, int total, TestDifficualtyEnum TestDifficualty) { double percentage = total > 0 ? (double)score / total * 100 : 0; var viewModel = new ScoreViewModel { Score = score, TotalQuestions = total, Percentage = Math.Round(percentage, 1) }; int userid = await GetStudentId(); var user = _context.Students.Where(s => s.Id == userid).FirstOrDefault(); if (user != null) { if (percentage != 60) { user.StudentPoints += Convert.ToInt32(Math.Round((int)TestDifficualty * (percentage / 100.0))); _context.SaveChanges(); } } return View(viewModel); }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -222,6 +195,7 @@ namespace MyMvcApp.Controllers
             _context.SaveChanges();
             var tt = _context.Tasks.Include(q => q.Test).FirstOrDefault().Test.TestDifficualty;
             return RedirectToAction("ShowScore", new { score = correctAnswersCount, total = totalQuestions, TestDifficualty = tt });
+            // return RedirectToAction("ShowScore", new ScoreRequest { Score = correctAnswersCount, Total = totalQuestions, TestDifficualty = tt });
         }
 
 
@@ -240,7 +214,7 @@ namespace MyMvcApp.Controllers
         {
             var group = await GetStudentsGroup();
             var schedules = group.SelectMany(gs => gs.studyGroup.Schedule).ToList();
-           
+
             var viewModel = new SheduleViewModel
             {
                 Schedules = schedules
