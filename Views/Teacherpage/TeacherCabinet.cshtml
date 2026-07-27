@@ -20,18 +20,13 @@
                                 @foreach (var groups in Model.Groups)
                                 {
                                     <li class="list-group-item">
-                                        Група: @groups.StudyGroupId
+                                        Група: @groups.GroupName @foreach (var shedule in  groups.Schedule)
+                                        {
+                                            <span> , </span>@shedule.DayOfWeek<span> </span>@shedule.startTime<span> , </span>@shedule.endTime
+                                        }
                                     </li>
                                 }
                             </ul>
-
-                            <h5 class="fw-bold">Фото:</h5>
-                            <div class="text-center mb-3">
-                                <img src="/images/default-teacher.png"
-                                     class="img-fluid rounded shadow-sm"
-                                     style="max-height:200px;">
-                            </div>
-
                             <h5 class="fw-bold">Студенти:</h5>
                             <p class="text-muted">Список студентів буде тут</p>
 
