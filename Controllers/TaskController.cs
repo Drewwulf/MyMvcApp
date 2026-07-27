@@ -54,6 +54,8 @@ namespace MyMvcApp.Controllers
             var task = _context.Tasks.Find(modal.TaskId);
             var taskCorrectCount = _context.Answers.Where(c => c.QuestionId == modal.TaskId).ToList().Count;
 
+            modal.TestId = task.TestId;
+
             task.QuestionName = modal.Name;
             task.QuestionDescription = modal.Description;
             if (taskCorrectCount == 1)
@@ -68,6 +70,7 @@ namespace MyMvcApp.Controllers
                     return View(modal);
                 }
             }
+
 
             _context.SaveChanges();
 

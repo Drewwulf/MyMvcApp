@@ -15,7 +15,7 @@
         public string TaskType { get; set; } 
 
         public List<Question> Question = new List<Question>();
-
+        public List<Test> Test = new List<Test>();
 
     }
 }
