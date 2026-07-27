@@ -1,9 +1,9 @@
-@model List<StudyGroup>
+
+@model MyMvcApp.Models.ViewModels.SheduleViewModel
+
 <section class="section">
-    <div class="photoDiv">
-        <img src="/image/account_circle_500dp_BLACK_FILL0_wght400_GRAD0_opsz48.png">
-    </div>
-    <div class="mainDiv">
+  
+    <div class="mainDiv" id="MainDiv">
         <div class="nameDiv">
             <p>Ім'я</p>
         </div>
@@ -12,15 +12,23 @@
 
 
 
-            <table class="table">
-                @foreach (var group in Model)
-                {
-
-                    <tr>
-                        <td>@group.GroupName</td>
-                        <td>@group.GroupDescription</td>
-                    </tr>
-                }
+            <table class="table table- table4">
+                <thead class="table-dark th1">
+                    <tr class="headTr"><th class="th"><i class="bi bi-geo-alt-fill"></i>Місце</th><th class="th"><i class="bi bi-calendar"></i>День</th><th class="th"><i class="bi bi-alarm-fill"></i>Початок</th><th class="th"><i class="bi bi-alarm-fill"></i>Кінець</th><th class="th">Група</th></tr>
+                </thead>
+                <tbody>
+                    @foreach (var shedules in Model.Schedules)
+                    {
+                        <tr class="tr">
+                            <td>@shedules.Place.DestinationAddress</td>
+                            <td>@shedules.DayOfWeek</td>
+                            <td>@shedules.startTime.TimeOfDay</td>
+                            <td>@shedules.endTime.TimeOfDay</td>
+                            <td>@shedules.StudyGroup.GroupName</td>
+                        </tr>
+                    }
+                </tbody>
+               
             </table>
 
 

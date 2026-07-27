@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
+using MyMvcApp.Models.ViewModels;
 
 namespace MyMvcApp.Controllers
 {
@@ -53,9 +54,21 @@ namespace MyMvcApp.Controllers
             return View(); // повертає Views/Destination/Create.cshtml
         }
        
-        public IActionResult TeacherShedule()
+        public async Task<IActionResult> TeacherShedule()
         {
-            return View(); // повертає Views/Destination/Create.cshtml
+            var user = await _userManager.GetUserAsync(User);
+            var id = user.Id;
+            var teacher = _context.Teachers.Where(t => t.UserId == id).Include(t => t.Groups).ThenInclude(s=>s.Schedule).ThenInclude(p=>p.Place).FirstOrDefault();
+            var groups = teacher.Groups.ToList();
+            var schedules = groups.SelectMany(gs => gs.Schedule).ToList();
+            var viewModel = new SheduleViewModel
+            {
+                Schedules = schedules,
+                
+               
+            };
+            return View(viewModel);
+             // повертає Views/Destination/Create.cshtml
         }
         public IActionResult TeacherTests()
         {
