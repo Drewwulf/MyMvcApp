@@ -5,7 +5,7 @@ using MyMvcApp.Models;
 
 namespace MyMvcApp.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Teacher")]
     public class HomeWorkController : Controller
     {
         private readonly ApplicationDbContext _context;
