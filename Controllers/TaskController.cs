@@ -42,7 +42,8 @@ namespace MyMvcApp.Controllers
         {
             var allTask = _context.Tasks.OrderByDescending(t => t.QuestionId).Where(x => x.TestId == id && !x.isdeleted).ToList();
             var allDirections = _context.Directions.OrderByDescending(d => d.DirectionId).ToList();
-            var model = new TaskViewModel { Question = allTask, TestId=id };
+            var test = _context.Tests.Where(t => t.TestId == id).ToList();
+            var model = new TaskViewModel { Question = allTask, TestId=id, Test = test};
 
             return View(model);
         }

@@ -2,7 +2,9 @@
 <section class="section">
     <div class="mainDiv">
         <form class="p-3" asp-controller="Task" asp-action="Create" asp-route-id="@Model.TestId" method="post" c>
-
+            <h3 style="color : whitesmoke; margin-block: 5px;">Hазва : @Model.Test.FirstOrDefault().TestName</h3>
+            <p style = "margin-block: 5px;">Деталі : @Model.Test.FirstOrDefault().TestDescription</p>
+            <p style="margin-block: 5px">Складність : @Model.Test.FirstOrDefault().TestDifficualty</p>
             <input type="text" asp-for="Name" asclass="form-control mb-3" placeholder="Назва" required  />
                 <input type="text" asp-for="Description" class="form-control mb-4" placeholder="Опис"  required>
                 <select asp-for="TaskType" class="form-select" aria-label="Default select example">
@@ -20,7 +22,7 @@
                         <button type="submit" class="btn btn-dark w-100">Створити</button>
                        
                
-                </form> <a asp-controller="Test" asp-action="Details" asp-route-id="@Model.TestId" style="margin-top : 15px" class="btn btn-dark">Повернутися назад</a>
+                </form> <a asp-controller="Test" asp-action="Create" style="margin-top : 15px" class="btn btn-dark">Повернутися назад</a>
                 </div>
             </section>
             <section>
