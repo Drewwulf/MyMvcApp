@@ -1,10 +1,10 @@
 @using Microsoft.AspNetCore.Mvc.ModelBinding
 @model MyMvcApp.Models.ViewModels.StudyGroupViewModel
 
-<section class="section2 container my-4 groups-wrapper">
+<section class="section container my-4 groups-wrapper">
 
     <!-- Блок групи -->
-    <div class="mainDiv card p-4 mb-4 shadow-sm">
+    <div class="table2-02 card p-4 mb-4 shadow-sm">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h2 class="card-title">@Model.Group.GroupName</h2>
         </div>
@@ -21,7 +21,7 @@
     </div>
 
     <!-- Блок студентів -->
-    <div class="right-section-students card p-3 shadow-sm mb-4">
+    <div class="table2-02 right-section-students card p-3 shadow-sm mb-4">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <div class="total-count-kpi">
                 <div class="kpi-value-total fs-3" id="totalStudentsCount">@Model.studentsToGroup.Count</div>
@@ -70,7 +70,7 @@
     </div>
 
     <!-- Блок розкладу -->
-    <div class="schedule-container card p-3 shadow-sm">
+    <div class="table2-02 schedule-container card p-3 shadow-sm">
         <h5>Розклад занять групи @Model.Group.GroupName</h5>
         <div class="table-responsive">
             <table class="table table-bordered mb-0">
