@@ -51,7 +51,7 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Create()
         {
-            return View(); // повертає Views/Destination/Create.cshtml
+            return RedirectToAction("Create", "HomeWork");
         }
        
         public async Task<IActionResult> TeacherShedule()
@@ -72,7 +72,7 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult TeacherTests()
         {
-            return View(); // повертає Views/Destination/Create.cshtml
+            return RedirectToAction("Create", "HomeWork"); // повертає Views/Destination/Create.cshtml
         }
         public async Task<IActionResult> TeacherCabinet()
         {
