@@ -78,8 +78,8 @@ namespace MyMvcApp.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
-            var teacher = _context.Teachers.Where(t => t.UserId == id).Include(t => t.Groups).FirstOrDefault();
-            
+            var teacher = _context.Teachers.Where(t => t.UserId == id).Include(t => t.Groups).ThenInclude(s => s.Schedule).ThenInclude(p => p.Place).FirstOrDefault();
+          
             return View(teacher);
         }
         public async Task<IActionResult> LiderBoard()
