@@ -1,0 +1,104 @@
+﻿@model List<MyMvcApp.Models.Students>
+
+@{
+    ViewData["Title"] = "Таблиця лідерів";
+
+    int GetLevel(int points)
+    {
+        return points switch
+        {
+            >= 1 and <= 10 => 1,
+            > 10 and <= 25 => 2,
+            > 25 and <= 50 => 3,
+            > 50 => 4 + (points - 51) / 50,
+            _ => 1
+        };
+    }
+
+    int place = 1;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<div class="leaderboard-container">
+
+    <div class="leaderboard-header">
+        <i class="fa-solid fa-trophy"></i>
+        <h2>Таблиця лідерів</h2>
+        <p>Найкращі учні за кількістю досвіду</p>
+    </div>
+
+    <div class="leaderboard-head">
+        <div>Місце</div>
+        <div>Гравець</div>
+        <div>Рівень</div>
+        <div>Досвід (XP)</div>
+    </div>
+
+    @foreach (var student in Model)
+    {
+        var level = GetLevel(student.StudentPoints);
+
+        string rowClass = "";
+        string iconClass = "";
+        string medalClass = "";
+
+        switch (place)
+        {
+            case 1:
+                rowClass = "gold-row";
+                iconClass = "fa-solid fa-gem";
+                medalClass = "gold";
+                break;
+
+            case 2:
+                rowClass = "silver-row";
+                iconClass = "fa-solid fa-gem";
+                medalClass = "silver";
+                break;
+
+            case 3:
+                rowClass = "bronze-row";
+                iconClass = "fa-solid fa-gem";
+                medalClass = "bronze";
+                break;
+        }
+
+        <div class="leaderboard-row @rowClass">
+
+            <div class="leader-place">
+
+                @if (place <= 3)
+                {
+                    <div class="place-icon @medalClass">
+                        <i class="@iconClass"></i>
+                        <span>@place</span>
+                    </div>
+                }
+                else
+                {
+                    <div class="place-number">
+                        @place
+                    </div>
+                }
+
+            </div>
+
+            <div class="leader-name">
+                @student.Username
+            </div>
+
+            <div class="leader-level">
+                LVL @level
+            </div>
+
+            <div class="leader-points">
+                @student.StudentPoints XP
+            </div>
+
+        </div>
+
+        place++;
+    }
+
+</div>

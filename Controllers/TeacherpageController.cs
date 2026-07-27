@@ -69,5 +69,10 @@ namespace MyMvcApp.Controllers
             
             return View(teacher);
         }
+        public async Task<IActionResult> LiderBoard()
+        {
+            var students = _context.Students.OrderByDescending(s => s.StudentPoints).ToList();
+            return View(students); // повертає Views/Student/HomeworkDetails.cshtml
+        }
     }
 }

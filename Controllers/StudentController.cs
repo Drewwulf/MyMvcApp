@@ -11,6 +11,7 @@ using static System.Formats.Asn1.AsnWriter;
 
 namespace MyMvcApp.Controllers
 {
+     [Authorize(Roles = "Teacher")]
     [Authorize(Roles = "Student")]
     public class StudentController : Controller
     {
