@@ -1,6 +1,6 @@
 ﻿.mainDiv {
     background-color: #2f3540;
-    width: 45%;
+    min-width: 45%;
     display: flex;
     min-height: 35vh;
     margin: 50px auto;
@@ -671,5 +671,9 @@ th {
     .studentInfo {
         justify-content: center;
     }
+}
+
+#MainDiv{
+    min-width: 40vw!important;
 }
 /* End of style directions */
