@@ -87,6 +87,10 @@ namespace MyMvcApp.Controllers
                 StartTime = homeworkViewModel.StartTime,
                 SubmitTime = homeworkViewModel.SubmitTime
             };
+            if (homeworkViewModel.StartTime >= homeworkViewModel.SubmitTime)
+            {
+                return RedirectToAction("Create");
+            }
             _context.Homeworks.Add(homework);
             _context.SaveChanges();
  var allHomeworks = _context.Homeworks.OrderByDescending(h => h.HomeworkId).ToList();
