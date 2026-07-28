@@ -45,25 +45,19 @@
             </thead>
             <tbody>
 
-                @foreach (var homew in Model.homeworks)
+                @foreach (var homework in Model.studentsToHomeworks)
                 {
-                    if (!homew.isdeleted)
+                    if (!homework.Homework.isdeleted && !homework.IsEnded)
                     {
-                        @foreach (var homework in Model.studentsToHomeworks)
-                        {
-                            <tr>
-                                <td>@homework.StudentsToHomeworkId</td>
-                                <td>@homework.Homework.HomeworkName</td>
-                                <td>@homework.Student.Username</td>
-                                <td>
-                                    <a type="button" asp-controller="HomeWork" asp-action="Details" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Деталі</a>
-                                    <a type="button" asp-controller="HomeWork" asp-action="Delete" asp-route-id="@homework.HomeworkId" class="btn btn-danger">Видалити</a>
-                                </td>
-                            </tr>
-
-
-
-                        }
+                        <tr>
+                            <td>@homework.StudentsToHomeworkId</td>
+                            <td>@homework.Homework.HomeworkName</td>
+                            <td>@homework.Student.Username</td>
+                            <td>
+                                <a type="button" asp-controller="HomeWork" asp-action="Details" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Деталі</a>
+                                <a type="button" asp-controller="HomeWork" asp-action="Delete" asp-route-id="@homework.HomeworkId" class="btn btn-danger">Видалити</a>
+                            </td>
+                        </tr>
                     }
                 }
             </tbody>
