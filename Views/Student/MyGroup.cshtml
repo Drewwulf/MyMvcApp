@@ -31,15 +31,22 @@
             <tr class="headTr"><th class="th"><i class="bi bi-calendar"></i>День</th><th class="th"><i class="bi bi-alarm-fill"></i>Початок</th><th class="th"><i class="bi bi-alarm-fill"></i>Кінець</th></tr>
         </thead>
         <tbody>
-            @foreach (var StudyGroup in Model.allGroups.First().studyGroup.Schedule)
+            @if (Model.allGroups.Count != 0)
             {
-                <tr class="tr">
+                @foreach (var StudyGroup in Model.allGroups.First().studyGroup.Schedule)
+                {
+                    <tr class="tr">
                     
-                    <td>@StudyGroup.DayOfWeek</td>
-                    <td>@StudyGroup.startTime.TimeOfDay</td>
-                    <td>@StudyGroup.endTime.TimeOfDay</td>
-                </tr>
+                        <td>@StudyGroup.DayOfWeek</td>
+                        <td>@StudyGroup.startTime.TimeOfDay</td>
+                        <td>@StudyGroup.endTime.TimeOfDay</td>
+                    </tr>
+                }
+            } else
+            {
+                <h2 style = "color : whitesmoke;">Ви покищо не є в ніякій групі.</h2>
             }
+            
         </tbody>
                
     </table>
