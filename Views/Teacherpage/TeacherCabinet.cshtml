@@ -1,47 +1,76 @@
 ﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
 @model Teachers
-<section class="section py-5 bg-light">
-    <div class="container">
-        <div class="row justify-content-center">
 
-            <div class="col-md-6 col-lg-5">
-                <div class="card shadow-lg border-0 rounded-4">
+<section class="section1" id="section1">
 
-                    <div class="card-body text-center">
+    <!-- Фото -->
+    <div class="Div10">
+        <div class="photoDiv d-flex justify-content-center align-items-center">
+            <i class="bi bi-person-circle iconuser text-light"></i>
+        </div>
+    </div>
 
-                        <h2 class="card-title mb-3">@Model.UserName</h2>
+    <!-- Інформація -->
+    <div class="Div20">
 
-                        <hr />
+        <!-- Верхній блок -->
+        <div class="SmallDiv1">
 
-                        <div class="text-start">
+            <div class="p-4">
 
-                            <h5 class="fw-bold">Розклад:</h5>
-                            <ul class="list-group mb-3">
-                                @foreach (var groups in Model.Groups)
-                                {
-                                    <li class="list-group-item">
-                                        Група: @groups.GroupName @foreach (var shedule in  groups.Schedule)
-                                        {
-                                            <span> , </span>@shedule.DayOfWeek<span> </span>@shedule.startTime<span> , </span>@shedule.endTime
-                                        }
-                                    </li>
-                                }
-                            </ul>
-                            <h5 class="fw-bold">Студенти:</h5>
-                            <p class="text-muted">Список студентів буде тут</p>
+                <h3 class="text-white fw-bold">
+                    <i class="bi bi-person-circle me-2"></i>
+                    Особистий кабінет
+                </h3>
 
-                        </div>
+                <hr class="text-secondary" />
+
+                <p class="text-secondary mb-2">
+                    <i class="bi bi-person me-2"></i>
+                    <strong>Ім'я:@Model.UserName</strong>
+                </p>
+
+          
+            </div>
+            </section>
+            <div class="card shadow-lg border-0 rounded-4  " id="SmallDiv2">
+
+                <div class="card-body text-center">
+
+                    <h2 class="card-title mb-3">@Model.UserName</h2>
+
+                    <hr />
+
+                    <div class="text-start">
+
+                        <h5 class="fw-bold">Розклад:</h5>
+                        <ul class="list-group mb-3">
+                            @foreach (var groups in Model.Groups)
+                            {
+                                <li class="list-group-item">
+                                    Група: @groups.GroupName @foreach (var shedule in  groups.Schedule)
+                                    {
+                                        <span> , </span>
+                                        @shedule.DayOfWeek
+                                        <span> </span>
+
+                                        @shedule.startTime
+                                        <span> , </span>
+
+                                        @shedule.endTime
+                                    }
+                                </li>
+                            }
+                        </ul>
+                        <h5 class="fw-bold">Студенти:</h5>
+                        <p class="text-muted">Список студентів буде тут</p>
 
                     </div>
 
                 </div>
-            </div>
 
         </div>
-    </div>
-</section>
-
-@section Scripts
-{
-    <partial name="_ValidationScriptsPartial" />
-}
+            @section Scripts
+            {
+                <partial name="_ValidationScriptsPartial" />
+            }
