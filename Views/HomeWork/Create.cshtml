@@ -1,22 +1,35 @@
 @model MyMvcApp.Models.HomeworkViewModel
-        <section class="section">
-            <div class="mainDiv">
-                <form asp-action="Create" method="post">
-                    <input type="text" asp-for="HomeworkName" placeholder="Назва" required>
-                    <input type="text" asp-for="HomeworkDescription" placeholder="Опис" required>
-                    <input type="file" placeholder="dfklhnfakljsd">
+<section class="section">
+    <div class="mainDiv">
+
+        <form asp-action="Create" method="post" enctype="multipart/form-data">
+
+            <input type="text" asp-for="HomeworkName" placeholder="Назва" required>
+
+                <input type="text" asp-for="HomeworkDescription" placeholder="Опис" required>
+
+                    <input type="file" name="file">
+
                     <br>
+
                     <label for="start" class="finish">початок завдання</label>
                     <br>
-                    <input type="datetime-local" asp-for="StartTime"  id="start">
-                    <br>
-                    <label for="finish" class="finish">здача завдання</label>
-                    <br>
-                    <input type="datetime-local" asp-for="SubmitTime"  id="finish">
-                    <input type="submit" value="Створити" class="submit">
-                </form>
-            </div>
-        </section>
+
+                    <input type="datetime-local" asp-for="StartTime" id="start">
+
+                        <br>
+
+                        <label for="finish" class="finish">здача завдання</label>
+                        <br>
+
+                        <input type="datetime-local" asp-for="SubmitTime" id="finish">
+
+                            <input type="submit" value="Створити" class="submit">
+
+                        </form>
+
+                    </div>
+                </section>
             <section>
                 <div class="table2">
                     <table class="table">

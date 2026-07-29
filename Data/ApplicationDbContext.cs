@@ -21,11 +21,14 @@ namespace MyMvcApp.Data
         public DbSet<Place> Places { get; set; }
         public DbSet<Direction> Directions { get; set; }
         public DbSet<Homework> Homeworks { get; set; }
+        public DbSet<HomeworkInfo> HomeworkInfo { get; set; }
 
         public DbSet<Students> Students { get; set; }
 
         public DbSet<StudentToGroup> StudentToGroups { get; set; }
         public DbSet<Answer> Answers { get; set; }
+
+        public DbSet<Documents> Documents { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

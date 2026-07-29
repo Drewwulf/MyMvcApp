@@ -9,7 +9,7 @@
             <div class="mainDiv3">
                 <p>@home.Homework.HomeworkDescription</p>
                 <div class="buttonDiv">
-                    <button class="btn btn-dark">Здати домашнє завдання</button>
+                    <a asp-controller="Student" asp-action="SumbitHomework" asp-route-id ="@home.HomeworkId" class="btn btn-dark">Здати домашнє завдання</a>
                 </div>
             </div>
             <p>З @home.Homework.StartTime До @home.Homework.SubmitTime</p>

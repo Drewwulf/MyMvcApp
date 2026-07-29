@@ -1,0 +1,19 @@
+﻿@model MyMvcApp.Models.HomeworkViewModel
+<section>
+    <div class="table2">
+        <p>@Model.HomeworkName</p>
+        <p>@Model.HomeworkDescription</p>
+        <p>Здати до @Model.homeworks.FirstOrDefault().SubmitTime</p>
+        <a>Завантажити файл</a>
+    </div>
+</section>
+
+<section class="section">
+    <div class="mainDiv">
+        <form asp-action="SumbitHomework" method="post" enctype="multipart/form-data">
+            <input type="text" placeholder="Текст" required> 
+                    <input type="file" placeholder="dfklhnfakljsd"> 
+                      <input type="submit" value="Здати" class="submit">
+                        </form>
+                    </div>
+                </section>
