@@ -153,6 +153,22 @@ namespace MyMvcApp.Controllers
             return View(tasks);
         }
 
+        public IActionResult SumbitHomework(int id)
+        {
+            var homework = _context.Homeworks.Find(id);
+            var modal = new HomeworkViewModel
+            {
+                HomeworkName = homework.HomeworkName,
+                HomeworkDescription = homework.HomeworkDescription,
+                StartTime = homework.StartTime,
+                SubmitTime = homework.SubmitTime,
+                HomeworkId = homework.HomeworkId
+            };
+
+
+            return View(modal); // Student/SumbitHomework
+        }
+
         [HttpGet] public async Task<IActionResult> ShowScore(double score, int total, TestDifficualtyEnum TestDifficualty) { double percentage = total > 0 ? (double)score / total * 100 : 0; var viewModel = new ScoreViewModel { Score = score, TotalQuestions = total, Percentage = Math.Round(percentage, 1) }; int userid = await GetStudentId(); var user = _context.Students.Where(s => s.Id == userid).FirstOrDefault(); if (user != null) { if (percentage != 60) { user.StudentPoints += Convert.ToInt32(Math.Round((int)TestDifficualty * (percentage / 100.0))); _context.SaveChanges(); } } return View(viewModel); }
 
         [HttpPost]

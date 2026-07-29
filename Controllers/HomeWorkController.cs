@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace MyMvcApp.Controllers
 {
@@ -9,14 +11,14 @@ namespace MyMvcApp.Controllers
     public class HomeWorkController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment _environment;
 
-       
-
-        public HomeWorkController(ApplicationDbContext context)
+        public HomeWorkController(ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _context = context;
-        } 
-    
+            _environment = environment;
+        }
+
         public IActionResult Index()
         {
             return View(); // повертає Views/Homework/Index.cshtml
@@ -72,35 +74,51 @@ namespace MyMvcApp.Controllers
         public IActionResult Create()
         {
              var allHomeworks = _context.Homeworks.OrderByDescending(h => h.HomeworkId).ToList();
-            var model = new HomeworkViewModel{ homeworks = allHomeworks};
+            var model = new HomeworkViewModel{ homeworks = allHomeworks, };
 
             return View(model); 
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(HomeworkViewModel homeworkViewModel)
+        public async Task<IActionResult> Create(HomeworkViewModel model, IFormFile? file)
         {
+            string? filePath = null;
+
+            if (file != null && file.Length > 0)
+            {
+                var uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads", "homeworks"); // Сохраняє файл в updloads/homeworks.
+
+                Directory.CreateDirectory(uploadsFolder);
+
+                var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+
+                var fullPath = Path.Combine(uploadsFolder, fileName);
+
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                filePath = "/uploads/homeworks/" + fileName;
+            }
+
             var homework = new Homework
             {
-                HomeworkName = homeworkViewModel.HomeworkName,
-                HomeworkDescription = homeworkViewModel.HomeworkDescription,
-                StartTime = homeworkViewModel.StartTime,
-                SubmitTime = homeworkViewModel.SubmitTime
+                HomeworkName = model.HomeworkName,
+                HomeworkDescription = model.HomeworkDescription,
+                StartTime = model.StartTime,
+                SubmitTime = model.SubmitTime,
+                FilePath = filePath
             };
-            if (homeworkViewModel.StartTime >= homeworkViewModel.SubmitTime)
-            {
-                return RedirectToAction("Create");
-            }
-            _context.Homeworks.Add(homework);
-            _context.SaveChanges();
- var allHomeworks = _context.Homeworks.OrderByDescending(h => h.HomeworkId).ToList();
-            var model = new HomeworkViewModel{ homeworks = allHomeworks};
 
-            return RedirectToAction("Create"); 
+            _context.Homeworks.Add(homework);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Create");
         }
 
 
-         [HttpPost]
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(HomeworkViewModel homeworkViewModel)
         {
