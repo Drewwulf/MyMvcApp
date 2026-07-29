@@ -6,6 +6,7 @@
     width: 33.3%;
     justify-items: left;
     padding-left: 32px;
+    color: #FFFFFF!important;
 }
 .ulfooter {
     text-decoration: none;
@@ -36,7 +37,7 @@ body {
 }
 
 .footer a {
-     color: white;
+     color: #FFFFFF;
     margin-left: 2vh;
 }
 
