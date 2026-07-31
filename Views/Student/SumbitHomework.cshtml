@@ -1,19 +1,22 @@
 ﻿@model MyMvcApp.Models.HomeworkViewModel
 <section>
-    <div class="table2">
+    <div class="table2", style="display:flex; flex-direction: column;">
         <p>@Model.HomeworkName</p>
         <p>@Model.HomeworkDescription</p>
-        <p>Здати до @Model.homeworks.FirstOrDefault().SubmitTime</p>
-        <a>Завантажити файл</a>
+        <p>Здати до @Model.SubmitTime</p>
+        <a asp-controller="Student" asp-action="Download" asp-route-id="@Model.HomeworkId" >Завантажити файл</a>
     </div>
 </section>
 
 <section class="section">
     <div class="mainDiv">
-        <form asp-action="SumbitHomework" method="post" enctype="multipart/form-data">
-            <input type="text" placeholder="Текст" required> 
-                    <input type="file" placeholder="dfklhnfakljsd"> 
-                      <input type="submit" value="Здати" class="submit">
+        <form asp-action="SubmitHomework" method="post" enctype="multipart/form-data">
+
+                            <input type="hidden" asp-for="HomeworkId" />
+                            <textarea asp-for="Text"></textarea>
+                            <input type="file" name="file" />
+                            <button type="submit">Здати</button>
+
                         </form>
                     </div>
                 </section>
