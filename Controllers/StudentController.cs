@@ -17,11 +17,13 @@ namespace MyMvcApp.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly ApplicationDbContext _context;
         private Students student;
+        private readonly IWebHostEnvironment _environment;
 
-        public StudentController(UserManager<IdentityUser> userManager, ApplicationDbContext context)
+        public StudentController(UserManager<IdentityUser> userManager, ApplicationDbContext context, IWebHostEnvironment environment)
         {
             _userManager = userManager;
             _context = context;
+            _environment = environment;
         }
 
         private async Task<int> GetStudentId()
@@ -260,6 +262,71 @@ namespace MyMvcApp.Controllers
         {
             var students = _context.Students.OrderByDescending(s => s.StudentPoints).ToList();
             return View(students); // повертає Views/Student/HomeworkDetails.cshtml
+        }
+
+        public IActionResult Download(int id)
+        {
+            var homework = _context.Homeworks.Find(id);
+
+            if (homework == null || string.IsNullOrEmpty(homework.FilePath))
+                return NotFound();
+
+            var fullPath = Path.Combine(
+                _environment.WebRootPath,
+                homework.FilePath.TrimStart('/').Replace("/", Path.DirectorySeparatorChar.ToString())
+            );
+
+            if (!System.IO.File.Exists(fullPath))
+                return NotFound();
+
+            return PhysicalFile(
+                fullPath,
+                "application/octet-stream",
+                Path.GetFileName(fullPath));
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SubmitHomework(HomeworkViewModel model, IFormFile? file)
+        {
+            Documents? document = null;
+
+            if (file != null && file.Length > 0)
+            {
+                var uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads", "students");
+
+                if (!Directory.Exists(uploadsFolder))
+                    Directory.CreateDirectory(uploadsFolder);
+
+                var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+
+                var fullPath = Path.Combine(uploadsFolder, fileName);
+
+                using (var stream = new FileStream(fullPath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                document = new Documents
+                {
+                    FileName = file.FileName,                  
+                    FilePath = "/uploads/students/" + fileName 
+                };
+
+                _context.Documents.Add(document);
+                await _context.SaveChangesAsync();
+            }
+            var homeworkInfo = new HomeworkInfo
+            {
+                HomeworkId = model.HomeworkId,
+                StudentId = await GetStudentId(),
+                Text = model.Text,
+                DocumentId = document?.Id  
+            };
+
+            _context.HomeworkInfo.Add(homeworkInfo);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("Homework");
         }
     }
 }
