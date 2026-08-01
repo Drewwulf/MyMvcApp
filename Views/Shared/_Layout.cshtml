@@ -53,6 +53,8 @@
         
         <div class="divfooter">
             <div class="divfootsect">
+                
+                <h4 class="h4footer">Загальне</h4>
                 <ul class="ulfooter">
 
                     <li><a>Контакти</a></li>
@@ -63,21 +65,27 @@
                 </ul>
             </div>
             <div class="divfootsect">
+                <h4 class="h4footer">Завдання</h4>
+                <div class="footDiv">
                 <ul class="ulfooter">
-
-                    <li><a asp-controller="Student" asp-action="Homework">Домашня</a></li>
-                    <li><a asp-controller="Student" asp-action="TestPage">Тести</a></li>
-                    <li><a asp-controller="Student" asp-action="Task">Завдання</a></li>
-                    <li><a asp-controller="Student" asp-action="Schedule">Розклад</a></li>
-                    <li><a asp-controller="Student" asp-action="Groups">Група</a></li>
-                    <li><a asp-controller="Student" asp-action="Direction">Напрямок</a></li>
+                        
+                        <li><a asp-controller="HomeWork" asp-action="Create">Домашня</a></li>
+                        <li><a asp-controller="Direction" asp-action="Create">Напрямок</a></li>
+                        <li><a asp-controller="Test" asp-action="Create">Завдання</a></li>
+            
+                    
 
                 </ul>
-
-
-
+                <ul class="ulfooter">
+                        <li><a asp-controller="Schedule" asp-action="Create">Розклад</a></li>
+                        <li><a asp-controller="Groups" asp-action="Create">Група</a></li>
+                        <li><a asp-controller="Destination" asp-action="Create">Місце</a></li>
+                </ul>
+                
+                </div>
             </div>
             <div class="divfootsect">
+                <h4 class="h4footer">Контакти</h4>
                 <ul class="ulfooter">
 
                     <li><a>Адреса: Вул.Вакарова 13</a></li>
