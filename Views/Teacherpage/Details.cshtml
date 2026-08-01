@@ -10,7 +10,26 @@
                            <tr><td>@studentstogroup.student.Username</td></tr>
                         }
                 </div>
+        <a asp-controller="Teacherpage" asp-action="TeacherGroup" class="btn btn-dark">Повернутися назад</a>
             </div>
+    <table class="table table- table4">
+        <thead class="table-dark th1">
+            <tr class="headTr"><th class="th"><i class="bi bi-geo-alt-fill"></i>Місце</th><th class="th"><i class="bi bi-calendar"></i>День</th><th class="th"><i class="bi bi-alarm-fill"></i>Початок</th><th class="th"><i class="bi bi-alarm-fill"></i>Кінець</th><th class="th">Група</th></tr>
+        </thead>
+        <tbody>
+            @foreach (var shedules in Model.schedules)
+            {
+                <tr class="tr">
+                    <td>@shedules.Place.DestinationAddress</td>
+                    <td>@shedules.DayOfWeek</td>
+                    <td>@shedules.startTime.TimeOfDay</td>
+                    <td>@shedules.endTime.TimeOfDay</td>
+                    <td>@shedules.StudyGroup.GroupName</td>
+                </tr>
+            }
+        </tbody>
+               
+    </table>
     </section>
 @section Scripts
         {
