@@ -2,6 +2,8 @@ namespace MyMvcApp.Models
 {
     public class StudyGroup
     {
+        internal object group;
+
         public int StudyGroupId { get; set; } 
         public int DirectionId { get; set; } 
         public int PlaceId { get; set; }
