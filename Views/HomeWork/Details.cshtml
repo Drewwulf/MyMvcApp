@@ -7,7 +7,8 @@
             <p class="opisssp">Опис: @Model.HomeworkDescription </p>
             <p>Початок: @Model.StartTime</p>
             <p>Здача: @Model.SubmitTime</p>
-            <a asp-controller="HomeWork" asp-action="Info" class="btn btn-dark">Повернутися назад</a>
+            <a asp-controller="HomeWork" asp-action="Create" class="btn btn-dark">Повернутися назад</a>
+            <a asp-controller="HomeWork" asp-action="ViewHomeworkSumbit" asp-route-id = "@Model.HomeworkId" class="btn btn-dark" >Подивитись відповіді</a>
         </div>
     </div>
 </section>
