@@ -5,6 +5,7 @@ using MyMvcApp.Data;
 using MyMvcApp.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
+using MyMvcApp.Services;
 
 namespace MyMvcApp.Controllers
 {
@@ -12,6 +13,7 @@ namespace MyMvcApp.Controllers
     public class HomeWorkController : Controller
     {
         private readonly ApplicationDbContext _context;
+        
         private readonly IWebHostEnvironment _environment;
 
         public HomeWorkController(ApplicationDbContext context, IWebHostEnvironment environment)
@@ -106,7 +108,7 @@ namespace MyMvcApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(HomeworkViewModel model)
+        public async Task<IActionResult> Add(HomeworkViewModel model)
         {
 
             var allSH = _context.StudentsToHomeworks.Any(h => h.StudentId == model.StudentId && h.HomeworkId == model.HomeworkId);
@@ -123,6 +125,12 @@ namespace MyMvcApp.Controllers
                 StudentId = model.StudentId,
                 IsEnded = false
             };
+
+            var student = _context.Students.Where(s => s.Id == model.StudentId).First();
+            var studentAsUser = _context.Users.Where(u => u.Id == student.UserId).First();
+            var emails = new EmailSender();
+            await emails.SendEmailAsync(studentAsUser.NormalizedUserName, studentAsUser.Email, "Вам наначили нове домашнє завдання! School", "Вам призначили нове доманє завдання " + model.HomeworkName + ". Будь лакса виконайте до " + model.SubmitTime + "!");
+
             _context.StudentsToHomeworks.Add(studentToHomeworkRecord);
             _context.SaveChanges();
             return RedirectToAction("Info");
@@ -170,6 +178,8 @@ namespace MyMvcApp.Controllers
 
             _context.Homeworks.Add(homework);
             await _context.SaveChangesAsync();
+
+            
 
             return RedirectToAction("Create");
         }
