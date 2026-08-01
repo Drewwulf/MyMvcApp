@@ -18,7 +18,7 @@
     <header>
         <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
-                    <a class="navbar-brand" asp-controller="Teacherpage" asp-action="Index">Кабінет вчителя</a>
+                    <a class="navbar-brand" asp-controller="Teacherpage" asp-action="TeacherCabinet">Кабінет вчителя</a>
                     <button
                         class="navbar-toggler"
                         type="button"
@@ -31,7 +31,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                        <a class="nav-link" asp-controller="Teacherpage" asp-action="TeacherCabinet" > Мій кабінет</a>
+                        
                             <a class="nav-link" asp-controller="Teacherpage" asp-action="TeacherGroup"> Групи</a>
                             <a class="nav-link" asp-controller="HomeWork" asp-action="Info">Д/З учнів</a>
                             <a class="nav-link" asp-controller="Teacherpage" asp-action="TeacherShedule">Розклад </a>
@@ -67,22 +67,21 @@
                 <div class="divfootsect">
                     <h4 class="h4footer">Завдання</h4>
                 <ul class="ulfooter">
-
-                        <li><a>Домашня</a></li>
-                        <li><a>Тести</a></li>
-                        <li><a>Завдання</a></li>
-
+                        <li><a asp-controller="Teacherpage" asp-action="Homework">Домашня</a></li>
+                        <li><a asp-controller="Teacherpage" asp-action="TeacherShedule">Розклад</a></li>
+                        <li><a asp-controller="Teacherpage" asp-action="TeacherGroup">Групи</a></li>
+                        <li><a asp-controller="Teacherpage" asp-action="LiderBoard">Лідери</a></li>
                     </ul>
 
 
 
                 </div>
                 <div class="divfootsect">
-                    <h4>Контакти</h4>
+                    <h4 style="margin: 0 auto" class="h4footer">Контакти</h4>
                 <ul class="ulfooter">
                         <li><a>Номер телефона:82393029</a></li>
                         <li><a>Gmail:cobtahacademy@gmail.com</a></li>
-                        <li><a>Адрес:Вул.Івана Франка</a></li>
+                        <li><a>Адрес:Вул.Вакарова 13</a></li>
 
                     </ul>
 

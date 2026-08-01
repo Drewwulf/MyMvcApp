@@ -676,4 +676,114 @@ th {
 #MainDiv{
     min-width: 40vw!important;
 }
+#section1{
+    width: 100%!important;
+}
+/* ===========================
+   Нижня секція (як верхня)
+=========================== */
+#SmallDiv2 {
+    background: #1B212D;
+    border: 1px solid rgba(255,255,255,.06) !important;
+    border-radius: 28px !important;
+    box-shadow: 0 15px 35px rgba(0,0,0,.35);
+    color: #E8EDF7;
+}
+
+    /* Внутрішні відступи */
+    #SmallDiv2 .card-body {
+        padding: 35px;
+        background: transparent;
+    }
+
+    /* Назва Teacher.Academy */
+    #SmallDiv2 .card-title {
+        color: #FFFFFF;
+        font-size: 34px;
+        font-weight: 700;
+        letter-spacing: .5px;
+        margin-bottom: 15px;
+    }
+
+    /* Лінія */
+    #SmallDiv2 hr {
+        border: 0;
+        height: 1px;
+        background: rgba(255,255,255,.08);
+        margin: 20px auto 30px;
+        width: 70%;
+    }
+
+    /* Заголовки */
+    #SmallDiv2 h5 {
+        color: #FFFFFF;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 18px;
+    }
+
+    /* Контейнер списку */
+    #SmallDiv2 .list-group {
+        background: transparent;
+        border: none;
+        gap: 15px;
+    }
+
+    /* Кожен елемент */
+    #SmallDiv2 .list-group-item {
+        background: #232B39;
+        color: #D5DCE8;
+        border: 1px solid rgba(255,255,255,.06);
+        border-radius: 18px !important;
+        padding: 18px 22px;
+        font-size: 17px;
+        line-height: 1.8;
+        transition: .25s;
+    }
+
+        /* Hover */
+        #SmallDiv2 .list-group-item:hover {
+            background: #2A3444;
+            transform: translateY(-2px);
+            border-color: rgba(255,255,255,.12);
+        }
+
+        /* Назва групи */
+        #SmallDiv2 .list-group-item strong {
+            color: #FFFFFF;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+    /* Другорядний текст */
+    #SmallDiv2 .text-muted {
+        color: #AAB4C2 !important;
+        font-size: 17px;
+    }
+
+    /* Скрол */
+    #SmallDiv2 .list-group {
+        max-height: 300px;
+        overflow-y: auto;
+        padding-right: 5px;
+    }
+
+        /* Скролбар */
+        #SmallDiv2 .list-group::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        #SmallDiv2 .list-group::-webkit-scrollbar-track {
+            background: #1B212D;
+            border-radius: 20px;
+        }
+
+        #SmallDiv2 .list-group::-webkit-scrollbar-thumb {
+            background: #4D5B70;
+            border-radius: 20px;
+        }
+
+            #SmallDiv2 .list-group::-webkit-scrollbar-thumb:hover {
+                background: #64748B;
+            }
 /* End of style directions */
