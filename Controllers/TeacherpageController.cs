@@ -36,16 +36,20 @@ namespace MyMvcApp.Controllers
         }
         public IActionResult Details(int id)
         {
-            var group = _context.studyGroups
-     .Where(t => t.StudyGroupId == id)
+            
+                var group = _context.studyGroups
+     .Where(t => t.StudyGroupId == id).Include(sg => sg.Schedule).Include(p => p.Place)
      .Include(t => t.StudentToGroups)
          .ThenInclude(stg => stg.student)
+          
      .FirstOrDefault();
             var modal = new MyMvcApp.Models.ViewModels.StudyGroupViewModel
             {
+                schedules = group.Schedule,
                 Group = group,
                 GroupName = group.GroupName,
-                GroupDescription = group.GroupDescription
+                GroupDescription = group.GroupDescription,
+                
             };
             return View(modal); // повертає Views/Destination/Details.cshtml
         }
