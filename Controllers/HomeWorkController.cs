@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyMvcApp.Data;
 using MyMvcApp.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyMvcApp.Controllers
 {
@@ -33,6 +34,7 @@ namespace MyMvcApp.Controllers
                 HomeworkDescription = HomeworkPlace.HomeworkDescription,
                 StartTime = HomeworkPlace.StartTime,
                 SubmitTime = HomeworkPlace.SubmitTime,
+                HomeworkId = HomeworkPlace.HomeworkId,
             };
 
             return View(modal); 
@@ -48,6 +50,61 @@ namespace MyMvcApp.Controllers
 
             return View(model); // повертає Views/HomeWork/Info.cshtml
         }
+
+        public IActionResult ViewHomeworkSumbit(int id)
+        {
+            var homeworkanswers = _context.HomeworkInfo.Where(h => h.HomeworkId == id).ToList();
+            var HomeworkPlace = _context.Homeworks.Include(sh=>sh.StudentsToHomework).Where(h => h.HomeworkId == id).FirstOrDefault();
+            var modal = new HomeworkViewModel
+            {
+                HomeworkName = HomeworkPlace.HomeworkName,
+                HomeworkDescription = HomeworkPlace.HomeworkDescription,
+                HomeworkInfos = homeworkanswers,
+                HomeworkId = HomeworkPlace.HomeworkId,
+                StudentToHomeWorkId = HomeworkPlace.StudentsToHomework.FirstOrDefault().StudentsToHomeworkId,
+            };
+
+            return View(modal);
+        }
+
+        public IActionResult DetailsStudentHomework(int id)
+        {
+            var homeworkanswers = _context.HomeworkInfo.Where(h => h.HomeworkId == id).ToList();
+            var HomeworkPlace = _context.Homeworks.Include(sh => sh.StudentsToHomework).Where(h => h.HomeworkId == id).FirstOrDefault();
+            var modal = new HomeworkViewModel
+            {
+                HomeworkName = HomeworkPlace.HomeworkName,
+                HomeworkDescription = HomeworkPlace.HomeworkDescription,
+                HomeworkInfos = homeworkanswers,
+                HomeworkId = HomeworkPlace.HomeworkId,
+                StudentToHomeWorkId = HomeworkPlace.StudentsToHomework.FirstOrDefault().StudentsToHomeworkId,
+            };
+
+            return View(modal);
+        }
+
+        public IActionResult Download(int id)
+        {
+            var homework = _context.HomeworkInfo.Where(h => h.HomeworkInfoId == id).FirstOrDefault();
+            var document = _context.Documents.Where(d => d.Id == homework.DocumentId).FirstOrDefault();
+
+            if (homework == null)
+                return NotFound();
+
+            var fullPath = Path.Combine(
+                _environment.WebRootPath,
+                document.FilePath.TrimStart('/').Replace("/", Path.DirectorySeparatorChar.ToString())
+            );
+
+            if (!System.IO.File.Exists(fullPath))
+                return NotFound();
+
+            return PhysicalFile(
+                fullPath,
+                "application/octet-stream",
+                Path.GetFileName(fullPath));
+        }
+
         [HttpPost]
         public IActionResult Add(HomeworkViewModel model)
         {
@@ -115,6 +172,19 @@ namespace MyMvcApp.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Create");
+        }
+
+
+
+        public IActionResult EndHomeWork(int id)
+        {
+            var studenttohomework = _context.StudentsToHomeworks.Where(s => s.StudentsToHomeworkId == id).FirstOrDefault();
+
+            studenttohomework.IsEnded = true;
+            _context.StudentsToHomeworks.Update(studenttohomework);
+            _context.SaveChanges();
+
+            return RedirectToAction("Info");
         }
 
 

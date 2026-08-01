@@ -1,0 +1,31 @@
+﻿@model MyMvcApp.Models.HomeworkViewModel
+<section class="section">
+    <div class="mainDiv">
+        <div class="maindiv2">
+            <h1 class="hmwname">Назва:@Model.HomeworkName</h1>
+            <p class="opisssp">Опис: @Model.HomeworkDescription </p>
+            <a asp-controller="HomeWork" asp-action="Create" class="btn btn-dark">Повернутися назад</a>
+        </div>
+    </div>
+</section>
+ <section>
+                <div class="table2">
+                    <table class="table">
+                       <thead class="table-dark th1">
+                           <tr><th class="th">Номер</th><th>Назва</th><th>Опис</th><th>Дії</th></tr>
+                       </thead>
+                       <tbody>
+
+                    @foreach(var homework in Model.HomeworkInfos)
+                        {
+                           
+                           <td>@homework.HomeworkInfoId</td>
+                           <td>@homework.Text</td>
+                           <a type="button" asp-controller="HomeWork" asp-action="DetailsStudentHomework" asp-route-id="@homework.HomeworkId" class="btn btn-dark">Перевірити</a>
+                           <a type="button" asp-controller="HomeWork" asp-action="EndHomeWork" asp-route-id="@Model.StudentToHomeWorkId" class="btn btn-dark">Здати</a>
+                           }
+                            </tbody>
+
+                    </table>    
+                </div>
+            </section>

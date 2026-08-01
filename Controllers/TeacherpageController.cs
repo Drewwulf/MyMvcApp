@@ -26,9 +26,9 @@ namespace MyMvcApp.Controllers
         {
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
-            var teacher = _context.Teachers.Where(t=>t.UserId==id).Include(t=>t.Groups).FirstOrDefault();
+            var teacher = _context.Teachers.Where(t => t.UserId == id).Include(t => t.Groups).FirstOrDefault();
             var groups = teacher.Groups.ToList();
-            return View(groups); 
+            return View(groups);
         }
         public IActionResult Edit()
         {
@@ -53,22 +53,22 @@ namespace MyMvcApp.Controllers
         {
             return RedirectToAction("Create", "HomeWork");
         }
-       
+
         public async Task<IActionResult> TeacherShedule()
         {
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
-            var teacher = _context.Teachers.Where(t => t.UserId == id).Include(t => t.Groups).ThenInclude(s=>s.Schedule).ThenInclude(p=>p.Place).FirstOrDefault();
+            var teacher = _context.Teachers.Where(t => t.UserId == id).Include(t => t.Groups).ThenInclude(s => s.Schedule).ThenInclude(p => p.Place).FirstOrDefault();
             var groups = teacher.Groups.ToList();
             var schedules = groups.SelectMany(gs => gs.Schedule).ToList();
             var viewModel = new SheduleViewModel
             {
                 Schedules = schedules,
-                
-               
+
+
             };
             return View(viewModel);
-             // повертає Views/Destination/Create.cshtml
+            // повертає Views/Destination/Create.cshtml
         }
         public IActionResult TeacherTests()
         {
@@ -79,7 +79,7 @@ namespace MyMvcApp.Controllers
             var user = await _userManager.GetUserAsync(User);
             var id = user.Id;
             var teacher = _context.Teachers.Where(t => t.UserId == id).Include(t => t.Groups).ThenInclude(s => s.Schedule).ThenInclude(p => p.Place).FirstOrDefault();
-          
+
             return View(teacher);
         }
         public async Task<IActionResult> LiderBoard()

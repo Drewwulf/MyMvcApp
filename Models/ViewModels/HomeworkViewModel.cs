@@ -4,6 +4,7 @@ namespace MyMvcApp.Models
     {
         public int HomeworkId { get; set; }
         public int StudentId { get;set; }
+        public int StudentToHomeWorkId { get; set; }
         public string HomeworkName { get; set; }     
         public string HomeworkDescription { get; set; }
         public string? Text { get; set; }
@@ -15,6 +16,8 @@ namespace MyMvcApp.Models
         public List<Students> students = new List<Students>();
 
         public List<StudentsToHomework> studentsToHomeworks = new List<StudentsToHomework>();
+
+        public List<HomeworkInfo> HomeworkInfos = new List<HomeworkInfo>();
     }
 }
      
