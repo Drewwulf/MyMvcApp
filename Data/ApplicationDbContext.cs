@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using MyMvcApp.Models;
 namespace MyMvcApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    internal class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
