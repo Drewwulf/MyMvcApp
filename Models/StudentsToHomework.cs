@@ -9,6 +9,8 @@ namespace MyMvcApp.Models
 
         public int StudentId { get; set; }
 
+        public bool NotificationSent { get; set; }
+
         public bool IsEnded { get; set; }
 
         public Students Student { get; set; }
