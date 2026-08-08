@@ -127,10 +127,22 @@ namespace MyMvcApp.Controllers
             };
 
             var student = _context.Students.Where(s => s.Id == model.StudentId).First();
+            var homework = _context.Homeworks.Where(h => h.HomeworkId == model.HomeworkId).FirstOrDefault();
             var studentAsUser = _context.Users.Where(u => u.Id == student.UserId).First();
             var emails = new EmailSender();
-            await emails.SendEmailAsync(studentAsUser.NormalizedUserName, studentAsUser.Email, "Вам наначили нове домашнє завдання! School", "Вам призначили нове доманє завдання " + model.HomeworkName + ". Будь лакса виконайте до " + model.SubmitTime + "!");
+            await emails.SendEmailAsync(studentAsUser.NormalizedUserName, studentAsUser.Email, "Вам наначили нове домашнє завдання! School", 
+                $"""
+                    <b>Нове домашнє завдання!</b>
 
+                    <b>Назва:</b> {homework.HomeworkName}
+
+                    <b>Опис:</b> {homework.HomeworkDescription}
+
+                    <b>Виконати до:</b> {homework.SubmitTime}
+
+                    Бажаємо успіхів!
+                 """, true);
+            
             _context.StudentsToHomeworks.Add(studentToHomeworkRecord);
             _context.SaveChanges();
             return RedirectToAction("Info");

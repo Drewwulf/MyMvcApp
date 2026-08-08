@@ -15,17 +15,17 @@
                     <label for="start" class="finish">початок завдання</label>
                     <br>
 
-                    <input type="datetime-local" asp-for="StartTime" id="start">
+                    <input type="datetime-local" asp-for="StartTime" id="start" value="@DateTime.Now">
 
                         <br>
 
                         <label for="finish" class="finish">здача завдання</label>
                         <br>
 
-                        <input type="datetime-local" asp-for="SubmitTime" id="finish">
+                        <input type="datetime-local" asp-for="SubmitTime" id="finish" value="@DateTime.Now">
 
                             <input type="submit" value="Створити" class="submit">
-
+                            <input type="hidden" asp-for="StudentId" />
                         </form>
 
                     </div>
